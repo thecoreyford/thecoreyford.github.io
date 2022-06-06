@@ -1,0 +1,86 @@
+
+body {
+	font-family: Arial;
+	overflow-x: hidden;	
+	background-color: black;
+	color: white;
+}
+
+h1{
+	font-size: 40px;
+	color:white;
+}
+
+p {
+	text-align: justify;
+	width: 650px;
+	color: white;
+}
+
+
+#main {
+	padding: 20px;
+	padding-left: 50px;
+	padding-right: 400px;
+	background-color: #1c2e4a;
+	height: 150%;
+	width: 100%;
+	margin-left: 50px;
+	position: absolute;
+	top: 0px;
+	border-radius: 50px 50px 30px 5px;
+}
+
+.nav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	overflow-x: hidden;
+	padding-top: 60px;
+	transition: 0.7s;
+	background-color: #1c2e4a;
+	color: white;
+	border-radius: 00px 50px 30px 5px;
+}
+
+.nav a {
+	display: block;
+	padding: 20px 30px;
+	font-size: 25px;
+	text-decoration: none;
+	color: white;
+}
+
+.nav a:hover {
+	transition: 0.4s;
+	color: yellow;
+}
+
+.nav .close {
+	position: absolute;
+	top: 9px;
+	right: 22px;
+	margin-left: 50px;
+	font-size: 30px;
+}
+
+.slide a {
+	font-size: 30px;
+	color: white;
+}
+
+.slide a:hover {
+	transition: 0.4s;
+	color: yellow;
+}
+
+
+#content {
+	padding: 20px;
+	transition: margin-left 0.7s;
+	overflow: hidden;
+	width: 100%
+}

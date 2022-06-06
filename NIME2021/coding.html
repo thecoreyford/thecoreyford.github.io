@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Corey Ford | HCI | AI | Music</title>
+	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+	<link rel="stylesheet" href="style.css"> 
+
+	<script>
+		// window.onload = function() {
+  //           openSlideMenu();
+  //       }
+
+		function openSlideMenu(){
+			document.getElementById('menu').style.width = '250px';
+			document.getElementById('content').style.marginLeft = '250px';
+		}
+		function closeSlideMenu(){
+			document.getElementById('menu').style.width = '0px';
+			document.getElementById('content').style.marginLeft = '0px';
+		}
+	</script>
+</head>
+<body>
+	<div id="content">
+		<div class="slide">
+			<a href="#" onclick="openSlideMenu()">
+				<i class="fa fa-bars"></i>
+			</a>
+		</div>	
+
+		<div id="menu" class="nav">
+			<a href="#" class="close" onclick="closeSlideMenu()">
+				<i class="fa fa-times"></i>
+			</a>
+			<a href="index.html">About</a>
+			<a href="teaching.html">Teaching</a>
+			<a href="research.html">Research</a>
+			<a href="coding.html">Coding</a>
+			<a href="availability.html">Availability</a>
+		</div>
+
+		<div id="main">
+			<h1 style="display: inline;">Corey Ford</h1>
+			<h2 style="display: inline;">&nbsp&nbsp&nbsp PhD Researcher in AI, HCI and Music</h2>
+
+			<hr style="max-width: 675px; margin: 0px; margin-top: 5px">
+
+			<p>
+			Feel free to explore my github <a href="https://github.com/thecoreyford">here</a>.
+			</p>
+
+			<div class="github-widget" data-username="thecoreyford" style="background-color: white; float: left"></div>
+			<script src="https://unpkg.com/github-card@1.2.1/dist/widget.js"></script>
+			<div style="padding-left: 370px">
+				<h3>Languages</h3>
+				<ul>
+					<li><b>C++</b> - 4 year's practical experience</li>
+					<li><b>Python</b> - data mining, stats + ML</li>
+					<li><b>Javascript</b> - audio + GUI development</li>
+					<li><b>FAUST</b> - employed experience</li>
+					<li><b>LaTeX</b> - for publications</li>
+					<li><b>Manhattan</b> - generative music coding</li>
+					<li><b>Other - Java; Max; HTML; CSS; C#</b></li>
+				</ul>
+				<h3>Frameworks</h3>
+				<ul>
+					<li><b>JUCE</b> - large-scale + multi-threaded apps </li>
+					<li><b>Anaconda</b> - Numpy, Pandas, TensorFlow... </li>
+					<li><b>Tone JS</b> - live coding + sequencing </li>
+					<li><b>FMOD Studio & Designer API</b></li>
+					<li><b>QT</b> - working knowlege</li>
+				</ul>
+				<h3>Tools</h3>
+				<ul>
+					<li><b>Interaction Data</b></li>
+					<li><b>Git</b></li>
+					<li><b>MIDI</b></li>
+					<li><b>Curl</b></li>
+					<li><b>Doxygen</b></li>
+					<li><b>UML</b></li>
+					<li><b>JSON</b></li>
+					<li><b>XML</b></li>
+				</ul>
+			</div>
+			
+
+		
+		</div>
+	
+	</div>
+</body>
+</html>
