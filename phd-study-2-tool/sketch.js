@@ -20,6 +20,9 @@ var playButton = new PlayButton(workspace.getX() + 10,
 								40,
 								40);
 
+var bin = new Bin(workspaceX + workspaceWidth + 25, 
+				  workspaceY + workspaceHeight + 10, 
+				  70, 85);
 
 let musicBlocks = [];
 
@@ -27,7 +30,7 @@ var aiBlockCreator = new AIBlockCreator();
 
 var musicMetrics = new MusicMetrics(playButton);
 
-var puzzle_image, puzzle_image2;
+var puzzle_image, puzzle_image2, binClosed, binOpen;
 
 var startTime;
 
@@ -40,6 +43,8 @@ function preload()
 	startTime = millis();
 	puzzle_image = loadImage("assets/puzzle.png");
 	puzzle_image2 = loadImage("assets/puzzle2.png");
+	binClosed = loadImage("assets/binClosed.png");
+	binOpen = loadImage("assets/binOpen.png");
 }
 
 function setup() 
@@ -53,6 +58,7 @@ function draw()
   	background(lightGrey);
 
   	workspace.draw();
+  	bin.draw();
   	
   	for (let i = 0; i < musicBlocks.length; ++i)
   	{
@@ -93,6 +99,9 @@ function mousePressed()
 
 function mouseReleased()
 {
+	// delete any blocks from the bin
+	bin.mouseReleased (musicBlocks);
+
 	// If a music block is released...
 	for (let i = 0; i < musicBlocks.length; ++i)
 	{
