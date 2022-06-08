@@ -38,23 +38,23 @@ class AIBlockCreator
 			musicMetrics.calculateMusicalDistancesForData(); 
 
 
-			// // // For the top left (PITCH COUNT)
-			// var values = musicMetrics.getMostSimiliarValues("pitchCount");			
-			// musicBlocks.push (new AIBlock (anchor1.x, anchor1.y + random(0,5), 200, 100,
-			// 							   values[Math.floor(Math.random()*values.length)]["music_grid"]));
-			// musicBlocks.push (new AIBlock (anchor1.x + random (230, 220), anchor1.y, 200, 100,
-			// 							   values[Math.floor(Math.random()*values.length)]["music_grid"]));
-			// musicBlocks.push (new AIBlock (anchor1.x, anchor1.y + random (100, 120), 200, 100,
-			// 							   values[Math.floor(Math.random()*values.length)]["music_grid"]));
-
-			// // For the top left (AVERAGE PITCH)
-			var values = musicMetrics.getMostSimiliarValues("averagePitch");			
+			// // For the top left (PITCH COUNT)
+			var values = musicMetrics.getMostSimiliarValues("pitchCount");			
 			musicBlocks.push (new AIBlock (anchor1.x, anchor1.y + random(0,5), 200, 100,
 										   values[Math.floor(Math.random()*values.length)]["music_grid"]));
 			musicBlocks.push (new AIBlock (anchor1.x + random (230, 220), anchor1.y, 200, 100,
 										   values[Math.floor(Math.random()*values.length)]["music_grid"]));
 			musicBlocks.push (new AIBlock (anchor1.x, anchor1.y + random (100, 120), 200, 100,
 										   values[Math.floor(Math.random()*values.length)]["music_grid"]));
+
+			// // // For the top left (AVERAGE PITCH)
+			// var values = musicMetrics.getMostSimiliarValues("averagePitch");			
+			// musicBlocks.push (new AIBlock (anchor1.x, anchor1.y + random(0,5), 200, 100,
+			// 							   values[Math.floor(Math.random()*values.length)]["music_grid"]));
+			// musicBlocks.push (new AIBlock (anchor1.x + random (230, 220), anchor1.y, 200, 100,
+			// 							   values[Math.floor(Math.random()*values.length)]["music_grid"]));
+			// musicBlocks.push (new AIBlock (anchor1.x, anchor1.y + random (100, 120), 200, 100,
+			// 							   values[Math.floor(Math.random()*values.length)]["music_grid"]));
 
 			// // For the top right (PITCH RANGE)
 			var values = musicMetrics.getMostSimiliarValues("pitchRange");					
