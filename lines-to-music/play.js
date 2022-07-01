@@ -13,6 +13,11 @@ class Play
 		if (this.isPlaying === false)
 		{	
 			image(playpic, this.x, this.y, this.width, this.width);
+			
+			// bad practice showing this in here but YOLO
+			for (let i = 0; i < scribbles.length; ++i){
+				if(scribbles[i].bong !== undefined) {scribbles[i].bong=false;}
+			}
 		}
 		else
 		{

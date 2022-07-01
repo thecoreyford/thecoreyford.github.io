@@ -67,12 +67,16 @@ function draw()
 	{
 		scribbles = scribbles.sort((a, b) => (a.x > b.x) ? 1 : -1);
 		scribbles = scribbles.filter (function(d) {return d.killed === false;});
+		scribbles = scribbles.filter (function(d) {return d.x <= canvasWidth;});
+		scribbles = scribbles.filter (function(d) {return d.x > 0;});
+		scribbles = scribbles.filter (function(d) {return d.y <= canvasHeight;});
+		scribbles = scribbles.filter (function(d) {return d.y > 0;});
 
 				
 		if (playhead % 10 == 0){
 
 			if(current !== 0) {scribbles[current-1].bong = false;}
-			if(scribbles[current].bong != undefined) {scribbles[current].bong=true;}
+			if(scribbles[current].bong !== undefined) {scribbles[current].bong=true;}
 
 			synth.triggerAttackRelease((canvasHeight - scribbles[current].y), "8n");	
 
