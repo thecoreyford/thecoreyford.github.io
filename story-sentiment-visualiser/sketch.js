@@ -39,7 +39,7 @@ function setup()
 function draw() 
 {
 	let elapsedTime = millis() - startTime;
-	print(elapsedTime);
+	// print(elapsedTime);
 	if (elapsedTime > 120000.0) 
 	{
 		myTextArea.remove();
