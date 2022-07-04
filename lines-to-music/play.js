@@ -22,6 +22,7 @@ class Play
 		else
 		{
 			image(stoppic, this.x, this.y, this.width, this.width);
+			if(scribbles.length <= 0){this.isPlaying = false}; // also bad practice!
 		}
 		
 

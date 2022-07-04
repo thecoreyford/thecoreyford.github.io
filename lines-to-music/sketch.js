@@ -38,7 +38,7 @@ function setup()
 function draw() 
 {	
 	let elapsedTime = millis() - startTime;
-	print(elapsedTime);
+	// print(elapsedTime);
 	if (elapsedTime > 120000.0) 
 	{
 		fill(0,0,0);
@@ -79,7 +79,7 @@ function draw()
 		}
 
 		// play sound
-		if (play.isPlaying === true)
+		if (play.isPlaying === true && scribbles.length > 0)
 		{
 			scribbles = scribbles.sort((a, b) => (a.x > b.x) ? 1 : -1);
 			scribbles = scribbles.filter (function(d) {return d.killed === false;});
