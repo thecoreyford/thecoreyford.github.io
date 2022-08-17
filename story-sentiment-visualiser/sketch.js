@@ -47,7 +47,7 @@ function draw()
     	rect(0,0,canvasWidth,canvasHeight);
     	textSize(32);
     	fill(255, 255, 255);
-		text('Keyword: Writing\n\nPlease enter this keyword below and \nproceed with the questionnaire.', 30, canvasHeight / 2 - 70);
+		text('Keyword: Story\n\nPlease enter this keyword below and \nproceed with the questionnaire.', 30, canvasHeight / 2 - 70);
 	}
 	else
 	{
