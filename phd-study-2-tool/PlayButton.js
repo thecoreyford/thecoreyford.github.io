@@ -1,5 +1,14 @@
+/** GUI Play button which also controls the playback of note block sequences.*/
 class PlayButton
 {
+	/**
+ 	 * Constructor
+	 * @param {number} x - top left x co-ordinate for play button
+	 * @param {number} y - top left y co-ordinate for play button
+	 * @param {number} width - width of play button
+	 * @param {number} height - height of play button
+ 	 * @return {void} Nothing
+ 	 */
 	constructor (x,y,width,height)
 	{
 		this.x = x;
@@ -15,6 +24,10 @@ class PlayButton
 		this.mode = "STOPPED"; // "PREPARE_BUFFER" || "PLAYING"
 	}
 
+	/** 
+	 * Updates the GUI of the play button based on its mode.
+	 * @return {void} Nothing
+	 */
 	draw()
 	{
 		if (this.mode === "PLAYING" || this.mode === "PREPARE_BUFFER") 
@@ -42,6 +55,10 @@ class PlayButton
 		}
 	}
 
+	/**
+ 	 * Given the playhead position, update the play button's current mode
+ 	 * @return {void} Nothing
+ 	 */
 	updatePlayback()
 	{
 		if (this.playhead >= this.midiBuffer.length)
@@ -87,6 +104,10 @@ class PlayButton
 
 	}
 
+	/**
+ 	 * Either stop or start playback if play button is pressed. 
+ 	 * @return {void} Nothing
+ 	 */
 	mousePressed()
 	{
 		if (mouseX >= this.x 
@@ -111,6 +132,10 @@ class PlayButton
 		}
 	}
 
+	/**
+ 	 * Start playback given the users current data.
+ 	 * @return {void} Nothing
+ 	 */
 	startPlayback()
 	{
 		processDataset() //< collect all the blocks into the dataset. 
@@ -163,7 +188,11 @@ class PlayButton
 		this.mode = "PREPARE_BUFFER";
 	}
 
-	
+	/**
+ 	 * For an array of buttons, calculated the corresponding MIDI note sequence
+	 * @param {array} gridArray - an array of toggle buttons 
+ 	 * @return {void} Nothing
+ 	 */
 	gridArrayToNoteSequence (gridArray)
 	{
 		// TODO: Hard-coding here is bad, but as we need the note 
@@ -194,7 +223,5 @@ class PlayButton
 
   		return noteSequence;	
 	}
-
-	//===========================================================================
 
 }

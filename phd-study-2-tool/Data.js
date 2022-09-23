@@ -1,12 +1,26 @@
+/**
+ * @file Functions for storing and manipulating the dataset of generated music.
+ * @author Corey Ford
+ */
+
 // THIS WEBSITE IS VERY HELPFUL: http://learnjsdata.com/iterate_data.html
 
-var data = []
+var data = [] //< dataset of the current users block information, in a filterable format. 
 
+/**
+ * Clears the block metadata.
+ * @return {void} nothing.
+ */
 function clearDataset()
 {
 	data = []
 }
 
+
+/**
+ * Collects all the block metadata and places into a dataset.
+ * @return {void} nothing.
+ */
 function processDataset()
 {
 	clearDataset();
@@ -22,17 +36,6 @@ function processDataset()
 	 			   "isAI": musicBlocks[i].isAI});
 	}
 }
-
-
-
-// TODO: Find the blocks visible on the screen 
-// Find start blocks 
-// Calculate note lists by block 
-// Play out note lists
-
-
-
-
 
 
 

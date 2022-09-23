@@ -1,5 +1,16 @@
+/** Class for draggable AI blocks, extending MusicBlock. */
 class AIBlock extends MusicBlock
 {
+
+  /**
+   * Constructor
+   * @param {number} x - top left x co-ordinate of the block
+   * @param {number} y - top left y co-ordinate of the block
+   * @param {number} width - width of the block
+   * @param {number} height - height of the block
+   * @param {array} music_grid - a boolean grid of generative music, to set the buttons
+   * @return {void} Nothing.
+   */
 	constructor(x, y, width, height, music_grid)
 	{
 		super(x, y, width, height)
@@ -9,6 +20,10 @@ class AIBlock extends MusicBlock
 		this.isAI = true;
 	}
 
+  /** 
+   * Overridden show button with the different coloured puzzle piece image.
+   * return {void} Nothing.
+   */
 	show() 
   	{
       if (this.x < workspaceX 

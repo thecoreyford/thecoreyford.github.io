@@ -5,6 +5,9 @@ TODO
 ___
 ## Getting Started
 **Prerequisites**
+
+If you want to used the data logger, you need to create a file called AppKey.js, containing the string variable access_token, which will include the token used to save and load files to Dropbox.
+
 To run the project locally you need to start a server. 
 
 ___

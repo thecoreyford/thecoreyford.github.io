@@ -1,5 +1,14 @@
+/** A grid of toggle buttons used to represent our music. */
 class MusicGrid 
 {
+	/**
+ 	 * Constructor
+	 * @param {number} x - top left x co-ordinate for the music grid
+	 * @param {number} y - top left y co-ordinate for the music grid
+	 * @param {number} width - width of the music grid
+	 * @param {number} height - height of the music grid
+ 	 * @return {void} Nothing
+ 	 */
 	constructor (x, y, width, height)
 	{
 		this.x = x;
@@ -26,6 +35,14 @@ class MusicGrid
   		}	
 	}
 
+	/**
+ 	 * Updates the position of the music grid and its buttons.
+	 * @param {number} x - top left x co-ordinate for the music grid
+	 * @param {number} y - top left y co-ordinate for the music grid
+	 * @param {number} w - width of the music grid
+	 * @param {number} h - height of the music grid
+ 	 * @return {void} Nothing
+ 	 */
 	update (x, y, w, h)
 	{
 		this.x = x + (w * 0.075) + 5;
@@ -48,6 +65,12 @@ class MusicGrid
   		}	
 	}
 
+
+	/**
+ 	 * Toggle if the buttons should be transparent given if a block is outside the workspace.
+	 * @param {bool} isTransparent - if true set the buttons for the grid to be transparent. 
+ 	 * @return {void} Nothing
+ 	 */
 	toggleTransparency(isTransparent)
 	{
 		for (let i = 0; i < this.toggleButtons.length; ++i)
@@ -56,6 +79,10 @@ class MusicGrid
   		}
 	}
 
+	/**
+ 	 * Draws the grid of buttons to the canvas. 
+ 	 * @return {void} Nothing
+ 	 */
 	draw()
 	{
 		noStroke();
@@ -68,6 +95,10 @@ class MusicGrid
   		}
 	}
 
+	/**
+ 	 * Whether mouse is over the music grid.
+ 	 * @return {bool} true is mouse is over the grid. 
+ 	 */
 	hasMouseOver()
 	{
 		if (mouseX >= this.x 
@@ -83,6 +114,10 @@ class MusicGrid
 		}
 	}
 
+	/**
+ 	 * If mouse is pressed check if any of the buttons need to be toggled. 
+ 	 * @return {void} Nothing
+ 	 */
 	mousePressed() 
 	{
 		for (let i = 0; i < this.toggleButtons.length; ++i)
@@ -94,6 +129,11 @@ class MusicGrid
 	  	}
 	}
 
+	/**
+ 	 * Takes a boolean array and uses this to toggle the buttons of the musical grid as either on or off.
+	 * @param {array} boolArray - an array of 1's and 0's for setting the grid values.
+ 	 * @return {void} Nothing
+ 	 */
 	setInternalButtonsFromBoolArray(boolArray)
 	{
 		for (let i = 0; i < boolArray.length; ++i)
@@ -110,6 +150,10 @@ class MusicGrid
 
 	}
 
+	/**
+ 	 * Getter for the array of buttons which make up the music grid.
+ 	 * @return {array} of toggle buttons.
+ 	 */
 	getInternalButtonsArray()
 	{
 		return this.toggleButtons;

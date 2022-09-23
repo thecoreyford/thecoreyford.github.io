@@ -1,5 +1,14 @@
+/** Bin object for removing blocks from the canvas. */
 class Bin 
 {
+	/**
+ 	 * Constructor
+	 * @param {number} x - top left x co-ordinate of the bin
+	 * @param {number} y - top left y co-ordinate of the bin
+	 * @param {number} width - width of the bin
+	 * @param {number} height - height of the bin
+ 	 * @return {void} Nothing
+ 	 */
 	constructor (x, y, width, height)
 	{
 		this.x = x;
@@ -8,6 +17,10 @@ class Bin
 		this.height = height;
 	}
 
+	/**
+ 	 * Draws bin to canvas and tilts if mouse over.
+ 	 * @return {void} Nothing
+ 	 */
 	draw()
 	{
 		tint (255, 255); //<-- always draw the bin fully opaque 
@@ -25,7 +38,11 @@ class Bin
 		}	
 	}
 
-    
+    /**
+ 	 * On mouse released, checks if bin should remove any blocks from array
+	 * @param {array} musicBLocks - the array of music blocks in the project.
+ 	 * @return {void} Nothing
+ 	 */
 	mouseReleased (musicBlocks)
 	{
 		let lx1 = this.x;

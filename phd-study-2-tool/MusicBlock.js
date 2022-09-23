@@ -1,8 +1,14 @@
-
-
+/** A draggable puzzle-shaped block where users can write music.*/
 class MusicBlock
 {
-
+	/**
+ 	 * Constructor
+	 * @param {number} x - top left x co-ordinate of the block
+	 * @param {number} y - top left y co-ordinate of the block
+	 * @param {number} width - width of the block
+	 * @param {number} height - height of the block
+ 	 * @return {void} Nothing
+ 	 */
 	constructor (x, y, width, height)
 	{
 		this.dragging = false; // Is the object being dragged?
@@ -23,12 +29,20 @@ class MusicBlock
 	   	this.showHighlight = false; 
 
 	   	this.isAI = false;
+
+	   	// Assign a unique ID and then increment. 
+	   	this.id = blockIDTracker;
+	   	blockIDTracker = blockIDTracker + 1;
 	}
 
 	//=================================================================	
 
 	// WRAPPER FOR DRAG LOGIC: 
 
+	/**
+ 	 * Wapper for updates for drawing the block to the screen.
+ 	 * @return {void} Nothing
+ 	 */
 	draw()
 	{
 		this.update();
@@ -37,12 +51,20 @@ class MusicBlock
 		this.grid.draw();
 	}
 
+	/**
+ 	 * Wrapper for updates for when the mouse is pressed.
+ 	 * @return {void} Nothing
+ 	 */
 	mousePressed()
 	{
 		this.pressed();
 		this.grid.mousePressed();
 	}
 
+	/**
+ 	 * Wrapper for updates for when the mouse is released. 
+ 	 * @return {void} Nothing
+ 	 */
 	mouseReleased()
 	{
 		this.released();
@@ -53,6 +75,10 @@ class MusicBlock
 	// DRAG LOGIC:
 	// Taken from Shiffman. See https://editor.p5js.org/codingtrain/sketches/U0R5B6Z88 .
 
+	/**
+ 	 * Updates block's if they are dragged.
+ 	 * @return {void} Nothing
+ 	 */
 	update() 
 	{
 	    // Adjust location if being dragged
@@ -74,6 +100,10 @@ class MusicBlock
 	    }
   	}
 
+	/**
+ 	 * Checks any leftmost blocks connected to this current block and updates their position.
+ 	 * @return {void} Nothing
+ 	 */
   	updateNeighbours()
   	{
   		var current = this.nextBlock;
@@ -92,6 +122,10 @@ class MusicBlock
   		
   	}
 
+	/**
+ 	 * Draws block to canvas, checking its transparency. 
+ 	 * @return {void} Nothing
+ 	 */
   	show() 
   	{
   		if (this.x < workspaceX 
@@ -126,6 +160,10 @@ class MusicBlock
 
 	}
 
+	/**
+ 	 * On pressed, sets the offset values for where the mouse has selected the block. 
+ 	 * @return {void} Nothing
+ 	 */
 	pressed() 
 	{
 	    // Did I click on the rectangle?
@@ -145,6 +183,10 @@ class MusicBlock
 	    }
 	}
 
+	/**
+ 	 * Stops dragging.
+ 	 * @return {void} Nothing
+ 	 */
   	released() 
   	{
     	this.dragging = false; // Quit dragging
@@ -154,6 +196,10 @@ class MusicBlock
 
   	// CONNECTION LOGIC 
 
+	/**
+ 	 * Getter for the leftmost rectangle (bumps) of the block.
+ 	 * @return {array} the x, y, width and height of the top left of the block.
+ 	 */
   	getLeftPoints() 
   	{
   		// both top then both bottom, left to right
@@ -163,6 +209,10 @@ class MusicBlock
 	    		this.x + 20, this.y + this.height];
   	}
 
+	/**
+ 	 * Getter for the rightmost rectangle (bumps) of the block.
+ 	 * @return {array} the x, y, width and height of the top right of the block.
+ 	 */
   	getRightPoints() 
   	{
   		// both top then both bottom, left to right
@@ -172,6 +222,11 @@ class MusicBlock
 	    		this.x + this.width, this.y + this.height,];
   	}
 
+	/**
+ 	 * Checks if puzzle piece ends overlap. If so returns true. 
+ 	 * @param {object} other - a second adjacent block which could overlap.
+ 	 * @return {bool} true is puzzle peices overlap
+ 	 */
   	shouldMakeConnection(other) 
   	{
   		// Very helpful site here: https://www.geeksforgeeks.org/find-two-rectangles-overlap/
@@ -197,31 +252,58 @@ class MusicBlock
 		return false;
   	}
 
+  	/**
+ 	 * Setter for the next block.
+ 	 * @param {object} - the new connection for this block's neighbour
+ 	 * @return {void} Nothing.
+ 	 */
   	setNextBlock(newConnection) 
   	{
   		this.nextBlock = newConnection;
   	}
 
+	/**
+ 	 * Setter for the block's left connection.
+ 	 * @param {object} - the new connection for this block's leftmost neighbour.
+ 	 * @return {void} Nothing.
+ 	 */
   	setLeftConnection(newConnection)
   	{
 		this.previousBlock = newConnection; 
 	}
 
+	/**
+ 	 * Setter for the block's right connection.
+ 	 * @param {object} - the new connection for this block's rightmost neighbour.
+ 	 * @return {void} Nothing.
+ 	 */
 	setRightConnection(newConnection)
 	{
 		this.nextBlock = newConnection; 
 	}
 
+	/**
+ 	 * Getter for the block's left connection.
+ 	 * @return {object} the connection for this block's leftmost neighbour.
+ 	 */
 	getLeftConnection()
 	{
 		return this.previousBlock; 
 	}
 
+	/**
+ 	 * Getter for the block's right connection.
+ 	 * @return {object} the connection for this block's rightmost neighbour.
+ 	 */
 	getRightConnection()
 	{
 		return this.nextBlock; 
 	}
 
+	/**
+ 	 * Getter for the block's music grid.
+ 	 * @return {object} the music grid ontop of the block.
+ 	 */
 	getGridArray()
 	{
 		return this.grid.getInternalButtonsArray();

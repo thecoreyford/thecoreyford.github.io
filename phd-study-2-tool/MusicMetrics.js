@@ -1,6 +1,11 @@
+/** Wrapper for functions calculating metrics for user's music compositions*/
 class MusicMetrics
 {
-	// We take the play button to help generate note sequences
+	/**
+ 	 * Constructor
+	 * @param {object} playButton - play button, which we use to generate note sequences from toggle button presses.
+ 	 * @return {void} Nothing
+ 	 */
 	constructor (playButton)
 	{
 		this.playButton = playButton;
@@ -8,6 +13,12 @@ class MusicMetrics
 		this.pitchesInPeice = [];
 	}
 
+	/**
+ 	 * Compares time stamps and returns if bigger, smaller or equal. Used with the js sort function.
+	 * @param {number} a - timestamp of first time
+	 * @param {number} b - timestamp of second time 
+ 	 * @return {number} 1 if first start time is larger, -1 if smaller, 0 if same.
+ 	 */
 	compareStartTimes (a, b) 
 	{
 		if (a.startTime < b.startTime)
@@ -23,6 +34,10 @@ class MusicMetrics
   		return 0;
 	}
 
+	/**
+ 	 * Fills the buffer with the current set of notes used in the composition, for metrics to be calculated on. 
+ 	 * @return {void} Nothing.
+ 	 */
 	calculateGetNotes()
 	{
 		processDataset() //< collect all the blocks into the dataset. 
@@ -69,6 +84,10 @@ class MusicMetrics
 		this.buffer = this.buffer.sort (this.compareStartTimes)
 	}
 
+	/**
+ 	 * Counts the current number of pitches used in the composition.
+ 	 * @return {void} Nothing.
+ 	 */
 	getPitchCount()
 	{
 		this.pitchesInPeice = [];
@@ -83,6 +102,10 @@ class MusicMetrics
 		return this.pitchesInPeice.length;
 	}
 
+	/**
+ 	 * Calculates the average pitch for the current composition. 
+ 	 * @return {void} Nothing.
+ 	 */
 	getAveragePitch()
 	{
 		var allPitches = [];
@@ -97,17 +120,25 @@ class MusicMetrics
 		return avg;
 	}
 
+	/**
+ 	 * Calculates the abs difference between the lowest and highest pitch used in the users piece.
+ 	 * @return {void} Nothing.
+ 	 */
 	getPitchRange()
 	{
 		this.getPitchCount() //< to update pitches in piece
 
-		// Format so that math doesn't go crazy 
+		// TODO: Format so that math doesn't go crazy 
 
 		// this.pitchesInPeice = Math.max.apply(Math, this.pitchesInPeice);
 
 		return Math.abs(Math.min.apply(Math, this.pitchesInPeice) - Math.max.apply(Math, this.pitchesInPeice))
 	}
 
+	/**
+ 	 * Counts the average pitch interval between neighbouring pitches.
+ 	 * @return {void} Nothing.
+ 	 */
 	getAveragePitchInterval()
 	{
 		// Collect the start times in the piece
@@ -145,6 +176,10 @@ class MusicMetrics
 		return avg
 	}
 
+	/**
+ 	 * Calculates the distances between each generated example and the user's musical metrics.
+ 	 * @return {void} Nothing.
+ 	 */
 	calculateMusicalDistancesForData()
 	{
 		// Get main values
@@ -166,8 +201,12 @@ class MusicMetrics
 		// this.getMostSimilarDataValues("Pitch Count");
 	}
 
-	//=========
 
+	/**
+ 	 * Returns a list of the top 10 closest matches for a given metric.
+ 	 * @param {string} metric - the metric for the required sorted list of examples.
+ 	 * @return {void} Nothing.
+ 	 */
 	getMostSimiliarValues(metric)
 	{
 
@@ -255,9 +294,4 @@ class MusicMetrics
 
 	}
 
-
-
 }
-
-
-
