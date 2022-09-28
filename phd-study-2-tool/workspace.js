@@ -48,7 +48,7 @@ class Workspace
 	draw()
 	{
 		fill (lightBlue);
-		rect (this.x, this.y, this.width, this.height);
+		rect (this.x, this.y, this.width, this.height, 10);
 	}
 
 }

@@ -18,6 +18,8 @@ class ToggleButton
 
 		this.isOn = false;
 
+		this.onColour = orange;	
+
 		this.blocksOutside = false;
 	}
 
@@ -47,7 +49,7 @@ class ToggleButton
 
 		if (this.isOn)
 		{
-			squareColor = color(orange);
+			squareColor = color(this.onColour);
 		}
 		else
 		{
@@ -86,6 +88,15 @@ class ToggleButton
 			return false;
 		}
 	}
+
+
+
+	/**
+ 	 * Setter function for turning button on.
+ 	 * @param {string} newColour - new hex colour for the on button.
+ 	 * @return {void} Nothing.
+ 	 */
+	setOnColour(newColour){ this.onColour = newColour; }
 
 	/**
  	 * Setter function for turning button on.

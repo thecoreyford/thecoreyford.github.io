@@ -45,10 +45,10 @@ class MusicGrid
  	 */
 	update (x, y, w, h)
 	{
-		this.x = x + (w * 0.075) + 5;
-		this.y = y + (h * 0.05); 
-		this.width = w * 0.78;
-		this.height = h * 0.9;
+		this.x = x + (w * 0.075) + 5.5;
+		this.y = y + (h * 0.05) + 0.1; 
+		this.width = w * 0.76;
+		this.height = h * 0.89;
 
 		let counter = 0; 
 		for (let j = 0; j < this.gridWidth; ++j) 
@@ -87,6 +87,9 @@ class MusicGrid
 	{
 		noStroke();
 		fill(darkGrey)
+
+		this.setToggleButtonColours()
+
 		rect(this.x, this.y, this.width, this.height);
   
   		for (let i = 0; i < this.toggleButtons.length; ++i)
@@ -157,5 +160,87 @@ class MusicGrid
 	getInternalButtonsArray()
 	{
 		return this.toggleButtons;
+	}
+
+
+	/**
+ 	 * Highlights patterns by changing toggle on buttons.
+ 	 * @return {void} nothing. 
+ 	 */
+	setToggleButtonColours()
+	{
+		// Make orange to clear the palette
+		for (let i = 0; i < (this.toggleButtons.length - 7); ++i){
+			this.toggleButtons[i].setOnColour(orange);
+		}
+		
+		// Check Ascending
+		for (let i = 0; i < (this.toggleButtons.length - 7); ++i)
+  		{
+  			if (i % 8 !== 0) // ignore top row
+  			{
+  				let start = i; 
+				let end = start + 7;
+				if (this.toggleButtons[start].isOn === true 
+					&& this.toggleButtons[end].isOn === true)
+				{
+					this.toggleButtons[start].setOnColour(googGreen);
+					this.toggleButtons[end].setOnColour(googGreen);
+				}
+  			}
+  			
+  		}
+
+  		// Check Descending
+  		for (let i = 0; i < (this.toggleButtons.length - 9); ++i)
+  		{
+  			if ((i+1) % 8 !== 0) // ignore bottom row
+  			{
+  				let start = i; 
+				let end = start + 9;
+				if (this.toggleButtons[start].isOn === true 
+					&& this.toggleButtons[end].isOn === true)
+				{
+					this.toggleButtons[start].setOnColour(purple);
+					this.toggleButtons[end].setOnColour(purple);
+				}
+  			}
+  			
+  		}
+
+  		// Check for thirds
+		for (let i = 0; i < (this.toggleButtons.length - 2); ++i)
+  		{
+  			let myList = [6, 7, 14, 15, 22, 23, 30, 31, 38, 39, 46, 47, 54, 55, 62, 63];
+  			if (!myList.includes(i)) // ignore bottom rows
+  			{
+  				let start = i; 
+				let end = start + 2;
+				if (this.toggleButtons[start].isOn === true 
+					&& this.toggleButtons[end].isOn === true)
+				{
+					this.toggleButtons[start].setOnColour(googGreen);
+					this.toggleButtons[end].setOnColour(googGreen);
+				}
+  			}
+  		}
+
+  		// Check for dissonance
+		for (let i = 0; i < (this.toggleButtons.length - 1); ++i)
+  		{
+  			if ((i+1) % 8 !== 0) // ignore bottom row
+  			{
+  				let start = i; 
+				let end = start + 1;
+				if (this.toggleButtons[start].isOn === true 
+					&& this.toggleButtons[end].isOn === true)
+				{
+					this.toggleButtons[start].setOnColour(purple);
+					this.toggleButtons[end].setOnColour(purple);
+				}
+  			}
+  		}
+
+
 	}
 }
