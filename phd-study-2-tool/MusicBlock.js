@@ -19,7 +19,7 @@ class MusicBlock
 	    this.height = height;
 
 	    this.grid = new MusicGrid(this.x, this.y, this.width, this.height);
-	   	this.grid.update(this.x, this.y, this.width, this.height);
+	   	this.grid.update(this.x + 15, this.y, this.width - 15, this.height);
 
 	   	// connections 
 	   	this.nextBlock = null;
@@ -33,6 +33,9 @@ class MusicBlock
 	   	// Assign a unique ID and then increment. 
 	   	this.id = blockIDTracker;
 	   	blockIDTracker = blockIDTracker + 1;
+
+	   	// Create the tiny play button and parse the id
+	   	this.tinyPlay = new TinyPlayButton(this.x, this.y, this.width, this.height, this.id);
 	}
 
 	//=================================================================	
@@ -49,6 +52,8 @@ class MusicBlock
 		this.show();
 
 		this.grid.draw();
+
+		this.tinyPlay.draw(this.x, this.y, this.w, this.h);
 	}
 
 	/**
@@ -94,10 +99,12 @@ class MusicBlock
 
 		      this.x = mouseX + this.offsetX;
 		      this.y = mouseY + this.offsetY;
-		      this.grid.update(this.x, this.y, this.width, this.height);
+		      this.grid.update(this.x + 15, this.y, this.width - 15, this.height);
 		      
 		      this.updateNeighbours();
 	    }
+
+	    this.tinyPlay.draw(this.x, this.y, this.w, this.h);
   	}
 
 	/**
@@ -113,7 +120,7 @@ class MusicBlock
   		{
 			current.x = previous.x + previous.width - 18;
 			current.y = previous.y;
-			current.grid.update(current.x, current.y, current.width, current.height);
+			current.grid.update(current.x + 15, current.y, current.width - 15, current.height);
 
 			// step to the next node in list
 			previous = current;
@@ -181,6 +188,8 @@ class MusicBlock
 			this.offsetX = this.x - mouseX;
 			this.offsetY = this.y - mouseY;
 	    }
+
+	    this.tinyPlay.onClicked(); //< should this be played?.
 	}
 
 	/**

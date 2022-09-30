@@ -18,3 +18,5 @@ const googGreen = "#00e26b";
 const red = "#de5246";
 
 const yellow = "#FBBC05";
+
+const white = "#FFFFFF";

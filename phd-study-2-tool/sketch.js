@@ -72,6 +72,9 @@ function preload()
  */
 function setup() 
 {
+  musicMetrics.getCountOfColour (orange, true);
+  musicMetrics.getCountOfColour (purple, true);
+  musicMetrics.getCountOfColour (googGreen, true);
   createCanvas (canvasWidth, canvasHeight);
 }
 
@@ -81,9 +84,14 @@ function setup()
  */
 function draw() 
 {
-  	noStroke();
-  	background(lightGrey);
+	// draw background with border
+	strokeWeight(1);
+  	stroke(0);
+  	fill(lightGrey);
+  	rect(0,0,canvasWidth,canvasHeight,10);
+	noStroke();
 
+	// draw the following onto the background.... 
   	workspace.draw();
   	bin.draw();
   	

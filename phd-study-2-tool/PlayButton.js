@@ -1,4 +1,5 @@
-/** GUI Play button which also controls the playback of note block sequences.*/
+/** GUI Play button which also controls the playback of note block sequences.
+	It also acts as the playback engine e.g. any playback triggered must go through the playback block.*/
 class PlayButton
 {
 	/**
@@ -127,62 +128,76 @@ class PlayButton
 			}
 			else
 			{
-				this.startPlayback();
+				this.startPlayback(-1);
 			}
 		}
 	}
 
 	/**
  	 * Start playback given the users current data.
+ 	 * 
  	 * @return {void} Nothing
  	 */
-	startPlayback()
+	startPlayback(id)
 	{
 		processDataset() //< collect all the blocks into the dataset. 
-
-		// Find start blocks (filter example)
-		var startBlocks = data.filter(function(d){return d["leftConnection"] === null;});
-		startBlocks = startBlocks.filter(function(d){return d["x"] >= workspaceX;});
-		startBlocks = startBlocks.filter(function(d){return d["y"] >= workspaceY;});
-		startBlocks = startBlocks.filter(function(d){return d["x"] < workspaceX+workspaceWidth;});
-		startBlocks = startBlocks.filter(function(d){return d["y"] < workspaceY+workspaceHeight;});
 
 		// Empty the buffers! 
 		this.midiBuffer = []; 
 		this.highlightBuffer = [];
 
-		// For each of the found start blocks...
-		for (let i = 0; i < startBlocks.length; ++i)
+		// Find start blocks (filter example)
+		var startBlocks;
+		if (id === -1)
 		{
-			var index = 0; //< keep track of the buffer index
-			
+			// Count up all the start blocks and play the entire piece!!!
+			startBlocks = data.filter(function(d){return d["leftConnection"] === null;});
+			startBlocks = startBlocks.filter(function(d){return d["x"] >= workspaceX;});
+			startBlocks = startBlocks.filter(function(d){return d["y"] >= workspaceY;});
+			startBlocks = startBlocks.filter(function(d){return d["x"] < workspaceX+workspaceWidth;});
+			startBlocks = startBlocks.filter(function(d){return d["y"] < workspaceY+workspaceHeight;});
 
-			var current = startBlocks[i]["block"];
-			var previous;//startBlocks[i]["block"];
-
-			do
+			// For each of the found start blocks...
+			for (let i = 0; i < startBlocks.length; ++i)
 			{
-				if (this.midiBuffer[index] !== undefined) //< should be same for highlight
-				{
-					// index exists 
-					this.midiBuffer[index].push(this.gridArrayToNoteSequence(current.getGridArray()));
-					this.highlightBuffer[index].push(current);
-				}
-				else
-				{
-					// index doesn't exist, so create the array 
-					// for this chunk in the buffer 
-					this.midiBuffer.push([this.gridArrayToNoteSequence(current.getGridArray())]);
-					this.highlightBuffer.push([current]);
-				}
+				var index = 0; //< keep track of the buffer index
+				
 
-				// step to the next node in list
-				previous = current;
-				current = current.nextBlock;
-				index += 1;
-			} while (current != null)
+				var current = startBlocks[i]["block"];
+				var previous;//startBlocks[i]["block"];
+
+				do
+				{
+					if (this.midiBuffer[index] !== undefined) //< should be same for highlight
+					{
+						// index exists 
+						this.midiBuffer[index].push(this.gridArrayToNoteSequence(current.getGridArray()));
+						this.highlightBuffer[index].push(current);
+					}
+					else
+					{
+						// index doesn't exist, so create the array 
+						// for this chunk in the buffer 
+						this.midiBuffer.push([this.gridArrayToNoteSequence(current.getGridArray())]);
+						this.highlightBuffer.push([current]);
+					}
+
+					// step to the next node in list
+					previous = current;
+					current = current.nextBlock;
+					index += 1;
+				} while (current != null)
+			}
 		}
-
+		else
+		{
+			// only play the block requested! 
+			startBlocks = data.filter(function(d){return d["id"] === id;});
+			var current = startBlocks[0]["block"];
+			this.midiBuffer.push([this.gridArrayToNoteSequence(current.getGridArray())]);
+			this.highlightBuffer.push([current]);
+		}		
+		
 		// Start the beautiful music... 
 		this.playhead = 0; 
 		this.mode = "PREPARE_BUFFER";

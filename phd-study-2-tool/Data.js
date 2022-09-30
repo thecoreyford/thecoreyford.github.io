@@ -33,7 +33,8 @@ function processDataset()
 	 			   "y": musicBlocks[i].y, 
 	 			   "leftConnection":musicBlocks[i].getLeftConnection(), 
 	 			   "rightConnection":musicBlocks[i].getRightConnection(),
-	 			   "isAI": musicBlocks[i].isAI});
+	 			   "isAI": musicBlocks[i].isAI,
+	 			   "id": musicBlocks[i].id});
 	}
 }
 
