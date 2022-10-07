@@ -21,6 +21,9 @@ class ToggleButton
 		this.onColour = orange;	
 
 		this.blocksOutside = false;
+
+		this.doFade = true;
+		this.startTime = int(millis());
 	}
 
 /**
@@ -50,6 +53,30 @@ class ToggleButton
 		if (this.isOn)
 		{
 			squareColor = color(this.onColour);
+			if (this.onColour !== orange && this.doFade === true)
+			{
+				let elapsedTime = millis() - this.startTime; 
+				let fraction = elapsedTime / (25 /*sec*/ * 1000);
+				fraction = exp((2/3)*fraction) - 1;
+				
+				let colour1R = squareColor._getRed();
+				let colour1G = squareColor._getGreen();
+				let colour1B = squareColor._getBlue();
+
+				let colour2R = color (orange)._getRed();
+				let colour2G = color (orange)._getGreen();
+				let colour2B = color (orange)._getBlue();
+
+				let r = (colour2R-colour1R) * fraction + colour1R;
+				let g = (colour2G-colour1G) * fraction + colour1G;
+				let b = (colour2B-colour1B) * fraction + colour1B;
+
+				squareColor = color ([r,g,b]);
+				if (fraction > 1.0)
+				{
+					squareColor = color (orange);
+				}
+			}
 		}
 		else
 		{
@@ -96,19 +123,19 @@ class ToggleButton
  	 * @param {string} newColour - new hex colour for the on button.
  	 * @return {void} Nothing.
  	 */
-	setOnColour(newColour){ this.onColour = newColour; }
+	setOnColour(newColour){this.onColour = newColour; }
 
 	/**
  	 * Setter function for turning button on.
  	 * @return {void} Nothing.
  	 */
-	setOn(){ this.isOn = true; }
+	setOn(){ this.startTime = int(millis()); this.isOn = true;}
 
 	/**
  	 * Setter function for turning button off.
  	 * @return {void} Nothing.
  	 */
-	setOff(){ this.isOn = false; }
+	setOff(){ this.isOn = false;}
 	
 	/**
  	 * Toggle button to on if off, and vice versa.
@@ -116,6 +143,7 @@ class ToggleButton
  	 */
 	toogle()
 	{
+		this.startTime = int(millis());
 		this.isOn = !this.isOn;
 	}
 }

@@ -25,7 +25,7 @@ class BlockCreator
 	{
 		// draw a square
 		fill (darkGrey);
-		rect (this.x, this.y, this.width, this.height);
+		rect (this.x, this.y, this.width, this.height, 5);
 
 		// draw a plus symbol on the square... 
 		fill (lightGrey);

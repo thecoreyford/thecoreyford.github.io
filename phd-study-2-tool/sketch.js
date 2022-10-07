@@ -7,31 +7,39 @@
 
 // VARIABLES
 
-const canvasWidth = 1250;
-const canvasHeight = 780; //580;
+const canvasWidth = 1410;
+const canvasHeight = 870; //580;
 
-const workspaceX = canvasWidth * 0.10;
-const workspaceY = canvasHeight * 0.15;
-const workspaceWidth = canvasWidth - (2 * workspaceX);
-const workspaceHeight = canvasHeight - (2 * workspaceY);
-var workspace  = new Workspace(workspaceX, 
+const workspaceX = 200; //canvasWidth * 0.10; //125
+const workspaceY = 252; //canvasHeight * 0.15; //117
+const workspaceWidth = 1050; //canvasWidth - (2 * workspaceX); //1000
+const workspaceHeight = 600; //canvasHeight - (2 * workspaceY); //546
+const workspace2X = workspaceX; //canvasWidth * 0.10; //125
+const workspace2Y = 110; //canvasHeight * 0.15; //117
+const workspace2Width = workspaceWidth; //canvasWidth - (2 * workspaceX); //1000
+const workspace2Height = 130; //canvasHeight - (2 * workspaceY); //546
+var workspace  = [new Workspace(workspaceX, 
 							   workspaceY, 
 							   workspaceWidth, 
-							   workspaceHeight);
+							   workspaceHeight),
+					new Workspace(workspace2X, 
+							   workspace2Y, 
+							   workspace2Width, 
+							   workspace2Height)];
 
-
-var blockCreator = new BlockCreator(workspace.getX() + 60,
-									workspace.getY() + 10,
+var blockCreator = new BlockCreator(workspace[0].getX() + 60,
+									workspace[0].getY() + 10,
 									40,
 									40);
 
-var playButton = new PlayButton(workspace.getX() + 10,
-								workspace.getY() + 10,
+const stackPlayer = new TinyPlayButton(0,0,40,40,-2); //TODO: use something more descriptive than -2
+var playButton = new PlayButton(workspace[0].getX() + 10,
+								workspace[0].getY() + 10,
 								40,
 								40);
 
-var bin = new Bin(workspaceX + workspaceWidth + 25, 
-				  workspaceY + workspaceHeight + 10, 
+var bin = new Bin(workspace[0].getX() + workspace[0].getWidth() + 40, 
+				  117 + workspace[0].getHeight() + 30 + 20, 
 				  70, 85);
 
 let musicBlocks = []; //< Array of current blocks
@@ -72,7 +80,7 @@ function preload()
  */
 function setup() 
 {
-  musicMetrics.getCountOfColour (orange, true);
+  musicMetrics.getCountOfColour (orange, true); //< TODO: should these be in preload
   musicMetrics.getCountOfColour (purple, true);
   musicMetrics.getCountOfColour (googGreen, true);
   createCanvas (canvasWidth, canvasHeight);
@@ -85,14 +93,15 @@ function setup()
 function draw() 
 {
 	// draw background with border
-	strokeWeight(1);
-  	stroke(0);
-  	fill(lightGrey);
-  	rect(0,0,canvasWidth,canvasHeight,10);
-	noStroke();
+	strokeWeight (1);
+  	stroke (0);
+  	fill (lightGrey);
+  	rect (0, 0, canvasWidth, canvasHeight, 10);
+	noStroke ();
 
 	// draw the following onto the background.... 
-  	workspace.draw();
+  	workspace[0].draw();
+  	workspace[1].draw();
   	bin.draw();
   	
   	for (let i = 0; i < musicBlocks.length; ++i)
@@ -102,14 +111,17 @@ function draw()
 
 	blockCreator.draw();
   	playButton.draw();
+  	stackPlayer.draw(workspace[1].getX(),
+  					 workspace[1].getY(),
+  					 40, 40, -2);
 
   	// every so many seconds... 
   	let elapsedTime = millis() - startTime; 
 	if (elapsedTime > (25 * 1000))
 	{
-		aiBlockCreator.update(musicBlocks);
+		aiBlockCreator.update (musicBlocks);
 		startTime = millis();
-		logger.save()
+		logger.save();
 	}
 
   	playButton.updatePlayback();
@@ -128,10 +140,10 @@ function mousePressed()
 	// If block creator is pressed
 	if (blockCreator.hasMouseOver()) 
 	{
-		musicBlocks.push (new MusicBlock(250 + random(0, 40),
-									  150 + random(-20,40),
-									  200,
-									  100));
+		musicBlocks.push (new MusicBlock(300 + random(0, 40),
+									     270 + random(-20,40),
+									     200,
+									     100));
 	}
 
 	// If a music block is pressed 
@@ -142,6 +154,17 @@ function mousePressed()
 
 	// If play button is pressed
 	playButton.mousePressed();
+	stackPlayer.onClicked();
+}
+
+/**
+ * If left arrow pressed, force new AI blocks (useful to debug)
+ * @return {void} - Nothing.
+ */
+function keyPressed() {
+  if (keyCode === LEFT_ARROW && false) {
+ 	aiBlockCreator.update (musicBlocks);
+  }
 }
 
 /**

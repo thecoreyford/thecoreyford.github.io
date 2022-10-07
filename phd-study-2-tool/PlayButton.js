@@ -40,7 +40,7 @@ class PlayButton
 			fill (green);
 		}
 		
-		rect (this.x, this.y, this.width, this.height);
+		rect (this.x, this.y, this.width, this.height, 5);
 
 		fill(lightGrey);
 		if (this.mode === "PLAYING" || this.mode === "PREPARE_BUFFER")
@@ -119,12 +119,7 @@ class PlayButton
 
 			if (this.player.isPlaying())
 			{
-				this.player.stop();
-				this.mode = "STOPPED";
-				// stop highlights 
-				for (let h = 0; h < this.highlightBuffer[this.playhead].length; ++h){
-					this.highlightBuffer[this.playhead][h].showHighlight = false;
-				}
+				this.stopPlayback();
 			}
 			else
 			{
@@ -148,14 +143,18 @@ class PlayButton
 
 		// Find start blocks (filter example)
 		var startBlocks;
-		if (id === -1)
+		if (id === -1 || id === -2)
 		{
 			// Count up all the start blocks and play the entire piece!!!
 			startBlocks = data.filter(function(d){return d["leftConnection"] === null;});
-			startBlocks = startBlocks.filter(function(d){return d["x"] >= workspaceX;});
-			startBlocks = startBlocks.filter(function(d){return d["y"] >= workspaceY;});
-			startBlocks = startBlocks.filter(function(d){return d["x"] < workspaceX+workspaceWidth;});
-			startBlocks = startBlocks.filter(function(d){return d["y"] < workspaceY+workspaceHeight;});
+
+			let workspaceID = -1;
+			if (id === -1) { workspaceID = 0; } else { workspaceID = 1; }
+			print(workspaceID);
+			startBlocks = startBlocks.filter(function(d){return d["x"] >= workspace[workspaceID].getX();});
+			startBlocks = startBlocks.filter(function(d){return d["y"] >= workspace[workspaceID].getY();});
+			startBlocks = startBlocks.filter(function(d){return d["x"] < workspace[workspaceID].getX()+workspace[workspaceID].getWidth();});
+			startBlocks = startBlocks.filter(function(d){return d["y"] < workspace[workspaceID].getY()+workspace[workspaceID].getHeight();});
 
 			// For each of the found start blocks...
 			for (let i = 0; i < startBlocks.length; ++i)
@@ -201,6 +200,21 @@ class PlayButton
 		// Start the beautiful music... 
 		this.playhead = 0; 
 		this.mode = "PREPARE_BUFFER";
+	}
+
+	/**
+ 	 * Stops current playback and updates highlights accordingly.
+ 	 * @return {void} Nothing
+ 	 */
+	stopPlayback()
+	{
+		this.player.stop();
+		this.mode = "STOPPED";
+		
+		// stop highlights 
+		for (let h = 0; h < this.highlightBuffer[this.playhead].length; ++h){
+			this.highlightBuffer[this.playhead][h].showHighlight = false;
+		}
 	}
 
 	/**

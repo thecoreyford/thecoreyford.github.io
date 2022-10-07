@@ -27,19 +27,23 @@ class AIBlock extends MusicBlock
    */
 	show() 
   	{
-      if (this.x < workspaceX 
-        || this.x > workspaceX+workspaceWidth 
-        || this.y < workspaceY 
-        || this.y > workspaceY + workspaceHeight)
+      for(let wks = 0; wks < workspace.length; wks++)
       {
-        // Block is outside of the workspace so lets make transparent 
-        tint (255, 126);
-        this.grid.toggleTransparency(true);
-      }
-      else
-      {
-        tint (255, 255);
-        this.grid.toggleTransparency(false);
+        if (this.x < workspace[wks].getX() 
+          || this.x > workspace[wks].getX()+workspace[wks].getWidth() 
+          || this.y < workspace[wks].getY() 
+          || this.y > workspace[wks].getY() + workspace[wks].getHeight())
+        {
+          // Block is outside of the workspace so lets make transparent 
+          tint (255, 126);
+          this.grid.toggleTransparency(true);
+        }
+        else
+        {
+          tint (255, 255);
+          this.grid.toggleTransparency(false);
+          break;
+        }
       }
 
 	    image(puzzle_image2, this.x, this.y, this.width, this.height);
