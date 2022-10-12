@@ -56,7 +56,7 @@ class ToggleButton
 			if (this.onColour !== orange && this.doFade === true)
 			{
 				let elapsedTime = millis() - this.startTime; 
-				let fraction = elapsedTime / (25 /*sec*/ * 1000);
+				let fraction = elapsedTime / (37.5 /*sec*/ * 1000);
 				fraction = exp((2/3)*fraction) - 1;
 				
 				let colour1R = squareColor._getRed();
