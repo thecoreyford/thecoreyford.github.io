@@ -11,6 +11,10 @@ class MusicBlock
  	 */
 	constructor (x, y, width, height)
 	{
+		// Assign a unique ID and then increment. 
+	   	this.id = blockIDTracker;
+	   	blockIDTracker = blockIDTracker + 1;
+
 		this.dragging = false; // Is the object being dragged?
 
 	    this.x = x;
@@ -18,8 +22,10 @@ class MusicBlock
 	    this.width = width; 
 	    this.height = height;
 
-	    this.grid = new MusicGrid(this.x, this.y, this.width, this.height);
-	   	this.grid.update(this.x + 15, this.y, this.width - 15, this.height);
+	    this.grid = new MusicGrid(this.x, this.y, this.width, this.height, this);
+	   	this.grid.update (this.x + 15, this.y, this.width - 15, this.height);
+
+	   	this.muteButton = new MuteButton (this.x,this.y);
 
 	   	// connections 
 	   	this.nextBlock = null;
@@ -30,12 +36,8 @@ class MusicBlock
 
 	   	this.isAI = false;
 
-	   	// Assign a unique ID and then increment. 
-	   	this.id = blockIDTracker;
-	   	blockIDTracker = blockIDTracker + 1;
-
 	   	// Create the tiny play button and parse the id
-	   	this.tinyPlay = new TinyPlayButton(this.x, this.y, this.width, this.height, this.id);
+	   	this.tinyPlay = new TinyPlayButton(this.x, this.y, this.width, this.height, this.id, this.muteButton);
 	}
 
 	//=================================================================	
@@ -54,6 +56,8 @@ class MusicBlock
 		this.grid.draw();
 
 		this.tinyPlay.draw(this.x, this.y, this.w, this.h);
+
+		this.muteButton.draw();
 	}
 
 	/**
@@ -105,6 +109,7 @@ class MusicBlock
 	    }
 
 	    this.tinyPlay.draw(this.x, this.y, this.w, this.h);
+	    this.muteButton.update(this.x, this.y);
   	}
 
 	/**
@@ -135,30 +140,46 @@ class MusicBlock
  	 */
   	show() 
   	{
-		for(let wks = 0; wks < workspace.length; wks++)
+  		if (this.x < workspace[0].getX() 
+  			|| this.x > workspace[0].getX()+workspace[0].getWidth() 
+  			|| this.y < workspace[0].getY() 
+  			|| this.y > workspace[0].getY() + workspace[0].getHeight()
+  			|| this.muteButton.isMuted)
+  		{
+  			// Block is outside of the workspace so lets make transparent 
+  			tint (255, 126);
+  			this.grid.toggleTransparency(true);
+  			//TODO: make this work >>>	this.tinyPlay.toggleTransparency(true);
+  		}
+  		else
+  		{
+  			tint (255, 255);
+  			this.grid.toggleTransparency(false);
+  			//break;
+  		}
+	  	
+	  	// Change whole block colours when dragged to a timeline
+	  	for (let wks = 1; wks < workspace.length; ++wks)
       	{
-	  		if (this.x < workspace[wks].getX() 
-	  			|| this.x > workspace[wks].getX()+workspace[wks].getWidth() 
-	  			|| this.y < workspace[wks].getY() 
-	  			|| this.y > workspace[wks].getY() + workspace[wks].getHeight())
-	  		{
-	  			// Block is outside of the workspace so lets make transparent 
-	  			tint (255, 126);
-	  			this.grid.toggleTransparency(true);
-	  		}
-	  		else
-	  		{
-	  			tint (255, 255);
-	  			this.grid.toggleTransparency(false);
-	  			break;
-	  		}
-	  	}
+      		if (this.x > workspace[wks].getX() 
+  				&& this.x < workspace[wks].getX() + workspace[wks].getWidth() 
+  				&& this.y > workspace[wks].getY() 
+  				&& this.y < workspace[wks].getY() + workspace[wks].getHeight())
+      		{
+      			this.grid.setAllButtonOnColours (workspace[wks].getColour());
+      			break;
+      		}
+      		else
+      		{
+      			this.grid.setAllButtonOnColours (veryDarkBlue);	
+      		}
+      	}
 
 	    image(puzzle_image, this.x, this.y, this.width, this.height);
 
 	    if (this.showHighlight === true){
 	    	let highlightColour = color(yellow);
-  			highlightColour.setAlpha(80);
+  			highlightColour.setAlpha(180);
   			fill(highlightColour);
   			rect(this.x - 5, this.y - 2.5, this.width + 5, this.height + 5, 10);
 	    }
@@ -193,6 +214,7 @@ class MusicBlock
 	    }
 
 	    this.tinyPlay.onClicked(); //< should this be played?.
+	    this.muteButton.mousePressed();
 	}
 
 	/**
@@ -201,6 +223,18 @@ class MusicBlock
  	 */
   	released() 
   	{
+  		// log if we are about to end dragging... 
+  		if (this.dragging && playButton.player.isPlaying() === false)
+    	{
+	    	logger.log(JSON.stringify({"timestamp": str(round(millis(),3)),
+									   "blockID": this.getID(),
+									   "blockGrid": this.getGridArray(), 
+									   "desc": "Dragged block",
+									   "x": this.x,
+									   "y": this.y,
+									   "isAI": this.isAI}, null, "\t"));
+	    }
+
     	this.dragging = false; // Quit dragging
   	}
 
@@ -237,7 +271,7 @@ class MusicBlock
 	/**
  	 * Checks if puzzle piece ends overlap. If so returns true. 
  	 * @param {object} other - a second adjacent block which could overlap.
- 	 * @return {bool} true is puzzle peices overlap
+ 	 * @return {bool} true is puzzle pieces overlap
  	 */
   	shouldMakeConnection(other) 
   	{
@@ -318,7 +352,30 @@ class MusicBlock
  	 */
 	getGridArray()
 	{
-		return this.grid.getInternalButtonsArray();
+		if (this.muteButton.isMuted === false){
+			return this.grid.getInternalButtonsArray();
+		}
+
+		// If muted.... 
+		let arr = [];
+		for (let j = 0; j < 8; ++j){
+  			for (let i = 0; i < 8; ++i){
+  				arr.push(new ToggleButton (this.x + (this.width / this.gridWidth) * j + (this.padding * 0.5),
+  			 										this.y + (this.height / this.gridHeight) * i + (this.padding * 0.5), 
+  			 										(this.width / this.gridWidth) - this.padding,
+  			 										(this.height / this.gridHeight) - this.padding));
+  			}
+  		}	
+  		return arr;
+	}
+
+	/**
+ 	 * Getter for the block's music grid.
+ 	 * @return {int} the blocks unique ID.
+ 	 */
+	getID()
+	{
+		return this.id;
 	}
 
 }

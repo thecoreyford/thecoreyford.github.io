@@ -10,37 +10,46 @@
 const canvasWidth = 1410;
 const canvasHeight = 870; //580;
 
-const workspaceX = 200; //canvasWidth * 0.10; //125
-const workspaceY = 252; //canvasHeight * 0.15; //117
+const workspaceX = 205; //canvasWidth * 0.10; //125
+const workspaceY = 130; //canvasHeight * 0.15; //117
 const workspaceWidth = 1050; //canvasWidth - (2 * workspaceX); //1000
-const workspaceHeight = 600; //canvasHeight - (2 * workspaceY); //546
-const workspace2X = workspaceX; //canvasWidth * 0.10; //125
-const workspace2Y = 110; //canvasHeight * 0.15; //117
-const workspace2Width = workspaceWidth; //canvasWidth - (2 * workspaceX); //1000
+const workspaceHeight = 700; //canvasHeight - (2 * workspaceY); //546
+const workspace2X = workspaceX + 35 + 45; //canvasWidth * 0.10; //125
+const workspace2Y = 110 + 120; //canvasHeight * 0.15; //117
+const workspace2Width = workspaceWidth - 80 - 45; //canvasWidth - (2 * workspaceX); //1000
 const workspace2Height = 130; //canvasHeight - (2 * workspaceY); //546
 var workspace  = [new Workspace(workspaceX, 
 							   workspaceY, 
 							   workspaceWidth, 
-							   workspaceHeight),
+							   workspaceHeight,-1),
 					new Workspace(workspace2X, 
 							   workspace2Y, 
 							   workspace2Width, 
-							   workspace2Height)];
+							   workspace2Height, -2, orange),
+					new Workspace(workspace2X, 
+								  workspace2Y + 200, 
+								  workspace2Width, 
+								  workspace2Height, -3, googGreen),
+					new Workspace(workspace2X, 
+								  workspace2Y + 400, 
+								  workspace2Width, 
+								  workspace2Height, -4, purple)];
 
 var blockCreator = new BlockCreator(workspace[0].getX() + 60,
 									workspace[0].getY() + 10,
 									40,
 									40);
 
-const stackPlayer = new TinyPlayButton(0,0,40,40,-2); //TODO: use something more descriptive than -2
 var playButton = new PlayButton(workspace[0].getX() + 10,
 								workspace[0].getY() + 10,
 								40,
 								40);
 
 var bin = new Bin(workspace[0].getX() + workspace[0].getWidth() + 40, 
-				  117 + workspace[0].getHeight() + 30 + 20, 
+				  20 + workspace[0].getHeight(), 
 				  70, 85);
+
+var timeline = new TimelineBar();
 
 let musicBlocks = []; //< Array of current blocks
 
@@ -100,8 +109,9 @@ function draw()
 	noStroke ();
 
 	// draw the following onto the background.... 
-  	workspace[0].draw();
-  	workspace[1].draw();
+	for (let i = 0; i < workspace.length; ++i){
+		workspace[i].draw();
+	}
   	bin.draw();
   	
   	for (let i = 0; i < musicBlocks.length; ++i)
@@ -111,9 +121,6 @@ function draw()
 
 	blockCreator.draw();
   	playButton.draw();
-  	stackPlayer.draw(workspace[1].getX(),
-  					 workspace[1].getY(),
-  					 40, 40, -2);
 
   	// every so many seconds... 
   	let elapsedTime = millis() - startTime; 
@@ -125,6 +132,8 @@ function draw()
 	}
 
   	playButton.updatePlayback();
+
+  	timeline.draw();
 }
 
 //===========================================================================
@@ -144,6 +153,10 @@ function mousePressed()
 									     270 + random(-20,40),
 									     200,
 									     100));
+		logger.log(JSON.stringify({"timestamp": str(round(millis(),3)),
+					"blockID": musicBlocks[musicBlocks.length-1].getID(),
+					"blockGrid": "blank",//musicBlocks[musicBlocks.length-1].getGridArray() 
+					"desc": "Added non-AI block."},null, "\t") + "\n");
 	}
 
 	// If a music block is pressed 
@@ -152,9 +165,14 @@ function mousePressed()
 		musicBlocks[i].mousePressed();
 	}
 
-	// If play button is pressed
+	// If a tiny plan button is pressed
+	for (let i = 1; i < workspace.length; ++i)
+	{
+		workspace[i].onClicked();
+	}
+
+	// If a play button is pressed
 	playButton.mousePressed();
-	stackPlayer.onClicked();
 }
 
 /**
@@ -162,9 +180,14 @@ function mousePressed()
  * @return {void} - Nothing.
  */
 function keyPressed() {
-  if (keyCode === LEFT_ARROW && false) {
+  if (keyCode === LEFT_ARROW && true) {
  	aiBlockCreator.update (musicBlocks);
   }
+}
+
+//TODO: Comment
+function mouseDragged() {
+	timeline.mousePressed();
 }
 
 /**

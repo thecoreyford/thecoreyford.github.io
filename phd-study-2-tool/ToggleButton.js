@@ -22,7 +22,7 @@ class ToggleButton
 
 		this.blocksOutside = false;
 
-		this.doFade = true;
+		this.doFade = false;
 		this.startTime = int(millis());
 	}
 

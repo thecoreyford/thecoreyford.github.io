@@ -9,12 +9,24 @@ class Workspace
 	 * @param {number} height - height of workspace
  	 * @return {void} Nothing
  	 */
-	constructor (x,y,width,height)
+	constructor (x,y,width,height,id,colour=lightBlue)
 	{
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		this.colour = colour;
+		this.id = id;
+
+		
+		this.tinyPlay = new TinyPlayButton(this.x - 50,
+										   this.y - 5,
+										   40,
+										   40,
+										   this.id,
+										   null,
+										   true);
+		
 	}
 
 	/**
@@ -42,13 +54,45 @@ class Workspace
 	getHeight(){return this.height;}
 
 	/**
+ 	 * Getter for height
+ 	 * @return {number} width of workspace
+ 	 */
+	getID(){return this.id;}
+
+	/**
+ 	 * Getter for colour
+ 	 * @return {string} hex colour for the workspace
+ 	 */
+	getColour(){return this.colour;}
+
+	/**
  	 * Function drawing shapes to canvas, updated regularly
  	 * @return {void} Nothing.
  	 */
 	draw()
 	{
-		fill (lightBlue);
+		fill (this.colour);
 		rect (this.x, this.y, this.width, this.height, 10);
+
+		if (this.id !== -1)
+		{
+			this.tinyPlay.draw (this.x - 50, 
+								this.y - 5, 
+								this.tinyPlay.width, 
+								this.tinyPlay.height);
+		}
+	}
+
+	/**
+ 	 * Check the on click for tiny play buttons... 
+ 	 * @return {void} Nothing.
+ 	 */
+	onClicked()
+	{
+		if (this.id !== -1)
+		{
+			this.tinyPlay.onClicked();
+		}
 	}
 
 }

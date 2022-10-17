@@ -21,13 +21,15 @@ function clearDataset()
  * Collects all the block metadata and places into a dataset.
  * @return {void} nothing.
  */
-function processDataset()
+function processDataset(id)
 {
 	clearDataset();
 
-	for (let i = 0; i < musicBlocks.length; ++i)
+	if (id === "all")
 	{
-		data.push({"block": musicBlocks[i], 
+		for (let i = 0; i < musicBlocks.length; ++i)
+		{
+			data.push({"block": musicBlocks[i], 
 	 			   "grid": musicBlocks[i].getGridArray(), 
 	 			   "x": musicBlocks[i].x, 
 	 			   "y": musicBlocks[i].y, 
@@ -35,7 +37,10 @@ function processDataset()
 	 			   "rightConnection":musicBlocks[i].getRightConnection(),
 	 			   "isAI": musicBlocks[i].isAI,
 	 			   "id": musicBlocks[i].id});
+		}
+
 	}
+	
 }
 
 

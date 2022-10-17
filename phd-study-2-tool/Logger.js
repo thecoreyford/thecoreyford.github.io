@@ -64,10 +64,10 @@ class Logger
 			var dbx = new Dropbox.Dropbox({ accessToken: access_token });
 
 			dbx.filesUpload({path: '/' + file_name, contents: JsonObject})
-			.then( function (response) {
+			.then(function (response) {
 				console.log(response);
 			})
-			.catch( function (error){
+			.catch(function (error){
 				console.log(error);
 			})
 		}

@@ -40,7 +40,7 @@ class Bin
 
     /**
  	 * On mouse released, checks if bin should remove any blocks from array
-	 * @param {array} musicBLocks - the array of music blocks in the project.
+	 * @param {array} musicBlocks - the array of music blocks in the project.
  	 * @return {void} Nothing
  	 */
 	mouseReleased (musicBlocks)
@@ -60,6 +60,7 @@ class Bin
 			// if a block is over the bin delete it
 			if ((lx1 < rx2 || lx2 > rx1) && (ly1 < ry2 || ly2 > ry1)) 
 			{   
+				//deleted music block I which is an AI block??????
 				musicBlocks = musicBlocks.splice (musicBlocks.indexOf(musicBlocks[i]), 1);
 				if (i != 0) {i = i - 1;}
 			}

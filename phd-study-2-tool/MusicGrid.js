@@ -7,17 +7,22 @@ class MusicGrid
 	 * @param {number} y - top left y co-ordinate for the music grid
 	 * @param {number} width - width of the music grid
 	 * @param {number} height - height of the music grid
+	 * @param {object} parent - the parent object of the music grid
  	 * @return {void} Nothing
  	 */
-	constructor (x, y, width, height)
+	constructor (x, y, width, height, parent)
 	{
 		this.x = x;
 		this.y = y; 
 		this.width = width - 10;
 		this.height = height;
 
+		this.parent = parent;
+
 		this.gridWidth = 8;
 		this.gridHeight = 8;
+
+		this.toggleButtonColoursOnAnalysis = false;
 
 		this.padding = 0.5;
 
@@ -88,7 +93,9 @@ class MusicGrid
 		noStroke();
 		fill(darkGrey)
 
-		this.setToggleButtonColours()
+		if (this.toggleButtonColoursOnAnalysis){
+			this.setToggleButtonColours();
+		}
 
 		rect(this.x, this.y, this.width, this.height);
   
@@ -128,6 +135,15 @@ class MusicGrid
 	  		if(this.toggleButtons[i].hasMouseOver())
 	  		{
 	  			this.toggleButtons[i].toogle();
+
+	  			logger.log(JSON.stringify({"timestamp": str(round(millis(),3)),
+										   "blockID": this.parent.getID(),
+										   "blockGrid": this.parent.getGridArray(), 
+										   "desc": "Toggled note",
+										   "indexOfButton": str(i),
+										   "setToOn": this.toggleButtons[i].isOn,
+										   "isAI": this.parent.isAI}, null, "\t") 
+	  									   + "\n");
 	  		}	
 	  	}
 	}
@@ -162,6 +178,17 @@ class MusicGrid
 		return this.toggleButtons;
 	}
 
+	/**
+ 	 * Change the on colour for all of the grids buttons. 
+ 	 * @return {void} nothing. 
+ 	 */
+	setAllButtonOnColours(colour)
+	{
+		for (let i = 0; i < this.toggleButtons.length; ++i)
+		{
+			this.toggleButtons[i].setOnColour(colour);
+		}
+	}
 
 	/**
  	 * Highlights patterns by changing toggle on buttons.

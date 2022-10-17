@@ -1,5 +1,5 @@
 /** A play button which triggers to the larger play button class, to playback snippets of audio for a block..*/
-class TinyPlayButton
+class TinyPlayButton //TODO: this would be better called surrogate play button or something like that... 
 {
 	/**
  	 * Constructor
@@ -8,21 +8,23 @@ class TinyPlayButton
 	 * @param {number} w - width of play button's block
 	 * @param {number} h - height of play button's block
 	 * @param {int} id - unique identifier for the block this tiny play button belongs to.
+	 * @param {object} mute - the mute button also on this block
  	 * @return {void} Nothing
  	 */
-	constructor(x,y,w,h,id)
+	constructor(x,y,w,h,id,mute,workspace = false)
 	{
 		this.x = x + 10; 
 		this.y = y + 6; 
 		this.id = id;
-		if(id === -2){
+		if (workspace) {
 			this.width = w;
 			this.height = h;
-		}else{
+		} else {
 			this.width = 20;//(id === -1) ? w || 20; 
 			this.height = 20;//(id === -1) ? h || 20;
 		}
-		
+
+		this.mute = mute; 
 	}
 
 	/**
@@ -34,49 +36,55 @@ class TinyPlayButton
 	 * @param {int} id - unique identifier for the block this tiny play button belongs to.
  	 * @return {void} Nothing
  	 */
-	draw(x,y,w,h)
+	draw (x,y,w,h)
 	{
 		// update pos
 		this.x = x + 10; 
 		this.y = y + 6; 
-		// this.width = w; 
-		// this.height = h; 
 		var myAlpha = 255;
-		if(this.id !== -2) //< if we are not looking at the block stack... . 
+		if (this.id > 0) //if it is on a block
 		{
-			for(let wks = 0; wks < workspace.length; wks++)
-      		{
-				if (this.x - 10 < workspace[wks].getX() 
-		  			|| this.x - 10 > workspace[wks].getX()+workspace[wks].getWidth() 
-		  			|| this.y - 6 < workspace[wks].getY() 
-		  			|| this.y -6 > workspace[wks].getY() + workspace[wks].getHeight())
-		  		{
-		  			// Button is outside of the workspace so lets make transparent 
-		  			myAlpha = 50;
-		  		}
-		  		else
-		  		{
-		  			myAlpha = 255;
-		  			break;
-		  		}
-		  	}
+			if (this.mute !== null) 
+			{
 
-	  		// draw the mini playback button...
-			var buttonBackground = color(green);
-			buttonBackground.setAlpha(myAlpha);
-			fill(buttonBackground);
-			rect(this.x, this.y, this.width, this.height,4);
-			
-			// ...with a triangle on it
-			var triangleColour = color(white);
-			triangleColour.setAlpha(myAlpha);
-			fill(triangleColour);
-			triangle(this.x+5, this.y+3, 
-					 this.x+20-3, this.y+10,
-					 this.x+5, this.y+18);
+				for(let wks = 0; wks < workspace.length; wks++)
+	      		{
+					if (this.x - 10 < workspace[wks].getX() 
+			  			|| this.x - 10 > workspace[wks].getX()+workspace[wks].getWidth() 
+			  			|| this.y - 6 < workspace[wks].getY() 
+			  			|| this.y -6 > workspace[wks].getY() + workspace[wks].getHeight()
+			  			|| this.mute.isMuted === true)
+			  		{
+			  			// Button is outside of the workspace so lets make transparent 
+			  			myAlpha = 50;
+			  		}
+			  		else
+			  		{
+			  			myAlpha = 255;
+			  			break;
+			  		}
+			  	}
+		  }
+
+  		// draw the mini playback button...
+		var buttonBackground = color(green);
+		buttonBackground.setAlpha(255);
+		fill(buttonBackground);
+		rect(this.x, this.y, this.width, this.height,4);
+		
+		// // ...with a triangle on it
+		var triangleColour = color(white);
+		triangleColour.setAlpha(myAlpha);
+		fill(triangleColour);
+		triangle(this.x+5, this.y+3, 
+				 this.x+20-3, this.y+10,
+				 this.x+5, this.y+18);
 		}
 		else
 		{
+			this.width = w; 
+			this.height = h;
+
 			if (playButton.mode === "PLAYING" || playButton.mode === "PREPARE_BUFFER") 
 			{
 				fill (red);
@@ -116,9 +124,9 @@ class TinyPlayButton
 
 			if (playButton.mode === "STOPPED")
 			{
-				playButton.startPlayback(this.id);
+				playButton.startPlayback (this.id);
 			}
-			else if (this.id === -2)
+			else if (this.id < 0)
 			{
 				playButton.stopPlayback();
 			}

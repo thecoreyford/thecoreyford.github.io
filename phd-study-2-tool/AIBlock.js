@@ -16,7 +16,7 @@ class AIBlock extends MusicBlock
 		super(x, y, width, height)
 
 		this.grid.setInternalButtonsFromBoolArray(music_grid);
-    this.grid.setToggleButtonColours();
+    // this.grid.setToggleButtonColours();
 		
 		this.isAI = true;
 	}
@@ -27,24 +27,40 @@ class AIBlock extends MusicBlock
    */
 	show() 
   	{
-      for(let wks = 0; wks < workspace.length; wks++)
+      if (this.x < workspace[0].getX() 
+        || this.x > workspace[0].getX()+workspace[0].getWidth() 
+        || this.y < workspace[0].getY() 
+        || this.y > workspace[0].getY() + workspace[0].getHeight()
+        || this.muteButton.isMuted)
       {
-        if (this.x < workspace[wks].getX() 
-          || this.x > workspace[wks].getX()+workspace[wks].getWidth() 
-          || this.y < workspace[wks].getY() 
-          || this.y > workspace[wks].getY() + workspace[wks].getHeight())
-        {
-          // Block is outside of the workspace so lets make transparent 
-          tint (255, 126);
-          this.grid.toggleTransparency(true);
-        }
-        else
-        {
-          tint (255, 255);
-          this.grid.toggleTransparency(false);
-          break;
-        }
+        // Block is outside of the workspace so lets make transparent 
+        tint (255, 126);
+        this.grid.toggleTransparency(true);
+        //TODO: make this work >>>  this.tinyPlay.toggleTransparency(true);
       }
+      else
+      {
+        tint (255, 255);
+        this.grid.toggleTransparency(false);
+        //break;
+      }
+      
+      // Change whole block colours when dragged to a timeline
+      for (let wks = 1; wks < workspace.length; ++wks)
+        {
+          if (this.x > workspace[wks].getX() 
+          && this.x < workspace[wks].getX() + workspace[wks].getWidth() 
+          && this.y > workspace[wks].getY() 
+          && this.y < workspace[wks].getY() + workspace[wks].getHeight())
+          {
+            this.grid.setAllButtonOnColours (workspace[wks].getColour());
+            break;
+          }
+          else
+          {
+            this.grid.setAllButtonOnColours (veryDarkBlue); 
+          }
+        }
 
 	    image(puzzle_image2, this.x, this.y, this.width, this.height);
 

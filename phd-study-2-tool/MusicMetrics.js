@@ -16,7 +16,7 @@ class MusicMetrics
 	/**
  	 * Compares time stamps and returns if bigger, smaller or equal. Used with the js sort function.
 	 * @param {number} a - timestamp of first time
-	 * @param {number} b - timestamp of second time 
+	 * @param {numbefr} b - timestamp of second time 
  	 * @return {number} 1 if first start time is larger, -1 if smaller, 0 if same.
  	 */
 	compareStartTimes (a, b) 
@@ -38,16 +38,16 @@ class MusicMetrics
  	 * Fills the buffer with the current set of notes used in the composition, for metrics to be calculated on. 
  	 * @return {void} Nothing.
  	 */
-	calculateGetNotes()
+	calculateGetNotes(wksIdx)
 	{
-		processDataset() //< collect all the blocks into the dataset. 
+		processDataset("all") //< collect all the blocks into the dataset. 
 
 		// Find all start blocks 
 		var startBlocks = data.filter (function(d) {return d["leftConnection"] === null;});
-		startBlocks = startBlocks.filter (function(d) {return d["x"] >= workspace[0].getX();});
-		startBlocks = startBlocks.filter (function(d) {return d["y"] >= workspace[0].getY();});
-		startBlocks = startBlocks.filter (function(d) {return d["x"] < workspace[0].getX()+workspace[0].getWidth();});
-		startBlocks = startBlocks.filter (function(d) {return d["y"] < workspace[0].getY()+workspace[0].getHeight();});
+		startBlocks = startBlocks.filter (function(d) {return d["x"] >= workspace[wksIdx].getX();});
+		startBlocks = startBlocks.filter (function(d) {return d["y"] >= workspace[wksIdx].getY();});
+		startBlocks = startBlocks.filter (function(d) {return d["x"] < workspace[wksIdx].getX()+workspace[0].getWidth();});
+		startBlocks = startBlocks.filter (function(d) {return d["y"] < workspace[wksIdx].getY()+workspace[0].getHeight();});
 
 		// Empty the buffer! 
 		this.buffer = []; 
@@ -180,10 +180,10 @@ class MusicMetrics
  	 * Calculates the distances between each generated example and the user's musical metrics.
  	 * @return {void} Nothing.
  	 */
-	calculateMusicalDistancesForData()
+	calculateMusicalDistancesForData(wksIdx)
 	{
 		// Get main values
-		this.calculateGetNotes(); //<--- to be used in the functions below 
+		this.calculateGetNotes(wksIdx); //<--- to be used in the functions below 
 		var userPitchCount = this.getPitchCount();
 		var userPitchCount = this.getAveragePitch();
 		var userPitchRange = this.getPitchRange();
