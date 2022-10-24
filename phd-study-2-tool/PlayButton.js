@@ -32,6 +32,12 @@ class PlayButton
 									}, 
 							   stop: function(){}};
 		this.player.callbackObject = this.callbackObject; 
+
+
+		this.playLevelCounts = {"all": 0, "timeline": 0,  "block": 0};
+
+		this.flashing = false;
+		this.flashOffset = 0.001;
 	}
 
 	/** 
@@ -47,10 +53,20 @@ class PlayButton
 		}
 		else
 		{
-			fill (green);
+			fill (veryDarkGrey);
 		}
 		
+		if (this.flashing) //... Implement the flashing...
+		{
+			drawingContext.shadowBlur = 100 * sin(this.flashOffset); 
+			drawingContext.shadowColor = color(207,7,70);
+			this.flashOffset += 0.075;
+		}
 		rect (this.x, this.y, this.width, this.height, 5);
+		rect (this.x, this.y, this.width, this.height, 5);
+		rect (this.x, this.y, this.width, this.height, 5);
+		drawingContext.shadowBlur = 0;
+
 
 		fill(lightGrey);
 		if (this.mode === "PLAYING")
@@ -59,22 +75,26 @@ class PlayButton
 
 			if (highlightTrackerIdx !== 0)
 			{
-				// figure out the boundary for showing hilights 
-				let currTime = this.highlights[0][highlightTrackerIdx-1]["time"] + 0.5; 
-				currTime = 4.0*Math.ceil(currTime/4.0);
-				print(highlightTrackerIdx-1, (" : ") ,currTime);
-				
-				// Turn off highlights
-				for (let i = 0; i < data.length; ++i){
-					data[i]["block"].showHighlight = false;
-				}
+				try
+				{
+					// figure out the boundary for showing hilights 
+					let currTime = this.highlights[0][highlightTrackerIdx-1]["time"] + 0.5; 
+					currTime = 4.0*Math.ceil(currTime/4.0);
+					// print(highlightTrackerIdx-1, (" : ") ,currTime);
+					
+					// Turn off highlights
+					for (let i = 0; i < data.length; ++i){
+						data[i]["block"].showHighlight = false;
+					}
 
-				// filter the blocks that need to be turned on
-				let c = this.highlights[0].filter(function(d){return d["elapsed"] === currTime;});
-				// c = c.filter(function(d){return d["time"] >/ (currTime-4.0);});
-				for (let i = 0; i < c.length; ++i){
-					c[i]["block"].showHighlight = true;
+					// filter the blocks that need to be turned on
+					let c = this.highlights[0].filter(function(d){return d["elapsed"] === currTime;});
+					// c = c.filter(function(d){return d["time"] >/ (currTime-4.0);});
+					for (let i = 0; i < c.length; ++i){
+						c[i]["block"].showHighlight = true;
+					}
 				}
+				catch(err){}
 			}
 		}
 		else
@@ -105,6 +125,8 @@ class PlayButton
 			{
 				this.startPlayback(-1);
 			}
+
+			this.flashing = false;
 		}
 	}
 
@@ -113,7 +135,7 @@ class PlayButton
  	 * 
  	 * @return {void} Nothing
  	 */
-	startPlayback(id)
+	startPlayback(id, returnNoteSequence = false)
 	{
 		processDataset("all") //< collect all the blocks into the dataset. 
 
@@ -127,23 +149,29 @@ class PlayButton
 		var startBlocks;
 		if (id < 0)
 		{
-
-			//Find blocks where timeline.getX() is between X and X + block.width; 
-			startBlocks = data.filter(function(d){return timeline.getX() >= d["x"]
+			if(returnNoteSequence === true) {
+				// Count up all the start blocks and play the entire piece!!!
+				startBlocks = data.filter(function(d){return d["leftConnection"] === null;});
+			}else{
+				//Find blocks where timeline.getX() is between X and X + block.width; 
+				startBlocks = data.filter(function(d){return timeline.getX() >= d["x"]
 										   && timeline.getX() <= d["x"]+d["block"].width});
-			// Count up all the start blocks and play the entire piece!!!
-			//startBlocks = data.filter(function(d){return d["leftConnection"] === null;});
+			}			
 
 			let workspaceID = -1;
 			if (id === -1) { //TODO: this is bad hard-coding but seems to work so meh...
 				workspaceID = 0; 
+				this.playLevelCounts["all"] = this.playLevelCounts["all"] + 1;
 			} else if (id === -2) { 
 				workspaceID = 1; 
+				this.playLevelCounts["timeline"] = this.playLevelCounts["timeline"] + 1;
 			}
 			else if (id === -3) {
 				workspaceID = 2;
+				this.playLevelCounts["timeline"] = this.playLevelCounts["timeline"] + 1;
 			} else {
 				workspaceID = 3;
+				this.playLevelCounts["timeline"] = this.playLevelCounts["timeline"] + 1;
 			}
 			startBlocks = startBlocks.filter(function(d){return d["x"] >= workspace[workspaceID].getX();});
 			startBlocks = startBlocks.filter(function(d){return d["y"] >= workspace[workspaceID].getY();});
@@ -211,6 +239,7 @@ class PlayButton
 		}
 		else
 		{
+			this.playLevelCounts["block"] = this.playLevelCounts["block"] + 1;
 			// only play the block requested! 
 			startBlocks = data.filter(function(d){return d["id"] === id;});
 			var current = startBlocks[0]["block"];	
@@ -223,11 +252,17 @@ class PlayButton
 		}		
 
 		// Start the beautiful music... 
-		if (startBlocks.length !== 0 && !this.player.isPlaying()) {
+		if (startBlocks.length !== 0 && !this.player.isPlaying()
+			&& returnNoteSequence === false) {
 			this.highlights[0] = this.highlights[0].sort((a, b) => (a.elapsed > b.elapsed) ? 1 : -1);
 			this.mode = "START_PLAYING";
-			// this.updatePlayback();
 		}
+
+		if (returnNoteSequence === true)
+		{
+			return this.midiBuffer[0];
+		}
+		return null; 
 	}
 
 	/**
@@ -301,5 +336,135 @@ class PlayButton
 
   		return noteSequence;	
 	}
+
+
+
+	//TODO: Comment
+	setPlayLevelCountsAndGUI()
+	{
+		// If mostly using the timelines
+		if (this.playLevelCounts["timeline"] >= this.playLevelCounts["block"]
+			&& this.playLevelCounts["timeline"] >= this.playLevelCounts["all"])
+		{
+			// try listening to a single block
+			let myData = data.filter(function(d){return d["x"] >= workspace[0].getX();});
+			myData = myData.filter(function(d){return d["y"] >= workspace[0].getY();});
+			myData = myData.filter(function(d){return d["x"] < workspace[0].getX()+workspace[0].getWidth();});
+			myData = myData.filter(function(d){return d["y"] < workspace[0].getY()+workspace[0].getHeight();});
+
+			if (myData.length > 0){
+				myData[int(random(0,myData.length))]["block"].tinyPlay.flashing=true;
+			}	
+		} 
+		else if (this.playLevelCounts["block"] >= this.playLevelCounts["timeline"]
+			&& this.playLevelCounts["block"] >= this.playLevelCounts["all"])
+		{
+			// if mostly using block things 
+			// listen to everything as a whole!
+			this.flashing = true;	
+		}
+		else if (this.playLevelCounts["all"] >= this.playLevelCounts["timeline"]
+			&& this.playLevelCounts["all"] >= this.playLevelCounts["block"])
+		{
+			// if listening to everything
+			let myData, timelineID;
+			let count = 0;
+			do
+			{
+				timelineID = int(random(1,4));
+				myData = data.filter(function(d){return d["x"] >= workspace[timelineID].getX();});
+				myData = myData.filter(function(d){return d["y"] >= workspace[timelineID].getY();});
+				myData = myData.filter(function(d){return d["x"] < workspace[timelineID].getX()+workspace[timelineID].getWidth();});
+				myData = myData.filter(function(d){return d["y"] < workspace[timelineID].getY()+workspace[timelineID].getHeight();});
+				count = count + 1;
+			} while (myData.length == 0 && count !== 10)
+
+			// listen to a timeline
+			if (count !== 10) {
+				workspace[timelineID].tinyPlay.flashing = true;
+			}
+		}
+
+		// reset counter for next time 
+		this.playLevelCounts["timeline"] = 0;
+		this.playLevelCounts["block"] = 0;
+		this.playLevelCounts["all"] = 0;
+	}
+
+	//TODO: Comment
+	getPlayLevelCounts()
+	{
+		return this.PlayLevelCounts;
+	}
+
+
+	// TODO: Comment 
+	setXandY(x,y)
+	{
+		this.x = x;
+		this.y = y;
+	}
+
+	//TODO: comment
+	noteSequenceToBoolArray (noteSequence, offset = 0)
+	{
+		// Make a blank array 
+		let gridArray = [];
+		for(let j = 0; j < (8 * 8); j++){
+			// gridArray.push([]);
+			// for(let i = 0; i < 8; i++){
+			gridArray.push(0);
+		}
+		// }
+
+
+		// thanks to 2/11/2019 by Gav's blog Find the closest number in an array JavaScript
+		for (let n = 0; n < noteSequence.length; n++)
+		{
+			if (noteSequence[n]["startTime"] >= 4.0){
+				return gridArray;
+			}
+
+			let colIdx = (((8 * (noteSequence[n]["startTime"] + 0.5)) / 4) - 1);
+
+
+  			let midiPitch = [72, 71, 69, 67, 65, 64, 62, 60];
+			const needle = noteSequence[n]["pitch"];
+			const closest = midiPitch.reduce((a, b) => {
+    			return Math.abs(b - needle) < Math.abs(a - needle) ? b : a;
+			});
+			let rowIdx = midiPitch.indexOf(closest);
+
+			gridArray[(int(colIdx) * 8) + rowIdx] = 1;
+		}
+
+		return gridArray;
+
+
+
+		// let counter = 0; 
+		// for (let col = 0; col < 8; ++col) // column
+		// {
+  // 			for (let row = 0; row < 8; ++row) // row 
+  // 			{
+  // 				let midiPitch = [72, 71, 69, 67, 65, 64, 62, 60];
+  // 				let midiStartTime = [0.0 + offset, 0.5 + offset, 1.0 + offset, 1.5 + offset, 2.0 + offset, 2.5 + offset, 3.0 + offset, 3.5 + offset];
+  // 				let midiEndTime = [0.5 + offset, 1.0 + offset, 1.5 + offset, 2.0 + offset, 2.5 + offset, 3.0 + offset, 3.5+ offset, 4.0 + offset];
+
+  // 				if (gridArray[counter].isOn === true)
+  // 				{
+  // 					noteSequence["notes"].push({pitch: midiPitch[row], 
+  // 												startTime: midiStartTime[col], 
+  // 												endTime: midiEndTime[col],
+  // 												velocity: 20});
+  // 				}
+
+  // 				counter++;
+  // 			}
+  // 		}
+
+  // 		return noteSequence;	
+	}
+
 
 }

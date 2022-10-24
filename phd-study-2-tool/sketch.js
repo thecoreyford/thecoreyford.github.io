@@ -10,12 +10,12 @@
 const canvasWidth = 1410;
 const canvasHeight = 870; //580;
 
-const workspaceX = 205; //canvasWidth * 0.10; //125
+const workspaceX = 60; //canvasWidth * 0.10; //125
 const workspaceY = 130; //canvasHeight * 0.15; //117
 const workspaceWidth = 1050; //canvasWidth - (2 * workspaceX); //1000
-const workspaceHeight = 700; //canvasHeight - (2 * workspaceY); //546
+const workspaceHeight = 620; //canvasHeight - (2 * workspaceY); //546
 const workspace2X = workspaceX + 35 + 45; //canvasWidth * 0.10; //125
-const workspace2Y = 110 + 120; //canvasHeight * 0.15; //117
+const workspace2Y = 200; //canvasHeight * 0.15; //117
 const workspace2Width = workspaceWidth - 80 - 45; //canvasWidth - (2 * workspaceX); //1000
 const workspace2Height = 130; //canvasHeight - (2 * workspaceY); //546
 var workspace  = [new Workspace(workspaceX, 
@@ -35,18 +35,18 @@ var workspace  = [new Workspace(workspaceX,
 								  workspace2Width, 
 								  workspace2Height, -4, purple)];
 
-var blockCreator = new BlockCreator(workspace[0].getX() + 60,
-									workspace[0].getY() + 10,
-									40,
-									40);
+// var blockCreator = new BlockCreator(workspace[0].getX() + 60,
+// 									workspace[0].getY() + 10,
+// 									40,
+// 									40);
 
 var playButton = new PlayButton(workspace[0].getX() + 10,
 								workspace[0].getY() + 10,
 								40,
 								40);
 
-var bin = new Bin(workspace[0].getX() + workspace[0].getWidth() + 40, 
-				  20 + workspace[0].getHeight(), 
+var bin = new Bin(workspace[0].getX() + workspace[0].getWidth() + 220, 
+				  20 + workspace[0].getHeight() + 130, 
 				  70, 85);
 
 var timeline = new TimelineBar();
@@ -93,6 +93,20 @@ function setup()
   musicMetrics.getCountOfColour (purple, true);
   musicMetrics.getCountOfColour (googGreen, true);
   createCanvas (canvasWidth, canvasHeight);
+  playButton.setPlayLevelCountsAndGUI();
+
+  // add blue blocks on load 
+  musicBlocks.push (new MusicBlock(160, 215, 200, 100));
+  musicBlocks.push (new MusicBlock(160, 415, 200, 100));
+  musicBlocks.push (new MusicBlock(160, 615, 200, 100));
+  //---
+  musicBlocks.push (new MusicBlock(30, 18, 200, 100));
+  musicBlocks.push (new MusicBlock(280, 18, 200, 100));
+  musicBlocks.push (new MusicBlock(550, 18, 200, 100));
+  //---
+  musicBlocks.push (new MusicBlock(35, 760, 200, 100));
+  musicBlocks.push (new MusicBlock(295, 760, 200, 100));
+  musicBlocks.push (new MusicBlock(545, 760, 200, 100));
 }
 
 /**
@@ -119,21 +133,23 @@ function draw()
 		musicBlocks[i].draw();
 	}
 
-	blockCreator.draw();
-  	playButton.draw();
+	// blockCreator.draw();
 
   	// every so many seconds... 
   	let elapsedTime = millis() - startTime; 
 	if (elapsedTime > (25 * 1000))
 	{
-		aiBlockCreator.update (musicBlocks);
+		aiBlockCreator.magentaUpdate (musicBlocks);
 		startTime = millis();
 		logger.save();
+
+		playButton.setPlayLevelCountsAndGUI();
 	}
 
   	playButton.updatePlayback();
 
   	timeline.draw();
+  	playButton.draw();
 }
 
 //===========================================================================
@@ -146,18 +162,18 @@ function draw()
  */
 function mousePressed() 
 {
-	// If block creator is pressed
-	if (blockCreator.hasMouseOver()) 
-	{
-		musicBlocks.push (new MusicBlock(300 + random(0, 40),
-									     270 + random(-20,40),
-									     200,
-									     100));
-		logger.log(JSON.stringify({"timestamp": str(round(millis(),3)),
-					"blockID": musicBlocks[musicBlocks.length-1].getID(),
-					"blockGrid": "blank",//musicBlocks[musicBlocks.length-1].getGridArray() 
-					"desc": "Added non-AI block."},null, "\t") + "\n");
-	}
+	// // If block creator is pressed
+	// if (blockCreator.hasMouseOver()) 
+	// {
+	// 	musicBlocks.push (new MusicBlock(300 + random(0, 40),
+	// 								     270 + random(-20,40),
+	// 								     200,
+	// 								     100));
+	// 	logger.log(JSON.stringify({"timestamp": str(round(millis(),3)),
+	// 				"blockID": musicBlocks[musicBlocks.length-1].getID(),
+	// 				"blockGrid": "blank",//musicBlocks[musicBlocks.length-1].getGridArray() 
+	// 				"desc": "Added non-AI block."},null, "\t") + "\n");
+	// }
 
 	// If a music block is pressed 
 	for (let i = 0; i < musicBlocks.length; ++i)
@@ -170,9 +186,6 @@ function mousePressed()
 	{
 		workspace[i].onClicked();
 	}
-
-	// If a play button is pressed
-	playButton.mousePressed();
 }
 
 /**
@@ -181,7 +194,8 @@ function mousePressed()
  */
 function keyPressed() {
   if (keyCode === LEFT_ARROW && true) {
- 	aiBlockCreator.update (musicBlocks);
+ 	// aiBlockCreator.update (musicBlocks);
+ 	aiBlockCreator.magentaUpdate (musicBlocks);
   }
 }
 
@@ -196,6 +210,9 @@ function mouseDragged() {
  */
 function mouseReleased()
 {
+	// If a play button is released
+	playButton.mousePressed();
+
 	// delete any blocks from the bin
 	bin.mouseReleased (musicBlocks);
 

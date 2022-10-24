@@ -11,7 +11,7 @@ class AIBlock extends MusicBlock
    * @param {array} music_grid - a boolean grid of generative music, to set the buttons
    * @return {void} Nothing.
    */
-	constructor(x, y, width, height, music_grid)
+	constructor(x, y, width, height, music_grid, defaultColour)
 	{
 		super(x, y, width, height)
 
@@ -19,6 +19,8 @@ class AIBlock extends MusicBlock
     // this.grid.setToggleButtonColours();
 		
 		this.isAI = true;
+
+    this.defaultColour = defaultColour;
 	}
 
   /** 
@@ -58,7 +60,7 @@ class AIBlock extends MusicBlock
           }
           else
           {
-            this.grid.setAllButtonOnColours (veryDarkBlue); 
+            this.grid.setAllButtonOnColours (this.defaultColour); 
           }
         }
 

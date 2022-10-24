@@ -25,6 +25,9 @@ class TinyPlayButton //TODO: this would be better called surrogate play button o
 		}
 
 		this.mute = mute; 
+
+		this.flashing = false;
+		this.flashOffset = 0.001;
 	}
 
 	/**
@@ -67,10 +70,19 @@ class TinyPlayButton //TODO: this would be better called surrogate play button o
 		  }
 
   		// draw the mini playback button...
-		var buttonBackground = color(green);
+		var buttonBackground = color(veryDarkGrey);
 		buttonBackground.setAlpha(255);
 		fill(buttonBackground);
-		rect(this.x, this.y, this.width, this.height,4);
+		if (this.flashing) //... Implement the flashing...
+		{
+			drawingContext.shadowBlur = 100 * sin(this.flashOffset); 
+			drawingContext.shadowColor = color(207,7,70);
+			this.flashOffset += 0.075;
+		}
+		rect (this.x, this.y, this.width, this.height, 4);
+		rect (this.x, this.y, this.width, this.height, 4);
+		rect (this.x, this.y, this.width, this.height, 4);
+		drawingContext.shadowBlur = 0;
 		
 		// // ...with a triangle on it
 		var triangleColour = color(white);
@@ -91,10 +103,20 @@ class TinyPlayButton //TODO: this would be better called surrogate play button o
 			}
 			else
 			{
-				fill (green);
+				fill (veryDarkGrey);
 			}
 			
+			if (this.flashing) //... Implement the flashing...
+			{
+				drawingContext.shadowBlur = 100 * sin(this.flashOffset); 
+				drawingContext.shadowColor = color(207,7,70);
+				this.flashOffset += 0.075;
+			}
 			rect (this.x, this.y, this.width, this.height, 5);
+			rect (this.x, this.y, this.width, this.height, 5);
+			rect (this.x, this.y, this.width, this.height, 5);
+			drawingContext.shadowBlur = 0;
+			// rect (this.x, this.y, this.width, this.height, 5);
 
 			fill(lightGrey);
 			if (playButton.mode === "PLAYING" || playButton.mode === "PREPARE_BUFFER")
@@ -130,6 +152,8 @@ class TinyPlayButton //TODO: this would be better called surrogate play button o
 			{
 				playButton.stopPlayback();
 			}
+
+			this.flashing = false;
 		}
 	}
 }

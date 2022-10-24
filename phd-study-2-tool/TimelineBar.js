@@ -6,35 +6,35 @@ class TimelineBar
 
 	constructor ()
 	{
-		this.ellipseX = 300;
+		this.ellipseX = 180;
 	}
 
 	draw()
 	{
-		fill("#000000");
-		rect(300,195,900,12,5);
+		fill(darkGrey);
+		rect(180,150,850,30,5);
 
-		fill(green);
-		ellipse (this.ellipseX, 200,20,20);
+		// ellipse (this.ellipseX, 155,20,20);
+		playButton.setXandY(this.ellipseX - 20,145);
 
 		if (mouseIsPressed === true 
-			&& mouseX > 300 
-			&& mouseX < 300 + 970 
-			&& mouseY > 195 
-			&& mouseY < 195 + 12) 
+			&& mouseX > 180 
+			&& mouseX < 180 + 900
+			&& mouseY > 150 
+			&& mouseY < 150 + 30) 
 		{
-			rect (this.ellipseX - 3,195,5,900,5);
+			rect (this.ellipseX - 3, 150, 5, 850, 5);
 		}
 
-		rect(this.ellipseX,195,900 - (this.ellipseX - 300),12,5);
+		// rect(this.ellipseX,150,900 - (this.ellipseX - 300),12,5);
 	}
 
 	mousePressed()
 	{
-		if (mouseX > 300 
-			&& mouseX < 300 + 900 
-			&& mouseY > 195 
-			&& mouseY < 195 + 12) {
+		if (mouseX > 180 
+			&& mouseX < 180 + 850 
+			&& mouseY > 150 
+			&& mouseY < 150 + 30) {
 			this.ellipseX = mouseX;
 		}
 	}
