@@ -65,6 +65,10 @@ var blockIDTracker;
 
 var startTime;
 
+var globalFlashOffset = 0.001;
+
+var doFly = false;
+
 //========================================================================================
 
 // MAIN FUNCTIONS  
@@ -139,11 +143,43 @@ function draw()
   	let elapsedTime = millis() - startTime; 
 	if (elapsedTime > (25 * 1000))
 	{
-		aiBlockCreator.magentaUpdate (musicBlocks);
 		startTime = millis();
 		logger.save();
 
-		playButton.setPlayLevelCountsAndGUI();
+		
+		if (doFly)
+		{
+			// get ai blocks not in the workspace and AI
+			clearDataset();
+			processDataset("all");
+			let aiBlocks = data.filter(function(d){return d["isAI"] === true;});
+			aiBlocks = aiBlocks.filter(function(d){return d["x"] >= workspace[0].getWidth();});
+    		// aiBlocks = aiBlocks.filter(function(d){return d["y"] >= workspace[0].getY();});
+    		// aiBlocks = aiBlocks.filter(function(d){return d["x"] < workspace[0].getX()+workspace[0].getWidth();});
+    		// aiBlocks = aiBlocks.filter(function(d){return d["y"] < workspace[0].getY()+workspace[0].getHeight();});
+
+			// randomly pick one 
+			if (aiBlocks.length > 0)
+			{
+				var idx, didInteract; 
+				do
+				{
+					idx = int (random(0,aiBlocks.length));
+					didInteract = aiBlocks[idx]["block"].getInteracted();
+				}
+				while (didInteract === true)
+					
+				// start fly 
+				aiBlocks[idx]["block"].startFly();
+			}
+
+		}
+		else
+		{
+			aiBlockCreator.magentaUpdate (musicBlocks);
+			playButton.setPlayLevelCountsAndGUI();
+		}
+		doFly = !doFly;
 	}
 
   	playButton.updatePlayback();
@@ -186,6 +222,8 @@ function mousePressed()
 	{
 		workspace[i].onClicked();
 	}
+
+	timeline.mousePressed();
 }
 
 /**

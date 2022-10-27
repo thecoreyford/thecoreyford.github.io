@@ -37,7 +37,6 @@ class PlayButton
 		this.playLevelCounts = {"all": 0, "timeline": 0,  "block": 0};
 
 		this.flashing = false;
-		this.flashOffset = 0.001;
 	}
 
 	/** 
@@ -58,9 +57,9 @@ class PlayButton
 		
 		if (this.flashing) //... Implement the flashing...
 		{
-			drawingContext.shadowBlur = 100 * sin(this.flashOffset); 
-			drawingContext.shadowColor = color(207,7,70);
-			this.flashOffset += 0.075;
+			drawingContext.shadowBlur = 100 * sin(globalFlashOffset); 
+			drawingContext.shadowColor = color(darkBlue);
+			globalFlashOffset += 0.075;
 		}
 		rect (this.x, this.y, this.width, this.height, 5);
 		rect (this.x, this.y, this.width, this.height, 5);
@@ -342,29 +341,37 @@ class PlayButton
 	//TODO: Comment
 	setPlayLevelCountsAndGUI()
 	{
-		// If mostly using the timelines
-		if (this.playLevelCounts["timeline"] >= this.playLevelCounts["block"]
-			&& this.playLevelCounts["timeline"] >= this.playLevelCounts["all"])
+		// turn off all flashing 
+		this.flashing = false;
+		for(let i = 1; i < 4; ++i)//TODO: No hardcoding
 		{
-			// try listening to a single block
-			let myData = data.filter(function(d){return d["x"] >= workspace[0].getX();});
-			myData = myData.filter(function(d){return d["y"] >= workspace[0].getY();});
-			myData = myData.filter(function(d){return d["x"] < workspace[0].getX()+workspace[0].getWidth();});
-			myData = myData.filter(function(d){return d["y"] < workspace[0].getY()+workspace[0].getHeight();});
+			workspace[i].tinyPlay.flashing=false;
+		}
 
-			if (myData.length > 0){
-				myData[int(random(0,myData.length))]["block"].tinyPlay.flashing=true;
-			}	
-		} 
-		else if (this.playLevelCounts["block"] >= this.playLevelCounts["timeline"]
-			&& this.playLevelCounts["block"] >= this.playLevelCounts["all"])
+		//-----
+
+		// // If mostly using the timelines
+		// if (this.playLevelCounts["timeline"] >= this.playLevelCounts["block"]
+		// 	&& this.playLevelCounts["timeline"] >= this.playLevelCounts["all"])
+		// {
+		// 	// try listening to a single block
+		// 	let myData = data.filter(function(d){return d["x"] >= workspace[0].getX();});
+		// 	myData = myData.filter(function(d){return d["y"] >= workspace[0].getY();});
+		// 	myData = myData.filter(function(d){return d["x"] < workspace[0].getX()+workspace[0].getWidth();});
+		// 	myData = myData.filter(function(d){return d["y"] < workspace[0].getY()+workspace[0].getHeight();});
+
+		// 	if (myData.length > 0){
+		// 		myData[int(random(0,myData.length))]["block"].tinyPlay.flashing=true;
+		// 	}	
+		// } 
+		/*else*/ 
+		if (this.playLevelCounts["timeline"] > this.playLevelCounts["all"])
 		{
 			// if mostly using block things 
 			// listen to everything as a whole!
 			this.flashing = true;	
 		}
-		else if (this.playLevelCounts["all"] >= this.playLevelCounts["timeline"]
-			&& this.playLevelCounts["all"] >= this.playLevelCounts["block"])
+		else if (this.playLevelCounts["all"] > this.playLevelCounts["timeline"]) // no middles
 		{
 			// if listening to everything
 			let myData, timelineID;

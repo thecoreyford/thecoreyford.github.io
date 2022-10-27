@@ -27,7 +27,7 @@ class TinyPlayButton //TODO: this would be better called surrogate play button o
 		this.mute = mute; 
 
 		this.flashing = false;
-		this.flashOffset = 0.001;
+		globalFlashOffset = 0.001;
 	}
 
 	/**
@@ -75,9 +75,9 @@ class TinyPlayButton //TODO: this would be better called surrogate play button o
 		fill(buttonBackground);
 		if (this.flashing) //... Implement the flashing...
 		{
-			drawingContext.shadowBlur = 100 * sin(this.flashOffset); 
-			drawingContext.shadowColor = color(207,7,70);
-			this.flashOffset += 0.075;
+			drawingContext.shadowBlur = 100 * sin(globalFlashOffset); 
+			drawingContext.shadowColor = color(darkBlue);
+			globalFlashOffset += 0.075;
 		}
 		rect (this.x, this.y, this.width, this.height, 4);
 		rect (this.x, this.y, this.width, this.height, 4);
@@ -108,9 +108,9 @@ class TinyPlayButton //TODO: this would be better called surrogate play button o
 			
 			if (this.flashing) //... Implement the flashing...
 			{
-				drawingContext.shadowBlur = 100 * sin(this.flashOffset); 
-				drawingContext.shadowColor = color(207,7,70);
-				this.flashOffset += 0.075;
+				drawingContext.shadowBlur = 100 * sin(globalFlashOffset); 
+				drawingContext.shadowColor = color(darkBlue);
+				globalFlashOffset += 0.075;
 			}
 			rect (this.x, this.y, this.width, this.height, 5);
 			rect (this.x, this.y, this.width, this.height, 5);
