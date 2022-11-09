@@ -11,7 +11,7 @@ class AIBlock extends MusicBlock
    * @param {array} music_grid - a boolean grid of generative music, to set the buttons
    * @return {void} Nothing.
    */
-	constructor(x, y, width, height, music_grid, defaultColour)
+	constructor(x, y, width, height, defaultColour, music_grid)
 	{
 		super(x, y, width, height)
 
@@ -183,6 +183,7 @@ class AIBlock extends MusicBlock
       }
       
       // Change whole block colours when dragged to a timeline
+      let c = "";
       for (let wks = 1; wks < workspace.length; ++wks)
       {
         if (this.x > workspace[wks].getX() 
@@ -190,16 +191,21 @@ class AIBlock extends MusicBlock
         && this.y > workspace[wks].getY() 
         && this.y < workspace[wks].getY() + workspace[wks].getHeight())
         {
-          this.grid.setAllButtonOnColours (workspace[wks].getColour());
+          
+          c = workspace[wks].getSecretColour();
+          this.grid.setAllButtonOnColours (c);
           break;
         }
         else
         {
-          this.grid.setAllButtonOnColours (this.defaultColour); 
+          c = this.defaultColour;
+          this.grid.setAllButtonOnColours (this.defaultColour);
         }
       }
+      if(c === djGreen2){image(puzzle_image_green, this.x, this.y, this.width, this.height);}
+      if(c === djOrange){image(puzzle_image_orange, this.x, this.y, this.width, this.height);}
+      if(c === djPink){image(puzzle_image_pink, this.x, this.y, this.width, this.height);}          
 
-      image(puzzle_image2, this.x, this.y, this.width, this.height);
 
       // copied over from music block so highlighting on playback is preserved 
       if (this.showHighlight === true){
@@ -212,7 +218,7 @@ class AIBlock extends MusicBlock
       if (this.flashing) //... Implement the flashing...
       {
         drawingContext.shadowBlur = 100 * sin(globalFlashOffset) * 0.2; 
-        drawingContext.shadowColor = color(darkBlue);
+        drawingContext.shadowColor = color(yellow);
         globalFlashOffset += 0.005;
       }
 
@@ -232,7 +238,6 @@ class AIBlock extends MusicBlock
         && mouseY < this.y + this.height
         && this.grid.hasMouseOver() === false) {
     
-      print("akljshgfdeasdf!!!!!");
 
       // Start dragging
       this.dragging = true;
@@ -248,6 +253,6 @@ class AIBlock extends MusicBlock
       }
 
       this.tinyPlay.onClicked(); //< should this be played?.
-      this.muteButton.mousePressed();
+      // this.muteButton.mousePressed();
   }
 }

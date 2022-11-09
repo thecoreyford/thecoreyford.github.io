@@ -203,7 +203,7 @@ class MusicGrid
 	{
 		// Make orange to clear the palette
 		for (let i = 0; i < (this.toggleButtons.length - 7); ++i){
-			this.toggleButtons[i].setOnColour(orange);
+			this.toggleButtons[i].setOnColour(djLightGrey);
 		}
 		
 		// Check Ascending

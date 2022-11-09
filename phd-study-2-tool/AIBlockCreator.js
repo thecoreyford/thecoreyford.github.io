@@ -11,6 +11,8 @@ class AIBlockCreator
 
 		this.vae = new mm.MusicVAE('https://storage.googleapis.com/magentadata/js/checkpoints/music_vae/mel_2bar_small');
 		this.vae.initialize();
+
+		this.timing = -10000.0;
 	}	
 
 	magentaUpdate(musicBlocks)
@@ -58,9 +60,9 @@ class AIBlockCreator
 				// get id's 
 				let workspaceId = 0; 
 				let colour = "";
-				if(i == -2){workspaceId = 0; colour = orange;}; 
-				if(i == -3){workspaceId = 1; colour = googGreen;} 
-				if(i == -4){workspaceId = 2; colour = purple;};
+				if(i == -2){workspaceId = 0; colour = djOrange;}; 
+				if(i == -3){workspaceId = 1; colour = djGreen2;} 
+				if(i == -4){workspaceId = 2; colour = djPink;};
 
 				// get note sequence
 				let ns = playButton.startPlayback(i, true);
@@ -80,7 +82,7 @@ class AIBlockCreator
 					// push to the blocks at the anchored places 
 					musicBlocks.push (new AIBlock (aiWorkspacePlaces[workspaceId][0].x, 
 												   aiWorkspacePlaces[workspaceId][0].y, 
-												   200, 100, grid, colour));
+												   200, 100, colour, grid));
 				});
 				
 				this.vae.similar(ns, 1, 0.65, vaeTemperature).then(function(sample)  {
@@ -92,9 +94,8 @@ class AIBlockCreator
 					// push to the blocks at the anchored places 
 					musicBlocks.push (new AIBlock (aiWorkspacePlaces[workspaceId][1].x, 
 												   aiWorkspacePlaces[workspaceId][1].y, 
-												   200, 100, grid, colour));
+												   200, 100, colour, grid));
 				});
-
 				// hide the third things...
 				// this.vae.similar(ns, 1, 0.7, vaeTemperature).then(function(sample)  {
 				// 	let s1 = mm.sequences.unquantizeSequence(sample[0]); //unquantize 
@@ -105,13 +106,84 @@ class AIBlockCreator
 				// 	// push to the blocks at the anchored places 
 				// 	musicBlocks.push (new AIBlock (aiWorkspacePlaces[workspaceId][2].x, 
 				// 								   aiWorkspacePlaces[workspaceId][2].y, 
-				// 								   200, 100, grid, colour));
+				// 								   200, 100, colour, grid));
 				// });
 			}
 		}
 
+		this.timing = millis();
+
 		// get orange note sequence 
 	}
+
+	//TODO: comment
+	drawCurves()
+	{
+		if((millis() - this.timing) < 4000.0)
+		{
+
+
+
+			processDataset("all"); //< collect all the blocks into the dataset. 
+			let blks = data.filter(function(d){return d["x"] >= workspace[0].getX();});
+			blks = blks.filter(function(d){return d["y"] >= workspace[0].getY();});
+			blks = blks.filter(function(d){return d["x"] < workspace[0].getX()+workspace[0].getWidth();});
+			blks = blks.filter(function(d){return d["y"] < workspace[0].getY()+workspace[0].getHeight();});
+			
+
+			for (let i = 0; i < blks.length; i++){
+				// top 
+				if(blks[i].y > workspace[1].getY() 
+				  && blks[i].y < workspace[1].getY() + workspace[1].getHeight())
+				{
+					let myColour = color(djOrange);
+					myColour.setAlpha(255 - (((millis() - this.timing) / 4000.0) * 255));
+					curveBetween(blks[i].x + 100, 
+								 blks[i].y, 
+								 1249, 
+								 198,
+								 0.2,
+								 0.2,
+								 1,
+								 myColour);
+				}
+
+				// middle 
+				if(blks[i].y > workspace[2].getY() 
+				  && blks[i].y < workspace[2].getY() + workspace[2].getHeight())
+				{
+					let myColour = color(djGreen2);
+					myColour.setAlpha(255 - (((millis() - this.timing) / 4000.0) * 255));
+					curveBetween(blks[i].x + 100, 
+								 blks[i].y, 
+								 1268, 
+								 420,
+								 0.2,
+								 0.2,
+								 1,
+								 myColour);
+				}
+
+				// bottom 
+				if(blks[i].y > workspace[3].getY() 
+				  && blks[i].y < workspace[3].getY() + workspace[3].getHeight())
+				{
+					let myColour = color(djPink);
+					myColour.setAlpha(255 - (((millis() - this.timing) / 4000.0) * 255));
+					curveBetween(blks[i].x + 100, 
+								 blks[i].y, 
+								 1245, 
+								 698,
+								 0.2,
+								 0.2,
+								 0,
+								 myColour);
+				}
+			}
+
+		}
+	}
+
 
 
 	/**

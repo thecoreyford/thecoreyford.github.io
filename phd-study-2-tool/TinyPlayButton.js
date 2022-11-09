@@ -70,13 +70,13 @@ class TinyPlayButton //TODO: this would be better called surrogate play button o
 		  }
 
   		// draw the mini playback button...
-		var buttonBackground = color(veryDarkGrey);
+		var buttonBackground = color(lightGrey);
 		buttonBackground.setAlpha(255);
 		fill(buttonBackground);
 		if (this.flashing) //... Implement the flashing...
 		{
 			drawingContext.shadowBlur = 100 * sin(globalFlashOffset); 
-			drawingContext.shadowColor = color(darkBlue);
+			drawingContext.shadowColor = color(yellow);
 			globalFlashOffset += 0.075;
 		}
 		rect (this.x, this.y, this.width, this.height, 4);
@@ -85,7 +85,7 @@ class TinyPlayButton //TODO: this would be better called surrogate play button o
 		drawingContext.shadowBlur = 0;
 		
 		// // ...with a triangle on it
-		var triangleColour = color(white);
+		var triangleColour = color(djLightGrey);
 		triangleColour.setAlpha(myAlpha);
 		fill(triangleColour);
 		triangle(this.x+5, this.y+3, 
@@ -103,13 +103,13 @@ class TinyPlayButton //TODO: this would be better called surrogate play button o
 			}
 			else
 			{
-				fill (veryDarkGrey);
+				fill (lightGrey);
 			}
 			
 			if (this.flashing) //... Implement the flashing...
 			{
 				drawingContext.shadowBlur = 100 * sin(globalFlashOffset); 
-				drawingContext.shadowColor = color(darkBlue);
+				drawingContext.shadowColor = color(yellow);
 				globalFlashOffset += 0.075;
 			}
 			rect (this.x, this.y, this.width, this.height, 5);
@@ -118,14 +118,16 @@ class TinyPlayButton //TODO: this would be better called surrogate play button o
 			drawingContext.shadowBlur = 0;
 			// rect (this.x, this.y, this.width, this.height, 5);
 
-			fill(lightGrey);
+			// fill(djLightGrey);
 			if (playButton.mode === "PLAYING" || playButton.mode === "PREPARE_BUFFER")
 			{
+				fill(lightGrey);
 				rect (this.x + 7, this.y + 7, this.width * 0.66, this.height * 0.66);
 
 			}
 			else
 			{
+				fill(djLightGrey);
 				triangle (this.x + 7, this.y + 7, 
 						  this.x + this.width - 7, (this.y + this.height * 0.5),
 						  this.x + 7, this.y + this.height - 7);

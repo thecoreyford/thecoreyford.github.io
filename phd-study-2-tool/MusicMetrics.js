@@ -297,7 +297,7 @@ class MusicMetrics
 		{
 			for (let i = 0; i < generated_data.length; ++i)
 			{
-				let aiBlock = new AIBlock(0,0,0,0,generated_data[i]["music_grid"]);
+				let aiBlock = new AIBlock(0,0,0,0,red,generated_data[i]["music_grid"]);
 
 				let count = 0;
 				for (let j = 0; j < 64; ++j)

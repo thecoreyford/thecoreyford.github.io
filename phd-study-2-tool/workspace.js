@@ -9,13 +9,14 @@ class Workspace
 	 * @param {number} height - height of workspace
  	 * @return {void} Nothing
  	 */
-	constructor (x,y,width,height,id,colour=lightBlue)
+	constructor (x,y,width,height,id,colour=djLightGrey,secretColour=djLightGrey)
 	{
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
 		this.colour = colour;
+		this.secretColour = secretColour;
 		this.id = id;
 
 		
@@ -64,6 +65,12 @@ class Workspace
  	 * @return {string} hex colour for the workspace
  	 */
 	getColour(){return this.colour;}
+
+	/**
+ 	 * Getter for secret colour
+ 	 * @return {string} hex secret colour for the workspace
+ 	 */
+	getSecretColour(){return this.secretColour;}
 
 	/**
  	 * Function drawing shapes to canvas, updated regularly

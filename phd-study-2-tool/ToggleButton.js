@@ -18,7 +18,7 @@ class ToggleButton
 
 		this.isOn = false;
 
-		this.onColour = orange;	
+		this.onColour = djLightGrey;	
 
 		this.blocksOutside = false;
 

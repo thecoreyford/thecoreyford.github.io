@@ -21,19 +21,19 @@ const workspace2Height = 130; //canvasHeight - (2 * workspaceY); //546
 var workspace  = [new Workspace(workspaceX, 
 							   workspaceY, 
 							   workspaceWidth, 
-							   workspaceHeight,-1),
+							   workspaceHeight,-1, djBlack),
 					new Workspace(workspace2X, 
 							   workspace2Y, 
 							   workspace2Width, 
-							   workspace2Height, -2, orange),
+							   workspace2Height, -2, djLightLightGrey, djOrange),
 					new Workspace(workspace2X, 
 								  workspace2Y + 200, 
 								  workspace2Width, 
-								  workspace2Height, -3, googGreen),
+								  workspace2Height, -3,  djLightLightGrey, djGreen2),
 					new Workspace(workspace2X, 
 								  workspace2Y + 400, 
 								  workspace2Width, 
-								  workspace2Height, -4, purple)];
+								  workspace2Height, -4,  djLightLightGrey, djPink)];
 
 // var blockCreator = new BlockCreator(workspace[0].getX() + 60,
 // 									workspace[0].getY() + 10,
@@ -59,7 +59,7 @@ var musicMetrics = new MusicMetrics(playButton); //< NOTE: MIDI note sequences i
 
 var logger = new Logger();
 
-var puzzle_image, puzzle_image2, binClosed, binOpen;
+var puzzle_image_orange, puzzle_image_pink, puzzle_image_green, binClosed, binOpen;
 
 var blockIDTracker; 
 
@@ -81,8 +81,9 @@ function preload()
 {
 	blockIDTracker = 0;
 	startTime = millis();
-	puzzle_image = loadImage("assets/puzzle.png");
-	puzzle_image2 = loadImage("assets/puzzle2.png");
+	puzzle_image_orange = loadImage("assets/puzzle-orange.png");
+	puzzle_image_pink = loadImage("assets/puzzle-pink.png");
+	puzzle_image_green = loadImage("assets/puzzle-green.png");
 	binClosed = loadImage("assets/binClosed.png");
 	binOpen = loadImage("assets/binOpen.png");
 }
@@ -104,13 +105,13 @@ function setup()
   musicBlocks.push (new MusicBlock(160, 415, 200, 100));
   musicBlocks.push (new MusicBlock(160, 615, 200, 100));
   //---
-  musicBlocks.push (new MusicBlock(30, 18, 200, 100));
-  musicBlocks.push (new MusicBlock(280, 18, 200, 100));
-  musicBlocks.push (new MusicBlock(550, 18, 200, 100));
+  musicBlocks.push (new MusicBlock(30, 18, 200, 100, djGreen2));
+  musicBlocks.push (new MusicBlock(280, 18, 200, 100, djOrange));
+  musicBlocks.push (new MusicBlock(550, 18, 200, 100, djPink));
   //---
-  musicBlocks.push (new MusicBlock(35, 760, 200, 100));
-  musicBlocks.push (new MusicBlock(295, 760, 200, 100));
-  musicBlocks.push (new MusicBlock(545, 760, 200, 100));
+  musicBlocks.push (new MusicBlock(35, 760, 200, 100, djPink));
+  musicBlocks.push (new MusicBlock(295, 760, 200, 100, djGreen2));
+  musicBlocks.push (new MusicBlock(545, 760, 200, 100, djOrange));
 }
 
 /**
@@ -122,7 +123,7 @@ function draw()
 	// draw background with border
 	strokeWeight (1);
   	stroke (0);
-  	fill (lightGrey);
+  	fill (djLightGrey);
   	rect (0, 0, canvasWidth, canvasHeight, 10);
 	noStroke ();
 
@@ -186,6 +187,8 @@ function draw()
 
   	timeline.draw();
   	playButton.draw();
+
+  	aiBlockCreator.drawCurves();
 }
 
 //===========================================================================

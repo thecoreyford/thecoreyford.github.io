@@ -9,7 +9,7 @@ class MusicBlock
 	 * @param {number} height - height of the block
  	 * @return {void} Nothing
  	 */
-	constructor (x, y, width, height)
+	constructor (x, y, width, height, defaultColour = djOrange)
 	{
 		// Assign a unique ID and then increment. 
 	   	this.id = blockIDTracker;
@@ -24,6 +24,8 @@ class MusicBlock
 
 	    this.grid = new MusicGrid(this.x, this.y, this.width, this.height, this);
 	   	this.grid.update (this.x + 15, this.y, this.width - 15, this.height);
+	   	
+	   	this.defaultColour = defaultColour;
 
 	   	this.muteButton = new MuteButton (this.x,this.y);
 
@@ -64,7 +66,7 @@ class MusicBlock
 
 		this.tinyPlay.draw(this.x, this.y, this.w, this.h);
 
-		this.muteButton.draw();
+		// this.muteButton.draw();
 	}
 
 	/**
@@ -116,7 +118,7 @@ class MusicBlock
 	    }
 
 	    this.tinyPlay.draw(this.x, this.y, this.w, this.h);
-	    this.muteButton.update(this.x, this.y);
+	    // this.muteButton.update(this.x, this.y);
   	}
 
 	/**
@@ -166,23 +168,30 @@ class MusicBlock
   		}
 	  	
 	  	// Change whole block colours when dragged to a timeline
-	  	for (let wks = 1; wks < workspace.length; ++wks)
+	  	let c = "";
+      	for (let wks = 1; wks < workspace.length; ++wks)
       	{
-      		if (this.x > workspace[wks].getX() 
-  				&& this.x < workspace[wks].getX() + workspace[wks].getWidth() 
-  				&& this.y > workspace[wks].getY() 
-  				&& this.y < workspace[wks].getY() + workspace[wks].getHeight())
-      		{
-      			this.grid.setAllButtonOnColours (workspace[wks].getColour());
-      			break;
-      		}
-      		else
-      		{
-      			this.grid.setAllButtonOnColours (veryDarkBlue);	
-      		}
-      	}
+        	if (this.x > workspace[wks].getX() 
+        	&& this.x < workspace[wks].getX() + workspace[wks].getWidth() 
+        	&& this.y > workspace[wks].getY() 
+        	&& this.y < workspace[wks].getY() + workspace[wks].getHeight())
+        	{
+          
+          		c = workspace[wks].getSecretColour();
+          		this.grid.setAllButtonOnColours (c);
+          		break;
+        	}
+        	else
+        	{
+        		c = this.defaultColour;
+          		this.grid.setAllButtonOnColours (this.defaultColour); 
+        	}
+	      }
+	      if(c === djGreen2){image(puzzle_image_green, this.x, this.y, this.width, this.height);}
+          if(c === djOrange){image(puzzle_image_orange, this.x, this.y, this.width, this.height);}
+          if(c === djPink){image(puzzle_image_pink, this.x, this.y, this.width, this.height);}          
 
-	    image(puzzle_image, this.x, this.y, this.width, this.height);
+	    // image(puzzle_image_orange, this.x, this.y, this.width, this.height);
 
 	    if (this.showHighlight === true){
 	    	let highlightColour = color(yellow);
@@ -194,7 +203,7 @@ class MusicBlock
 	    if (this.flashing) //... Implement the flashing...
 		{
 			drawingContext.shadowBlur = 100 * sin(globalFlashOffset) * 0.2; 
-			drawingContext.shadowColor = color(darkBlue);
+			drawingContext.shadowColor = color(yellow);
 			globalFlashOffset += 0.005;
 		}
 
@@ -229,7 +238,7 @@ class MusicBlock
 	    }
 
 	    this.tinyPlay.onClicked(); //< should this be played?.
-	    this.muteButton.mousePressed();
+	    // this.muteButton.mousePressed();
 	}
 
 	/**
