@@ -15,7 +15,7 @@ class TimelineBar
 		rect(180,150,850,30,5);
 
 		// ellipse (this.ellipseX, 155,20,20);
-		playButton.setXandY(this.ellipseX - 20,145);
+		playButton.setXandY(this.ellipseX - 20,142.5);
 
 		// if (mouseIsPressed === true 
 		// 	&& mouseX > 180 
@@ -29,6 +29,15 @@ class TimelineBar
 			rect (this.ellipseX - 3, 150, 5, 600, 5);
 		// }
 
+		fill (yellow);
+		rect (180,150,this.ellipseX - 180,30,5);
+
+		textSize(32);
+		let myColour2 = color(djLightGrey);
+		myColour2.setAlpha(40);
+		fill(myColour2);
+		text("> > > > > > > > > > > > > > > > > > > > > > > > > > > > > >", 185, 174);
+
 		// rect(this.ellipseX,150,900 - (this.ellipseX - 300),12,5);
 	}
 
@@ -40,6 +49,16 @@ class TimelineBar
 			&& mouseY < 150 + 30) {
 			this.ellipseX = mouseX;
 		}
+	}
+
+	setX(newX)
+	{
+		this.ellipseX = newX;
+	}
+
+	shift(amount)
+	{
+		this.ellipseX = this.ellipseX + amount;
 	}
 
 	getX()

@@ -18,20 +18,30 @@ class AIBlockCreator
 	magentaUpdate(musicBlocks)
 	{
 		// Set up some anchors for where we will spawn blocks from... 
-		let anchor1 = {"x": 1120, "y": 110};
-		let anchor2 = {"x": 1120, "y": 400};
-		let anchor3 = {"x": 1120, "y": 670};
+		// let anchor1 = {"x": 1120, "y": 110};
+		// let anchor2 = {"x": 1120, "y": 400};
+		// let anchor3 = {"x": 1120, "y": 670};
 
 		// set up the co-ords for the ai blocks
-		let aiWorkspacePlaces =[[{"x": anchor1.x, "y": anchor1.y},
-								{"x": anchor1.x + random (50, 80), "y": anchor1.y + random (60, 80)},
-								{"x": anchor1.x + random (50, 80), "y": anchor1.y + random(-100,-70)}],
-								[{"x": anchor2.x , "y": anchor2.y },
-								{"x": anchor2.x + random (50, 80), "y": anchor2.y + random(-90,-70)},
-								{"x": anchor2.x  + random (50, 80), "y": anchor2.y + random (60, 80)}],
-								[{"x":anchor3.x , "y":anchor3.y },
-								{"x":anchor3.x + random (50, 80), "y":anchor3.y  + random(-60,-70)},
-								{"x":anchor3.x - random (50, 80), "y":anchor3.y + random (90, 90)}]];
+		// let aiWorkspacePlaces =[[{"x": anchor1.x, "y": anchor1.y},
+		// 						{"x": anchor1.x + random (50, 80), "y": anchor1.y + random (60, 80)},
+		// 						{"x": anchor1.x + random (50, 80), "y": anchor1.y + random(-100,-70)}],
+		// 						[{"x": anchor2.x , "y": anchor2.y },
+		// 						{"x": anchor2.x + random (50, 80), "y": anchor2.y + random(-90,-70)},
+		// 						{"x": anchor2.x  + random (50, 80), "y": anchor2.y + random (60, 80)}],
+		// 						[{"x":anchor3.x , "y":anchor3.y },
+		// 						{"x":anchor3.x + random (50, 80), "y":anchor3.y  + random(-60,-70)},
+		// 						{"x":anchor3.x - random (50, 80), "y":anchor3.y + random (90, 90)}]];
+
+		let aiWorkspacePlaces =[[{"x": 1130 - 5, "y": 110 - 50},
+								{"x":  1130 - 5, "y": 240 - 50}],
+								// {"x": anchor1.x + random (50, 80), "y": anchor1.y + random(-100,-70)}],
+								[{"x":  1130 - 5, "y": 370 - 50},
+								{"x":  1130 - 5, "y": 500 - 50}],
+								// {"x": anchor2.x  + random (50, 80), "y": anchor2.y + random (60, 80)}],
+								[{"x": 1130 - 5, "y": 630 - 50},
+								{"x": 1130 - 5, "y": 760 - 50}]];
+								// {"x":anchor3.x - random (50, 80), "y":anchor3.y + random (90, 90)}]];
 
 		//================================================================================
 
@@ -121,9 +131,6 @@ class AIBlockCreator
 	{
 		if((millis() - this.timing) < 4000.0)
 		{
-
-
-
 			processDataset("all"); //< collect all the blocks into the dataset. 
 			let blks = data.filter(function(d){return d["x"] >= workspace[0].getX();});
 			blks = blks.filter(function(d){return d["y"] >= workspace[0].getY();});

@@ -42,8 +42,8 @@ var workspace  = [new Workspace(workspaceX,
 
 var playButton = new PlayButton(workspace[0].getX() + 10,
 								workspace[0].getY() + 10,
-								40,
-								40);
+								45,
+								45);
 
 var bin = new Bin(workspace[0].getX() + workspace[0].getWidth() + 220, 
 				  20 + workspace[0].getHeight() + 130, 
@@ -84,6 +84,9 @@ function preload()
 	puzzle_image_orange = loadImage("assets/puzzle-orange.png");
 	puzzle_image_pink = loadImage("assets/puzzle-pink.png");
 	puzzle_image_green = loadImage("assets/puzzle-green.png");
+	clarinet = loadImage("assets/clarinet.png");
+	piano = loadImage("assets/piano.png");
+	cello = loadImage("assets/cello.png");
 	binClosed = loadImage("assets/binClosed.png");
 	binOpen = loadImage("assets/binOpen.png");
 }
@@ -144,10 +147,8 @@ function draw()
   	let elapsedTime = millis() - startTime; 
 	if (elapsedTime > (25 * 1000))
 	{
-		startTime = millis();
 		logger.save();
 
-		
 		if (doFly)
 		{
 			// get ai blocks not in the workspace and AI
@@ -173,14 +174,18 @@ function draw()
 				// start fly 
 				aiBlocks[idx]["block"].startFly();
 			}
-
+			startTime = millis();
+			doFly = !doFly;
 		}
 		else
 		{
-			aiBlockCreator.magentaUpdate (musicBlocks);
-			playButton.setPlayLevelCountsAndGUI();
+			if (!playButton.player.isPlaying()){
+				aiBlockCreator.magentaUpdate (musicBlocks);
+				playButton.setPlayLevelCountsAndGUI();
+				startTime = millis();
+				doFly = !doFly;
+			}
 		}
-		doFly = !doFly;
 	}
 
   	playButton.updatePlayback();
@@ -189,6 +194,11 @@ function draw()
   	playButton.draw();
 
   	aiBlockCreator.drawCurves();
+
+  	//instrument images for the timelines
+  	image(piano, 90, 655, 50, 50);
+  	image(cello, 90, 460, 50, 50);
+  	image(clarinet, 88, 260, 50, 50);
 }
 
 //===========================================================================
