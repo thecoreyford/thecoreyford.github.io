@@ -84,11 +84,17 @@ function preload()
 	puzzle_image_orange = loadImage("assets/puzzle-orange.png");
 	puzzle_image_pink = loadImage("assets/puzzle-pink.png");
 	puzzle_image_green = loadImage("assets/puzzle-green.png");
-	clarinet = loadImage("assets/clarinet.png");
-	piano = loadImage("assets/piano.png");
-	cello = loadImage("assets/cello.png");
+	
+	// clarinet = loadImage("assets/clarinet.png");
+	// piano = loadImage("assets/piano.png");
+	// cello = loadImage("assets/cello.png");
+	
 	binClosed = loadImage("assets/binClosed.png");
 	binOpen = loadImage("assets/binOpen.png");
+
+	electricGuitar = loadImage("assets/electricGuitar.png");
+	bassGuitar = loadImage("assets/bassGuitar.png");
+	drums = loadImage("assets/drums.png");
 }
 
 /**
@@ -196,9 +202,9 @@ function draw()
   	aiBlockCreator.drawCurves();
 
   	//instrument images for the timelines
-  	image(piano, 90, 655, 50, 50);
-  	image(cello, 90, 460, 50, 50);
-  	image(clarinet, 88, 260, 50, 50);
+  	image(drums, 63, 630, 80, 80);
+  	image(bassGuitar, 56, 440, 90, 90);
+  	image(electricGuitar, 56, 240, 90, 90);
 }
 
 //===========================================================================

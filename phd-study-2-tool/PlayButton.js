@@ -43,6 +43,8 @@ class PlayButton
 		this.timelineStartOffset = 25;
 		this.shiftAmount = 10;
 		this.prevHighTracker = 0;
+
+		this.playLines = 0; //< mode to control the playback line! 
 	}
 
 	/** 
@@ -52,7 +54,7 @@ class PlayButton
 	draw()
 	{
 
-		if (this.mode === "PLAYING")
+		if (this.mode === "PLAYING" && this.playLines === 1)
 		{
 			if (musicBlocks.length <= 9)
 			{
@@ -81,9 +83,15 @@ class PlayButton
 			drawingContext.shadowColor = color(yellow);
 			globalFlashOffset += 0.075;
 		}
-		rect (this.x, this.y, this.width, this.height, 5);
-		rect (this.x, this.y, this.width, this.height, 5);
-		rect (this.x, this.y, this.width, this.height, 5);
+		ellipse (this.x + (this.width*0.5), 
+				 this.y + (this.height*0.5), 
+				 this.width + 5, this.height + 5, 5);
+		ellipse (this.x + (this.width*0.5), 
+				 this.y + (this.height*0.5), 
+				 this.width + 5, this.height + 5, 5);
+		ellipse (this.x + (this.width*0.5), 
+				 this.y + (this.height*0.5), 
+				 this.width + 5, this.height + 5, 5);
 		drawingContext.shadowBlur = 0;
 
 
@@ -115,17 +123,20 @@ class PlayButton
 						c[i]["block"].showHighlight = true;
 
 						// do things for the playhead GUI
-						// let blks = data.filter(function(d){return timeline.getX() >= d["x"]
-						// 				  			  && timeline.getX() <= d["x"]
-						// 				  			  	 + d["block"].width});
-						if (this.prevHighTracker !== currTime)
+						if (this.playLines === 1)
 						{
-							this.shiftAmount = 0;
-							this.prevHighTracker = currTime;
+							// let blks = data.filter(function(d){return timeline.getX() >= d["x"]
+							// 				  			  && timeline.getX() <= d["x"]
+							// 				  			  	 + d["block"].width});
+							if (this.prevHighTracker !== currTime)
+							{
+								this.shiftAmount = 0;
+								this.prevHighTracker = currTime;
+							}
+							timeline.setX(c[i]["block"]["x"] 
+										  + this.timelineStartOffset
+										  + this.shiftAmount);
 						}
-						timeline.setX(c[i]["block"]["x"] 
-									  + this.timelineStartOffset
-									  + this.shiftAmount);
 					}
 				}
 				catch(err){}
@@ -172,7 +183,7 @@ class PlayButton
  	 */
 	startPlayback(id, returnNoteSequence = false)
 	{
-		processDataset("all") //< collect all the blocks into the dataset. 
+		processDataset("all"); //< collect all the blocks into the dataset. 
 
 		highlightTrackerIdx = 0;
 		// Empty the buffers! 
@@ -184,13 +195,15 @@ class PlayButton
 		var startBlocks;
 		if (id < 0)
 		{
-			if(returnNoteSequence === true) {
+			if(returnNoteSequence === true || id !== -1) {
 				// Count up all the start blocks and play the entire piece!!!
 				startBlocks = data.filter(function(d){return d["leftConnection"] === null;});
+				this.playLines = 0;
 			}else{
 				//Find blocks where timeline.getX() is between X and X + block.width; 
 				startBlocks = data.filter(function(d){return timeline.getX() >= d["x"]
 										   && timeline.getX() <= d["x"]+d["block"].width});
+				this.playLines = 1;
 			}			
 
 			let workspaceID = -1;
@@ -226,7 +239,11 @@ class PlayButton
 					if (this.highlightBuffer[index] !== undefined)
 					{
 						// add to the master buffer 
-						let x = this.gridArrayToNoteSequence (current.getGridArray(), index * 4.0, current.x, current.y)["notes"];
+						let x = this.gridArrayToNoteSequence (current.getGridArray(), 
+															  index * 4.0, 
+															  current.x, 
+															  current.y,
+															  current)["notes"];
 						for(let i = 0; i < x.length; ++i) {
 							this.midiBuffer[0]["notes"].push (x[i]);
 							this.highlights[0].push ({"block": current, 
@@ -241,7 +258,11 @@ class PlayButton
 					{
 						if (index === 0 /* create buffer if not there */) 
 						{
-							this.midiBuffer.push (this.gridArrayToNoteSequence(current.getGridArray(),0,current.x, current.y));
+							this.midiBuffer.push (this.gridArrayToNoteSequence(current.getGridArray(),
+																				0,
+																				current.x, 
+																				current.y,
+																				current));
 
 
 							for(let i = 0; i < this.midiBuffer[0]["notes"].length; ++i) {
@@ -252,7 +273,11 @@ class PlayButton
 						} 
 						else 
 						{
-							let x = this.gridArrayToNoteSequence(current.getGridArray(), index * 4.0,current.x, current.y)["notes"];
+							let x = this.gridArrayToNoteSequence(current.getGridArray(), 
+																 index * 4.0,
+																 current.x, 
+																 current.y,
+																 current)["notes"];
 							for(let i = 0; i < x.length; ++i) {
 								this.midiBuffer[0]["notes"].push(x[i]);
 								this.highlights[0].push ({"block": current, 
@@ -279,7 +304,11 @@ class PlayButton
 			// only play the block requested! 
 			startBlocks = data.filter(function(d){return d["id"] === id;});
 			var current = startBlocks[0]["block"];	
-			this.midiBuffer.push(this.gridArrayToNoteSequence(current.getGridArray(),0,current.x, current.y));
+			this.midiBuffer.push(this.gridArrayToNoteSequence (current.getGridArray(),
+															   0,
+															   current.x, 
+															   current.y,
+															   current));
 			for (let i = 0; i < this.midiBuffer[0]["notes"].length; ++i) {
 								this.highlights[0].push({"block": current, 
 													 	"time": this.midiBuffer[0]["notes"][i]["startTime"],
@@ -317,11 +346,14 @@ class PlayButton
 		if (this.mode === "START_PLAYING")
 		{
 			// do things for the playhead GUI
-			let blks = data.filter(function(d){return timeline.getX() >= d["x"]
-										  			  && timeline.getX() <= d["x"]
-										  			  	 + d["block"].width});
-			timeline.setX(blks[0]["x"] + this.timelineStartOffset);
-			this.shiftAmount = 0;
+			if (this.playLines === 1)
+			{
+				let blks = data.filter(function(d){return timeline.getX() >= d["x"]
+											  			  && timeline.getX() <= d["x"]
+											  			  	 + d["block"].width});
+				timeline.setX(blks[0]["x"] + this.timelineStartOffset);
+				this.shiftAmount = 0;
+			}
 
 			// then actually start playing
 			this.player.start(this.midiBuffer[0]);
@@ -350,29 +382,37 @@ class PlayButton
 	 * @param {float} offset - the amount to offset note values by
  	 * @return {void} Nothing
  	 */
-	gridArrayToNoteSequence (gridArray, offset = 0, _x, _y)
+	gridArrayToNoteSequence (gridArray, offset = 0, _x, _y, block)
 	{
-
-		// figure out the instrument
+		let col = block.getCurrentColour();
 		let inst = -1;
-		if(_x >= workspace[1].getX() 
-			&& _y >= workspace[1].getY()
-			&& _x < workspace[1].getX()+workspace[1].getWidth()
-			&& _y < workspace[1].getY()+workspace[1].getHeight()){
-			inst = 72; // Clarinet
-		}	
-		if(_x >= workspace[2].getX() 
-			&& _y >= workspace[2].getY()
-			&& _x < workspace[2].getX()+workspace[2].getWidth()
-			&& _y < workspace[2].getY()+workspace[2].getHeight()){
-			inst = 43; // Cello
-		}
-		if(_x >= workspace[3].getX() 
-			&& _y >= workspace[3].getY()
-			&& _x < workspace[3].getX()+workspace[3].getWidth()
-			&& _y < workspace[3].getY()+workspace[3].getHeight()){
-			inst = 0; // Piano
-		}
+		if(col === djOrange) inst = 27; // Clean guitar;
+		if(col === djGreen2) inst = 35; // Picked bass;
+		if(col === djPink) inst = 0; // Drums;
+
+
+
+
+		// // figure out the instrument
+		// let inst = -1;
+		// if(_x >= workspace[1].getX() 
+		// 	&& _y >= workspace[1].getY()
+		// 	&& _x < workspace[1].getX()+workspace[1].getWidth()
+		// 	&& _y < workspace[1].getY()+workspace[1].getHeight()){
+		// 	inst = 27; // Clean guitar
+		// }	
+		// if(_x >= workspace[2].getX() 
+		// 	&& _y >= workspace[2].getY()
+		// 	&& _x < workspace[2].getX()+workspace[2].getWidth()
+		// 	&& _y < workspace[2].getY()+workspace[2].getHeight()){
+		// 	inst = 35; // Picked bass
+		// }
+		// if(_x >= workspace[3].getX() 
+		// 	&& _y >= workspace[3].getY()
+		// 	&& _x < workspace[3].getX()+workspace[3].getWidth()
+		// 	&& _y < workspace[3].getY()+workspace[3].getHeight()){
+		// 	inst = 0; // Piano
+		// }
 		// return d["x"] >= workspace[workspaceID].getX();});
 		// startBlocks = startBlocks.filter(function(d){return ;});
 		// startBlocks = startBlocks.filter(function(d){return ;});
@@ -391,16 +431,27 @@ class PlayButton
   			for (let row = 0; row < 8; ++row) // row 
   			{
   				let midiPitch = [72, 71, 69, 67, 65, 64, 62, 60];
+  				// let drumPitch = [35, 38, 41, 47, 43, 42, 46, 55];
+  				let drumPitch = [55, 46, 42, 43, 47, 41, 38, 35];
   				let midiStartTime = [0.0 + offset, 0.5 + offset, 1.0 + offset, 1.5 + offset, 2.0 + offset, 2.5 + offset, 3.0 + offset, 3.5 + offset];
   				let midiEndTime = [0.5 + offset, 1.0 + offset, 1.5 + offset, 2.0 + offset, 2.5 + offset, 3.0 + offset, 3.5+ offset, 4.0 + offset];
 
   				if (gridArray[counter].isOn === true)
   				{
+  					let p = 0;
+  					if(inst === 35){
+  						p = midiPitch[row] - 24; 
+  					} else if (inst === 0){
+  						p = drumPitch[row];
+  					} else {
+  						p = midiPitch[row];
+  					}
   					noteSequence["notes"].push({program: inst,
-  												pitch: inst === 43 ? midiPitch[row] - 24 : midiPitch[row], 
+  												pitch: p, 
   												startTime: midiStartTime[col], 
   												endTime: midiEndTime[col],
-  												velocity: 100});
+  												velocity: 100,
+  												isDrum: inst === 0 ? true: false});
   				}
 
   				counter++;

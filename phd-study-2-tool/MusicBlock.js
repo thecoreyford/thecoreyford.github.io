@@ -39,7 +39,12 @@ class MusicBlock
 	   	this.isAI = false;
 
 	   	// Create the tiny play button and parse the id
-	   	this.tinyPlay = new TinyPlayButton(this.x, this.y, this.width, this.height, this.id, this.muteButton);
+	   	this.tinyPlay = new TinyPlayButton (this.x, 
+	   										this.y, 
+	   										this.width, 
+	   										this.height, 
+	   										this.id, 
+	   										this.muteButton);
 
 	   	this.interacted = false;
 
@@ -404,5 +409,8 @@ class MusicBlock
 
 	//TODO: comment
 	getInteracted(){return this.interacted;}
+
+	//TODO: comment
+	getCurrentColour(){return this.grid.getCurrentToggleColour();}
 
 }

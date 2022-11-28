@@ -12,7 +12,7 @@ class TimelineBar
 	draw()
 	{
 		fill(djLightLightGrey);
-		rect(180,150,850,30,5);
+		rect(180,160,850,10,5);
 
 		// ellipse (this.ellipseX, 155,20,20);
 		playButton.setXandY(this.ellipseX - 20,142.5);
@@ -30,13 +30,13 @@ class TimelineBar
 		// }
 
 		fill (yellow);
-		rect (180,150,this.ellipseX - 180,30,5);
+		rect (180,160,this.ellipseX - 180,10,5);
 
-		textSize(32);
+		textSize(20);
 		let myColour2 = color(djLightGrey);
 		myColour2.setAlpha(40);
 		fill(myColour2);
-		text("> > > > > > > > > > > > > > > > > > > > > > > > > > > > > >", 185, 174);
+		text("> > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >", 180, 170);
 
 		// rect(this.ellipseX,150,900 - (this.ellipseX - 300),12,5);
 	}

@@ -275,4 +275,9 @@ class MusicGrid
 
 
 	}
+
+	//TODO: comment
+	getCurrentToggleColour(){
+		return this.toggleButtons[0].onColour;
+	}
 }
