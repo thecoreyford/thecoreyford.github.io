@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Codetta Research Study 2021 </title>
+
+	<link rel="stylesheet" href="tutorialStyle.css">
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+
+	<style>
+		/*table.striped-columns tbody td:nth-of-type(even),
+		table.striped-columns th:nth-of-type(even){
+			
+		}*/
+
+		table.border {
+			background: rgb(256, 256, 256);
+		    border-collapse: collapse;
+		    border-spacing: 0;
+		}
+		table.border td,
+		table.border th {
+		    border: 1px solid grey;
+		    padding: 3px;
+		}
+		table.center {
+  			margin-left: auto;
+  			margin-right: auto;
+		}
+	</style>
+
+</head>
+<body> 
+<h1> What did you think? </h1>
+	<h3 style="text-decoration: none">Please consider the blocks that you just made music with when answering the questions below. </h3>
+
+	<br>
+
+	<h2 style="text-decoration: none">While I was writing music, I was thinking "this is fun".</h2>
+	  <table class="center border">
+	    <thead>
+	        <tr>
+	            <th>Not true</th>
+	            <th>I don't think so</th>
+	            <th>Maybe</th>
+	            <th>I think so</th>
+	            <th>Very true</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td><input type="radio" value="1" name="thisisfun"/></td>
+	            <td><input type="radio" value="2" name="thisisfun"/></td>
+	            <td><input type="radio" value="3" name="thisisfun"/></td>
+	            <td><input type="radio" value="4" name="thisisfun"/></td>
+	            <td><input type="radio" value="5" name="thisisfun"/></td>
+	        </tr>
+	    </tbody>
+	</table>
+
+	<br>
+
+	<h2 style="text-decoration: none">Writing music made me feel worried.</h2>
+	  <table class="center border">
+	    <thead>
+	        <tr>
+	            <th>Not true</th>
+	            <th>I don't think so</th>
+	            <th>Maybe</th>
+	            <th>I think so</th>
+	            <th>Very true</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td><input type="radio" value="1" name="worried"/></td>
+	            <td><input type="radio" value="2" name="worried"/></td>
+	            <td><input type="radio" value="3" name="worried"/></td>
+	            <td><input type="radio" value="4" name="worried"/></td>
+	            <td><input type="radio" value="5" name="worried"/></td>
+	        </tr>
+	    </tbody>
+	</table>
+
+	<br>
+
+	<h2 style="text-decoration: none">I felt free to choose what music to make.</h2>
+	  <table class="center border">
+	    <thead>
+	        <tr>
+	            <th>Not true</th>
+	            <th>I don't think so</th>
+	            <th>Maybe</th>
+	            <th>I think so</th>
+	            <th>Very true</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td><input type="radio" value="1" name="choice"/></td>
+	            <td><input type="radio" value="2" name="choice"/></td>
+	            <td><input type="radio" value="3" name="choice"/></td>
+	            <td><input type="radio" value="4" name="choice"/></td>
+	            <td><input type="radio" value="5" name="choice"/></td>
+	        </tr>
+	    </tbody>
+	</table>
+
+	<br>
+
+	<h2 style="text-decoration: none">I think I am good at writing music.</h2>
+	  <table class="center border">
+	    <thead>
+	        <tr>
+	            <th>Not true</th>
+	            <th>I don't think so</th>
+	            <th>Maybe</th>
+	            <th>I think so</th>
+	            <th>Very true</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td><input type="radio" value="1" name="goodAtMusic"/></td>
+	            <td><input type="radio" value="2" name="goodAtMusic"/></td>
+	            <td><input type="radio" value="3" name="goodAtMusic"/></td>
+	            <td><input type="radio" value="4" name="goodAtMusic"/></td>
+	            <td><input type="radio" value="5" name="goodAtMusic"/></td>
+	        </tr>
+	    </tbody>
+	</table>
+
+	<br>
+
+	<h2 style="text-decoration: none">I really enjoyed writing music.</h2>
+	  <table class="center border">
+	    <thead>
+	        <tr>
+	            <th>Not true</th>
+	            <th>I don't think so</th>
+	            <th>Maybe</th>
+	            <th>I think so</th>
+	            <th>Very true</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td><input type="radio" value="1" name="enjoyment"/></td>
+	            <td><input type="radio" value="2" name="enjoyment"/></td>
+	            <td><input type="radio" value="3" name="enjoyment"/></td>
+	            <td><input type="radio" value="4" name="enjoyment"/></td>
+	            <td><input type="radio" value="5" name="enjoyment"/></td>
+	        </tr>
+	    </tbody>
+	</table>
+
+	<br>
+
+	<h2 style="text-decoration: none">I felt relaxed while writing music.</h2>
+	  <table class="center border">
+	    <thead>
+	        <tr>
+	            <th>Not true</th>
+	            <th>I don't think so</th>
+	            <th>Maybe</th>
+	            <th>I think so</th>
+	            <th>Very true</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td><input type="radio" value="1" name="relaxed"/></td>
+	            <td><input type="radio" value="2" name="relaxed"/></td>
+	            <td><input type="radio" value="3" name="relaxed"/></td>
+	            <td><input type="radio" value="4" name="relaxed"/></td>
+	            <td><input type="radio" value="5" name="relaxed"/></td>
+	        </tr>
+	    </tbody>
+	</table>
+
+	<br>
+
+	<h2 style="text-decoration: none">I felt skilled at writing music.</h2>
+	  <table class="center border">
+	    <thead>
+	        <tr>
+	            <th>Not true</th>
+	            <th>I don't think so</th>
+	            <th>Maybe</th>
+	            <th>I think so</th>
+	            <th>Very true</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td><input type="radio" value="1" name="skilled"/></td>
+	            <td><input type="radio" value="2" name="skilled"/></td>
+	            <td><input type="radio" value="3" name="skilled"/></td>
+	            <td><input type="radio" value="4" name="skilled"/></td>
+	            <td><input type="radio" value="5" name="skilled"/></td>
+	        </tr>
+	    </tbody>
+	</table>
+
+	<br>
+
+	<h2 style="text-decoration: none">I thought writing music was very boring.</h2>
+	  <table class="center border">
+	    <thead>
+	        <tr>
+	            <th>Not true</th>
+	            <th>I don't think so</th>
+	            <th>Maybe</th>
+	            <th>I think so</th>
+	            <th>Very true</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td><input type="radio" value="1" name="boring"/></td>
+	            <td><input type="radio" value="2" name="boring"/></td>
+	            <td><input type="radio" value="3" name="boring"/></td>
+	            <td><input type="radio" value="4" name="boring"/></td>
+	            <td><input type="radio" value="5" name="boring"/></td>
+	        </tr>
+	    </tbody>
+	</table>
+
+	<br>
+
+	<h2 style="text-decoration: none">I felt like I was doing what I wanted to do while I was writing music.</h2>
+	  <table class="center border">
+	    <thead>
+	        <tr>
+	            <th>Not true</th>
+	            <th>I don't think so</th>
+	            <th>Maybe</th>
+	            <th>I think so</th>
+	            <th>Very true</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td><input type="radio" value="1" name="dowhatIwant"/></td>
+	            <td><input type="radio" value="2" name="dowhatIwant"/></td>
+	            <td><input type="radio" value="3" name="dowhatIwant"/></td>
+	            <td><input type="radio" value="4" name="dowhatIwant"/></td>
+	            <td><input type="radio" value="5" name="dowhatIwant"/></td>
+	        </tr>
+	    </tbody>	
+	</table>
+	 <br>
+
+	<h2 style="text-decoration: none">I thought that writing music was very interesting.</h2>
+	  <table class="center border">
+	    <thead>
+	        <tr>
+	            <th>Not true</th>
+	            <th>I don't think so</th>
+	            <th>Maybe</th>
+	            <th>I think so</th>
+	            <th>Very true</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td><input type="radio" value="1" name="interesting"/></td>
+	            <td><input type="radio" value="2" name="interesting"/></td>
+	            <td><input type="radio" value="3" name="interesting"/></td>
+	            <td><input type="radio" value="4" name="interesting"/></td>
+	            <td><input type="radio" value="5" name="interesting"/></td>
+	        </tr>
+	    </tbody>
+	</table>
+
+	<br>
+	<br>
+
+	<h1> Please ask the researcher if you should continue? </h1>
+
+	<h2 style="text-decoration: none">I felt under extra pressure because I was being recorded. </h2>
+	  <table class="center border">
+	    <thead>
+	        <tr>
+	            <th>Not true</th>
+	            <th>I don't think so</th>
+	            <th>Maybe</th>
+	            <th>I think so</th>
+	            <th>Very true</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td><input type="radio" value="1" name="recPressure"/></td>
+	            <td><input type="radio" value="2" name="recPressure"/></td>
+	            <td><input type="radio" value="3" name="recPressure"/></td>
+	            <td><input type="radio" value="4" name="recPressure"/></td>
+	            <td><input type="radio" value="5" name="recPressure"/></td>
+	        </tr>
+	    </tbody>
+	</table>
+
+	<h2 style="text-decoration: none">I felt under extra pressure because my parents were in the room.</h2>
+	  <table class="center border">
+	    <thead>
+	        <tr>
+	            <th>Not true</th>
+	            <th>I don't think so</th>
+	            <th>Maybe</th>
+	            <th>I think so</th>
+	            <th>Very true</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td><input type="radio" value="1" name="parentPressure"/></td>
+	            <td><input type="radio" value="2" name="parentPressure"/></td>
+	            <td><input type="radio" value="3" name="parentPressure"/></td>
+	            <td><input type="radio" value="4" name="parentPressure"/></td>
+	            <td><input type="radio" value="5" name="parentPressure"/></td>
+	        </tr>
+	    </tbody>
+	</table>
+
+
+
+<h3 style="text-decoration: none">Please rank the following three interfaces from best to worst by typing in the boxes below.</h3>
+
+<center><img src="https://github.com/thecoreyford/thecoreyford.github.io/blob/master/codetta/tutorials/tut0Images/notationChoices.png?raw=true"></center>
+
+<h2 style="text-decoration: none">Most fun...</h1>
+
+	  <table class="center border">
+	    <thead>
+	        <tr>
+	            <th>Best</th>
+	            <th></th>
+	            <th>Worst</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td><select name="mostfun" id="notations" style="font-size: 15pt">
+    			<option value="A">A</option>
+    			<option value="B">B</option>
+    			<option value="C">C</option>
+  				</select></td>
+	            <td><select name="mostfun" id="notations" style="font-size: 15pt">
+    			<option value="A">A</option>
+    			<option value="B">B</option>
+    			<option value="C">C</option>
+  				</select></td>
+	            <td><select name="mostfun" id="notations" style="font-size: 15pt">
+    			<option value="A">A</option>
+    			<option value="B">B</option>
+    			<option value="C">C</option>
+  				</select></td>
+	        </tr>
+	    </tbody>
+	</table>
+
+
+<h2 style="text-decoration: none">Easiest to understand...</h1>
+
+	  <table class="center border">
+	    <thead>
+	        <tr>
+	            <th>Best</th>
+	            <th></th>
+	            <th>Worst</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td><select name="easiestUnderst" id="notations" style="font-size: 15pt">
+    			<option value="A">A</option>
+    			<option value="B">B</option>
+    			<option value="C">C</option>
+  				</select></td>
+	            <td><select name="easiestUnderst" id="notations" style="font-size: 15pt">
+    			<option value="A">A</option>
+    			<option value="B">B</option>
+    			<option value="C">C</option>
+  				</select></td>
+	            <td><select name="easiestUnderst" id="notations" style="font-size: 15pt">
+    			<option value="A">A</option>
+    			<option value="B">B</option>
+    			<option value="C">C</option>
+  				</select></td>
+	        </tr>
+	    </tbody>
+	</table>
+
+
+<h2 style="text-decoration: none">I wrote the best music...</h1>
+
+	  <table class="center border">
+	    <thead>
+	        <tr>
+	            <th>Best</th>
+	            <th></th>
+	            <th>Worst</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	        	<td><select name="bestMusic" id="notations" style="font-size: 15pt">
+    			<option value="A">A</option>
+    			<option value="B">B</option>
+    			<option value="C">C</option>
+  				</select></td>
+	            <td><select name="bestMusic" id="notations" style="font-size: 15pt">
+    			<option value="A">A</option>
+    			<option value="B">B</option>
+    			<option value="C">C</option>
+  				</select></td>
+	            <td><select name="bestMusic" id="notations" style="font-size: 15pt">
+    			<option value="A">A</option>
+    			<option value="B">B</option>
+    			<option value="C">C</option>
+  				</select></td>
+	        </tr>
+	    </tbody>
+	</table>
+
+	<h3 style="text-decoration: none"> Thank you for completing this questionnaire! Please ask the researcher for the next steps. </h3>
+
+</body>
+</html>

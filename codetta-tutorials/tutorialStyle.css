@@ -1,0 +1,116 @@
+@font-face 
+{
+
+   
+    font-family: 'Chalkduster Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('font/Chalkduster.woff ') format('woff');
+    
+    
+  
+}
+
+
+/*----------vv--This affects all elements--vv----------*/
+* 
+{
+    font-family: 'Itim', cursive;
+    /* https://fonts.google.com/specimen/Itim */
+    margin: 8px;
+    text-align: center;
+
+
+    
+}
+/*--------^^-------------------------------^^--------*/
+    
+body
+{
+    background-color: #F7EBEC;
+    margin: 0px;
+
+
+}
+
+
+
+img
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+    max-height: 600px;
+    max-width: 100%;
+
+    padding: 8px;
+    background-color:  #0C0910;
+    
+}   
+
+
+
+h1 
+{
+    color: white;
+    font-size: 40px;
+    font-family: 'Chalkduster Regular', serif;
+    text-align: center;
+    background-color: #5171A5;
+    border-style: solid;
+    border-color: #0C0910;
+    padding: 48px;
+    
+}
+h2 
+{
+    color: #4B17CC;
+    text-decoration: underline;
+    font-size: 36px;
+    text-align: center;
+}
+
+h3 
+{
+    color: 0C0910;
+    font-size: 24px;
+    padding:32px;
+    text-align: center;
+    background-color: white;
+    border-style: solid;
+    border-color: #0C0910;
+
+}
+
+p
+{
+    padding: 8px;
+    font-size: 20px;
+    margin: 0;
+    background-color: white;
+    border-style: solid;
+    border-color: #0C0910;
+
+
+}
+div
+{
+    margin: 16px;
+
+}
+
+ol
+{
+    background-color: white;
+    border-style: solid;
+    border-color: #0C0910;
+    font-size: 20px;
+
+
+}
+
+
+
+
