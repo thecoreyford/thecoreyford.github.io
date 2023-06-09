@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AIM Summer School Sound Walk Visualisations</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+      margin-bottom: 1em;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    
+    .section {
+      background-color: #fff;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .section-title {
+      margin: 0;
+      padding: 10px;
+      background-color: #ddd;
+      color: #333;
+      cursor: pointer;
+    }
+    
+    .section-content {
+      display: none;
+      padding: 10px;
+    }
+    
+    .section-content p {
+      margin: 0;
+    }
+    
+    .section:hover .section-title {
+      background-color: #ccc;
+    }
+    
+    .section.active .section-content {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>AIM Summer School Sound Walk Visualisations</h1>
+  
+  <div class="section">
+    <h2 class="section-title">Introduction</h2>
+    <div class="section-content">
+      <p>In this workshop we will quickly cover how to load sounds, use beat detection, and then create visualisations in p5js.</p>
+      </br>
+      <p>P5.js is a JavaScript library that simplifies creative coding in the browser, providing easy-to-use functions for creating interactive graphics and animations. It enables artists, designers, and beginners to express their ideas through code, making visual arts and creative projects accessible to a wider audience.
+      </p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h2 class="section-title">Playing Sounds</h2>
+    <div class="section-content">
+      <p>Programs in P5js are often called sketches.</p>
+      </br>
+      <p>Click the <img src="img1.png" alt="Description of the image" width="50" height="50"> symbol on the right hand side to view the code for the sketch below. </p>
+      </br>
+      <iframe src="https://editor.p5js.org/thecoreyford/full/M-nnwABV7", width=100%, height=500px></iframe>
+      </br>
+    </br>
+      <p>In the IDE you can write code in the text editor, and run it by pressing play. The preview on the right will then display your sketch.</p>
+      </br>
+      <p>The code above loads in a recording of the Mile End canal, and uses mouse click to play it back. Try running the sketch and clicking on the big red square in the preview to hear the recording.</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h2 class="section-title">FFTs</h2>
+    <div class="section-content">
+      <p>The FFT (Fast Fourier Transform) is an algorithm used to convert a time-domain signal into its frequency-domain representation. In music informatics, the FFT is important because it allows us to analyze and understand the different frequency components present in music. By analyzing the frequency spectrum, we can extract valuable information about the distribution and intensity of frequencies, aiding tasks such as audio classification, chord recognition, and audio effects processing.</p>
+      </br>
+      <p>Understanding the FFT (Fast Fourier Transform) is essential for research in AI and music. It enables the analysis of frequency components in audio, aiding tasks like music classification, genre recognition, and content-based recommendation. The FFT facilitates feature extraction, allowing AI models to understand the spectral and timbral characteristics of music. It is also valuable for music generation, composition, and audio effects processing. By leveraging the FFT in AI research, we can develop innovative applications, improve music understanding and creation, and push the boundaries of computational musicology.</p>
+      </br>
+      <iframe src="https://editor.p5js.org/thecoreyford/full/1SK3pgz3h", width=100%, height=500px></iframe>
+      </br>
+      <p>The sketch above uses an FFT to split the audio in bass/middle/and treble, visualising the output as some bars. Follow the comments numbered 1. to 5. to make sense of the code.</p>
+      </br>
+      <p>Try replacing the sound with bee.mp3. Note where the frequency bands are most sensitive to changes (e.g. moving microphone, not bee noises).</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Beat Tracking</h2>
+    <div class="section-content">
+      <p>Beat tracking is the automatic detection and estimation of the rhythmic structure in music. Beat tracking can provide insight into music genres, aids in music recommendation and synchronization, enhances music production and remixing, and serves as a feature for music analysis and retrieval. It enables a deeper understanding of music, improves recommendations and playlists, facilitates synchronization in multimedia applications, and enhances music production and MIR algorithms.</p>
+      </br>
+      <p>The example below uses a peak follower to track "beats" from our nature recording, following the peak energy every X number of frames. It uses this to then modify the width of an ellipse.</p>
+      </br>
+      <p>Explore the code below...</p>
+
+      <iframe src="https://editor.p5js.org/thecoreyford/full/4rL_nPu8T", width=100%, height=500px></iframe>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Your Turn</h2>
+    <div class="section-content">
+      <p> In a second tab go to "https://editor.p5js.org/". </p>
+      </br>
+      <p> We'll explore how to utilize the Fast Fourier Transform (FFT) and beat tracking to create a fun animation based on your sound walk recordings!</p>
+</br>
+      <p> To load in your own audio (or animations) follow the three steps on the image below. 1) click to expand the left panel, 2) press the dropdown next to sketch.js, and 3) click upload file. </p>
+</br>
+      <p><img src="img2.png" alt="Description of the image" width="30%" height="30%"></p>
+</br>
+      <p>For inspiration below is a sketch combining the ideas above. It uses beat tracking to animate the wings of a bird flapping. Note that the beat detection algorithm operates on a frequency range more tuned to bird noises.</p>
+</br>
+      <iframe src="https://editor.p5js.org/thecoreyford/full/y59h3v4Is" width=100%, height=500px></iframe>
+
+</br>
+      <p>Some more helpful resources can be found below:</p>
+      <ul>
+      <li><a href="https://processing.org/reference/">Processing Documentation</a></li>
+      <li><a href="https://happycoding.io/tutorials/processing/simple-reference">Simple reference for processing drawing (e.g., circles, rectangles)</a></li>
+      </ul>
+      </br>
+    </div>
+    </div>
+  </div>
+
+  <!-- <div class="section">
+    <h2 class="section-title">Your Turn</h2>
+    <div class="section-content">
+      <p>This is the content of Section 3.</p>
+    </div>
+  </div> -->
+
+<!--   <div class="section">
+    <h2 class="section-title">Your Turn</h2>
+    <div class="section-content">
+      <p>This is the content of Section 3.</p>
+    </div>
+  </div> -->
+
+  <script>
+    // JavaScript to toggle section visibility
+    const sections = document.querySelectorAll('.section');
+    
+    sections.forEach(section => {
+      const title = section.querySelector('.section-title');
+      title.addEventListener('click', function() {
+        section.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
