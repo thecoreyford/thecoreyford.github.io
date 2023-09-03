@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>myReflect</title>
+ <link rel="icon" href="logo.png" type="image/png">
+<style>
+body {
+  background-color: #f7f7f7;
+  font-family: sans-serif;
+}
+
+.container {
+  width: 320px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: left;
+  font-size: 24px;
+}
+
+.text-box {
+  width: 280px;	
+  height: 50px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.button {
+  background-color: #b39ddb;
+  color: #ffffff;
+  font-size: 16px;
+  width: 101px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+	<!-- Load in question arrays -->
+	<script src="process.js"></script>
+	<script src="experiment.js"></script>
+	<script src="self.js"></script>
+
+
+	<!-- Make GUI -->
+	<div class="container">
+	  <h1>myReflect</h1>
+	  <button class="button" id="process">Process</button>
+	  <button class="button" id="experiment">Experiment</button>
+	  <button class="button" id="self">Self</button>
+	  <h1 id="questionHeading">My Reflection App</h1>
+	  <input type="text" class="text-box" placeholder="Write explanation...">
+	  <button class="button" id="next">>>></button>
+	</div>
+
+	<!-- Javascript -->
+	<script>
+		// VARIABLES
+		var options = ["process", "experiment", "self", "end"];
+		var currentOptionIdx = -1; 
+		var currentOption = options[currentOptionIdx];
+
+
+		// FUNCTIONS
+		function updateButtonColours(){
+			const buttons = document.querySelectorAll(".button");
+			for (const button of buttons){
+				if (button.id === currentOption)
+				{
+					button.style.backgroundColor = "#b39ddb";
+				}
+				else
+				{
+					button.style.backgroundColor = "#757575";
+				}
+			}
+		}
+
+		function getQuestion(idx){
+  			var lines;
+			if (idx === 0) {lines = processQuestions;}
+			if (idx === 1) {lines = experimentQuestions;}
+			if (idx === 2) {lines = selfQuestions;}
+  			return lines[Math.floor(Math.random() * lines.length)];
+		}
+
+		function updateGUI(){
+
+			console.log(currentOptionIdx);
+			// reset index if looping	
+			if (currentOptionIdx === 2) {currentOptionIdx = -1;} 			
+
+			// update index
+			currentOptionIdx += 1;
+	    	currentOption = options[currentOptionIdx];
+
+	    	// update heading
+	    	const heading = document.getElementById("questionHeading");
+	    	heading.textContent = getQuestion(currentOptionIdx);
+
+	    	// update colours
+	    	updateButtonColours();
+		}
+
+		// CODE
+
+		// first-time setup
+		updateButtonColours();
+		updateGUI();
+
+		// callbacks
+		const button = document.getElementById("next");
+	  	button.addEventListener("click", updateGUI);
+
+	  	
+	</script>
+</body>
+</html>
