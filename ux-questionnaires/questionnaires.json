@@ -1,0 +1,1364 @@
+[
+  {
+    "title": "RiCEv2",
+    "url": "https://ricequestionnaire.github.io/",
+    "instructions": "Considering your recent experience of [SYSTEM], please indicate the extent to which you agree with the following statements.",
+    "likert_scale_points": 11,
+    "lowest_value": 0,
+    "statements": [
+      {
+        "code": "Cp1",
+        "text": "Whilst being creative, I liked to think about my actions and find alternative ways of doing them.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Highly Disagree"
+          },
+          {
+            "index": 10,
+            "label": "Highly Agree"
+          }
+        ]
+      },
+      {
+        "code": "Ex2",
+        "text": "I often generated, tested, and revised ideas.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Highly Disagree"
+          },
+          {
+            "index": 10,
+            "label": "Highly Agree"
+          }
+        ]
+      },
+      {
+        "code": "Cp3",
+        "text": "I found myself iteratively refining and assessing my creative process.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Highly Disagree"
+          },
+          {
+            "index": 10,
+            "label": "Highly Agree"
+          }
+        ]
+      },
+      {
+        "code": "Se1",
+        "text": "I learned many new things about myself.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Highly Disagree"
+          },
+          {
+            "index": 10,
+            "label": "Highly Agree"
+          }
+        ]
+      },
+      {
+        "code": "Ex3",
+        "text": "I made no comparisons within the system to consider alternative ways of doing things.",
+        "reversed": true,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Highly Disagree"
+          },
+          {
+            "index": 10,
+            "label": "Highly Agree"
+          }
+        ]
+      },
+      {
+        "code": "Se3",
+        "text": "I often reappraised my experiences with the system so I could learn from them.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Highly Disagree"
+          },
+          {
+            "index": 10,
+            "label": "Highly Agree"
+          }
+        ]
+      },
+      {
+        "code": "Cp2",
+        "text": "I considered different ways of doing things.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Highly Disagree"
+          },
+          {
+            "index": 10,
+            "label": "Highly Agree"
+          }
+        ]
+      },
+      {
+        "code": "Ex1",
+        "text": "I made comparisons within the system to consider alternative ways of doing things.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Highly Disagree"
+          },
+          {
+            "index": 10,
+            "label": "Highly Agree"
+          }
+        ]
+      },
+      {
+        "code": "Se2",
+        "text": "I pondered over the meaning of what I was doing in relation to my personal experience.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Highly Disagree"
+          },
+          {
+            "index": 10,
+            "label": "Highly Agree"
+          }
+        ]
+      }
+    ],
+    "factors": {
+      "Reflection on Current Process (Cp)": {
+        "items": [
+          "Cp1",
+          "Cp2",
+          "Cp3"
+        ],
+        "score_equation": "(Cp1 + Cp2 + Cp3) / 3"
+      },
+      "Reflection through Experimentation (Ex)": {
+        "items": [
+          "Ex1",
+          "Ex2",
+          "Ex3"
+        ],
+        "score_equation": "(Ex1 + Ex2 + (10 - Ex3)) / 3"
+      },
+      "Reflection on Self (Se)": {
+        "items": [
+          "Se1",
+          "Se2",
+          "Se3"
+        ],
+        "score_equation": "(Se1 + Se2 + Se3) / 3"
+      }
+    },
+    "total_score_equation": "(Cp1 + Cp2 + Cp3 + Ex1 + Ex2 + (10 - Ex3) + Se1 + Se2 + Se3) / 9"
+  },
+  {
+    "title": "UEQ-SF",
+    "url": "https://doi.org/10.1016/j.ijhcs.2018.01.004",
+    "instructions": "The following statements ask you to reflect on your experience of engaging with [SYSTEM]. For each statement, please use the following scale to indicate what is most true for you.",
+    "likert_scale_points": 5,
+    "lowest_value": 1,
+    "statements": [
+      {
+        "code": "FA-S.1",
+        "text": "I lost myself in this experience.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Strongly disagree"
+          },
+          {
+            "index": 4,
+            "label": "Strongly Agree"
+          }
+        ]
+      },
+      {
+        "code": "FA-S.2",
+        "text": "The time I spent using [SYSTEM] just slipped away.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Strongly disagree"
+          },
+          {
+            "index": 4,
+            "label": "Strongly Agree"
+          }
+        ]
+      },
+      {
+        "code": "FA-S.3",
+        "text": "I was absorbed in this experience.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Strongly disagree"
+          },
+          {
+            "index": 4,
+            "label": "Strongly Agree"
+          }
+        ]
+      },
+      {
+        "code": "PU-S.1",
+        "text": "I felt frustrated while using [SYSTEM].",
+        "reversed": true,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Strongly disagree"
+          },
+          {
+            "index": 4,
+            "label": "Strongly Agree"
+          }
+        ]
+      },
+      {
+        "code": "PU-S.2",
+        "text": "I found [SYSTEM] confusing to use.",
+        "reversed": true,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Strongly disagree"
+          },
+          {
+            "index": 4,
+            "label": "Strongly Agree"
+          }
+        ]
+      },
+      {
+        "code": "PU-S.3",
+        "text": "Using this [SYSTEM] was taxing.",
+        "reversed": true,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Strongly disagree"
+          },
+          {
+            "index": 4,
+            "label": "Strongly Agree"
+          }
+        ]
+      },
+      {
+        "code": "AE-S.1",
+        "text": "[SYSTEM] was attractive.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Strongly disagree"
+          },
+          {
+            "index": 4,
+            "label": "Strongly Agree"
+          }
+        ]
+      },
+      {
+        "code": "AE-S.2",
+        "text": "[SYSTEM] was aesthetically appealing.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Strongly disagree"
+          },
+          {
+            "index": 4,
+            "label": "Strongly Agree"
+          }
+        ]
+      },
+      {
+        "code": "AE-S.3",
+        "text": "[SYSTEM] appealed to my senses.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Strongly disagree"
+          },
+          {
+            "index": 4,
+            "label": "Strongly Agree"
+          }
+        ]
+      },
+      {
+        "code": "RW-S.1",
+        "text": "Using [SYSTEM] was worthwhile.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Strongly disagree"
+          },
+          {
+            "index": 4,
+            "label": "Strongly Agree"
+          }
+        ]
+      },
+      {
+        "code": "RW-S.2",
+        "text": "My experience was rewarding.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Strongly disagree"
+          },
+          {
+            "index": 4,
+            "label": "Strongly Agree"
+          }
+        ]
+      },
+      {
+        "code": "RW-S.3",
+        "text": "I felt interested in this experience.",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Strongly disagree"
+          },
+          {
+            "index": 4,
+            "label": "Strongly Agree"
+          }
+        ]
+      }
+    ],
+    "factors": {
+      "Focused Attention (FA)": {
+        "items": [
+          "FA-S.1",
+          "FA-S.2",
+          "FA-S.3"
+        ],
+        "score_equation": "(FA-S.1 + FA-S.2 + FA-S.3) / 3"
+      },
+      "Perceived Usability (PU)": {
+        "items": [
+          "PU-S.1",
+          "PU-S.2",
+          "PU-S.3"
+        ],
+        "score_equation": "((6 - PU-S.1) + (6 - PU-S.2) + (6 - PU-S.3)) / 3"
+      },
+      "Aesthetics (AE)": {
+        "items": [
+          "AE-S.1",
+          "AE-S.2",
+          "AE-S.3"
+        ],
+        "score_equation": "(AE-S.1 + AE-S.2 + AE-S.3) / 3"
+      },
+      "Reward (RW)": {
+        "items": [
+          "RW-S.1",
+          "RW-S.2",
+          "RW-S.3"
+        ],
+        "score_equation": "(RW-S.1 + RW-S.2 + RW-S.3) / 3"
+      }
+    },
+    "total_score_equation": "((FA-S.1 + FA-S.2 + FA-S.3) + (6 - PU-S.1 + 6 - PU-S.2 + 6 - PU-S.3) + (AE-S.1 + AE-S.2 + AE-S.3) + (RW-S.1 + RW-S.2 + RW-S.3)) / 12"
+  },
+  {
+    "title": "Dow et al.'s Self-Efficacy",
+    "url": "https://dl.acm.org/doi/abs/10.1145/1879831.1879836",
+    "instructions": "On a scale from “Not confident at all” (1) to “Very confident” (7), how confident are you:",
+    "likert_scale_points": 7,
+    "lowest_value": 1,
+    "statements": [
+      {
+        "code": "Se1",
+        "text": "With your ability to design advertisements?",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Not confident at all"
+          },
+          {
+            "index": 6,
+            "label": "Very confident"
+          }
+        ]
+      },
+      {
+        "code": "Se2",
+        "text": "At understanding design problems?",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Not confident at all"
+          },
+          {
+            "index": 6,
+            "label": "Very confident"
+          }
+        ]
+      },
+      {
+        "code": "Se3",
+        "text": "With detecting problems in your design?",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Not confident at all"
+          },
+          {
+            "index": 6,
+            "label": "Very confident"
+          }
+        ]
+      },
+      {
+        "code": "Se4",
+        "text": "With incorporating expert feedback in your design?",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Not confident at all"
+          },
+          {
+            "index": 6,
+            "label": "Very confident"
+          }
+        ]
+      }
+    ],
+    "factors": {
+      "Advertisements": {
+        "items": [
+          "Se1"
+        ],
+        "score_equation": "Se1"
+      },
+      "Understanding design problems": {
+        "items": [
+          "Se2"
+        ],
+        "score_equation": "Se2"
+      },
+      "Detecting design problems": {
+        "items": [
+          "Se3"
+        ],
+        "score_equation": "Se3"
+      },
+      "Incoporating expert feedback": {
+        "items": [
+          "Se4"
+        ],
+        "score_equation": "Se4"
+      }
+    },
+    "total_score_equation": "(Se1 + Se2 + Se3 + Se4) / 4"
+  },
+  {
+    "title": "Short UEQ",
+    "url": "https://www.ijimai.org/journal/bibcite/reference/2634",
+    "instructions": "Decide as spontaneously as possible which of the following opposing terms better describes [SYSTEM]. There is no \"right\" or \"wrong\" answer. Only your personal opinion counts!",
+    "likert_scale_points": 7,
+    "lowest_value": -3,
+    "statements": [
+      {
+        "code": "Prag1",
+        "text": " ",
+        "reversed": true,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "clear"
+          },
+          {
+            "index": 6,
+            "label": "confusing"
+          }
+        ]
+      },
+      {
+        "code": "Prag2",
+        "text": " ",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "inefficient"
+          },
+          {
+            "index": 6,
+            "label": "efficient"
+          }
+        ]
+      },
+      {
+        "code": "Prag3",
+        "text": " ",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "complicated"
+          },
+          {
+            "index": 6,
+            "label": "easy"
+          }
+        ]
+      },
+      {
+        "code": "Prag4",
+        "text": " ",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "obstructive"
+          },
+          {
+            "index": 6,
+            "label": "supportive"
+          }
+        ]
+      },
+      {
+        "code": "Hed1",
+        "text": " ",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "boring"
+          },
+          {
+            "index": 6,
+            "label": "exiting"
+          }
+        ]
+      },
+      {
+        "code": "Hed2",
+        "text": " ",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "not interesting"
+          },
+          {
+            "index": 6,
+            "label": "interesting"
+          }
+        ]
+      },
+      {
+        "code": "Hed3",
+        "text": " ",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "conventional"
+          },
+          {
+            "index": 6,
+            "label": "inventive"
+          }
+        ]
+      },
+      {
+        "code": "Hed4",
+        "text": " ",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "usual"
+          },
+          {
+            "index": 6,
+            "label": "leading edge"
+          }
+        ]
+      }
+    ],
+    "factors": {
+      "Pragmatic": {
+        "items": [
+          "Prag1",
+          "Prag2",
+          "Prag3",
+          "Prag4"
+        ],
+        "score_equation": "((Prag1*-1) + Prag2 + Prag3 + Prag4) / 4"
+      },
+      "Hedonic": {
+        "items": [
+          "Hed1",
+          "Hed2",
+          "Hed3",
+          "Hed4"
+        ],
+        "score_equation": "(Hed1 + Hed2 + Hed3 + Hed4) / 4"
+      }
+    },
+    "total_score_equation": "((Prag1*-1) + Prag2 + Prag3 + Prag4 + Hed1 + Hed2 + Hed3 + Hed4) / 8"
+  },
+  {
+    "title": "Goldsmiths MSI",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0089642",
+    "instructions": "Please indicate the extent to which you agree with the following statements.",
+    "likert_scale_points": 7,
+    "lowest_value": 0,
+    "statements": [
+      {
+        "code": "AE01",
+        "text": "I spend a lot of my time doing music-related activities.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Completely Disagree" },
+          { "index": 1, "label": "Strongly Disagree" },
+          { "index": 2, "label": "Disagree" },
+          { "index": 3, "label": "Neither Agree Nor Disagree" },
+          { "index": 4, "label": "Agree" },
+          { "index": 5, "label": "Strongly Agree" },
+          { "index": 6, "label": "Completely Agree" }
+        ]
+      },
+      {
+        "code": "AE02",
+        "text": "I enjoy writing about music, for example on blogs and forums.",
+        "reversed": false,
+        "scale_labels": [
+            { "index": 0, "label": "Completely Disagree" },
+            { "index": 1, "label": "Strongly Disagree" },
+            { "index": 2, "label": "Disagree" },
+            { "index": 3, "label": "Neither Agree Nor Disagree" },
+            { "index": 4, "label": "Agree" },
+            { "index": 5, "label": "Strongly Agree" },
+            { "index": 6, "label": "Completely Agree" }
+        ]
+      },
+      {
+        "code": "SA01",
+        "text": "If somebody starts singing a song I don't know, I can usually join in.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Completely Disagree" },
+          { "index": 1, "label": "Strongly Disagree" },
+          { "index": 2, "label": "Disagree" },
+          { "index": 3, "label": "Neither Agree Nor Disagree" },
+          { "index": 4, "label": "Agree" },
+          { "index": 5, "label": "Strongly Agree" },
+          { "index": 6, "label": "Completely Agree" }
+        ]
+      },
+      {
+        "code": "SA02",
+        "text": "I can sing or play music from memory.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Completely Disagree" },
+          { "index": 1, "label": "Strongly Disagree" },
+          { "index": 2, "label": "Disagree" },
+          { "index": 3, "label": "Neither Agree Nor Disagree" },
+          { "index": 4, "label": "Agree" },
+          { "index": 5, "label": "Strongly Agree" },
+          { "index": 6, "label": "Completely Agree" }
+        ]
+      },
+      {
+        "code": "SA03",
+        "text": "I am able to hit the right notes when I sing along with a recording.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Completely Disagree" },
+          { "index": 1, "label": "Strongly Disagree" },
+          { "index": 2, "label": "Disagree" },
+          { "index": 3, "label": "Neither Agree Nor Disagree" },
+          { "index": 4, "label": "Agree" },
+          { "index": 5, "label": "Strongly Agree" },
+          { "index": 6, "label": "Completely Agree" }
+        ]
+      },
+      {
+        "code": "PA04",
+        "text": "I can compare and discuss differences between two performances or versions of the same piece of music.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Completely Disagree" },
+          { "index": 1, "label": "Strongly Disagree" },
+          { "index": 2, "label": "Disagree" },
+          { "index": 3, "label": "Neither Agree Nor Disagree" },
+          { "index": 4, "label": "Agree" },
+          { "index": 5, "label": "Strongly Agree" },
+          { "index": 6, "label": "Completely Agree" }
+        ]
+      },
+      {
+        "code": "MT03",
+        "text": "I have never been complimented for my talents as a musical performer.",
+        "reversed": true,
+        "scale_labels": [
+          { "index": 0, "label": "Completely Disagree" },
+          { "index": 1, "label": "Strongly Disagree" },
+          { "index": 2, "label": "Disagree" },
+          { "index": 3, "label": "Neither Agree Nor Disagree" },
+          { "index": 4, "label": "Agree" },
+          { "index": 5, "label": "Strongly Agree" },
+          { "index": 6, "label": "Completely Agree" }
+        ]
+      },
+      {
+        "code": "AE05",
+        "text": "I often read or search the internet for things related to music.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Completely Disagree" },
+          { "index": 1, "label": "Strongly Disagree" },
+          { "index": 2, "label": "Disagree" },
+          { "index": 3, "label": "Neither Agree Nor Disagree" },
+          { "index": 4, "label": "Agree" },
+          { "index": 5, "label": "Strongly Agree" },
+          { "index": 6, "label": "Completely Agree" }
+        ]
+      },
+      {
+        "code": "SA04",
+        "text": "I am not able to sing in harmony when somebody is singing a familiar tune.",
+        "reversed": true,
+        "scale_labels": [
+          { "index": 0, "label": "Completely Disagree" },
+          { "index": 1, "label": "Strongly Disagree" },
+          { "index": 2, "label": "Disagree" },
+          { "index": 3, "label": "Neither Agree Nor Disagree" },
+          { "index": 4, "label": "Agree" },
+          { "index": 5, "label": "Strongly Agree" },
+          { "index": 6, "label": "Completely Agree" }
+        ]
+      },
+      {
+        "code": "EM04",
+        "text": "I am able to identify what is special about a given musical piece.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Completely Disagree" },
+          { "index": 1, "label": "Strongly Disagree" },
+          { "index": 2, "label": "Disagree" },
+          { "index": 3, "label": "Neither Agree Nor Disagree" },
+          { "index": 4, "label": "Agree" },
+          { "index": 5, "label": "Strongly Agree" },
+          { "index": 6, "label": "Completely Agree" }
+        ]
+      },
+      {
+        "code": "PA08",
+        "text": "When I sing, I have no idea whether I'm in tune or not.",
+        "reversed": true,
+        "scale_labels": [
+          { "index": 0, "label": "Completely Disagree" },
+          { "index": 1, "label": "Strongly Disagree" },
+          { "index": 2, "label": "Disagree" },
+          { "index": 3, "label": "Neither Agree Nor Disagree" },
+          { "index": 4, "label": "Agree" },
+          { "index": 5, "label": "Strongly Agree" },
+          { "index": 6, "label": "Completely Agree" }
+        ]
+      },
+      {
+        "code": "AE07",
+        "text": "Music is kind of an addiction for me - I couldn't live without it.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Completely Disagree" },
+          { "index": 1, "label": "Strongly Disagree" },
+          { "index": 2, "label": "Disagree" },
+          { "index": 3, "label": "Neither Agree Nor Disagree" },
+          { "index": 4, "label": "Agree" },
+          { "index": 5, "label": "Strongly Agree" },
+          { "index": 6, "label": "Completely Agree" }
+        ]
+      },
+      {
+        "code": "SA05",
+        "text": "I don’t like singing in public because I’m afraid that I would sing wrong notes.",
+        "reversed": true,
+        "scale_labels": [
+          { "index": 0, "label": "Completely Disagree" },
+          { "index": 1, "label": "Strongly Disagree" },
+          { "index": 2, "label": "Disagree" },
+          { "index": 3, "label": "Neither Agree Nor Disagree" },
+          { "index": 4, "label": "Agree" },
+          { "index": 5, "label": "Strongly Agree" },
+          { "index": 6, "label": "Completely Agree" }
+        ]
+      },
+      {
+        "code": "MT07",
+        "text": "I would not consider myself a musician.",
+        "reversed": true,
+        "scale_labels": [
+          { "index": 0, "label": "Completely Disagree" },
+          { "index": 1, "label": "Strongly Disagree" },
+          { "index": 2, "label": "Disagree" },
+          { "index": 3, "label": "Neither Agree Nor Disagree" },
+          { "index": 4, "label": "Agree" },
+          { "index": 5, "label": "Strongly Agree" },
+          { "index": 6, "label": "Completely Agree" }
+        ]
+      },
+      {
+        "code": "SA06",
+        "text": "After hearing a new song two or three times, I can usually sing it by myself.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Completely Disagree" },
+          { "index": 1, "label": "Strongly Disagree" },
+          { "index": 2, "label": "Disagree" },
+          { "index": 3, "label": "Neither Agree Nor Disagree" },
+          { "index": 4, "label": "Agree" },
+          { "index": 5, "label": "Strongly Agree" },
+          { "index": 6, "label": "Completely Agree" }
+        ]
+      },
+      {
+        "code": "MT01",
+        "text": "I engaged in regular, daily practice of a musical instrument (including voice) for ___ years.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "0" },
+          { "index": 1, "label": "1" },
+          { "index": 2, "label": "2" },
+          { "index": 3, "label": "3" },
+          { "index": 4, "label": "4-5" },
+          { "index": 5, "label": "6-9" },
+          { "index": 6, "label": "10 or more" }
+        ]
+      },
+      {
+        "code": "MT02",
+        "text": "At the peak of my interest, I practiced ___ hours per day on my primary instrument.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "0" },
+          { "index": 1, "label": "0.5" },
+          { "index": 2, "label": "1" },
+          { "index": 3, "label": "1.5" },
+          { "index": 4, "label": "2" },
+          { "index": 5, "label": "3-4" },
+          { "index": 6, "label": "5 or more" }
+        ]
+      },
+      {
+        "code": "MT06",
+        "text": "I can play ___ musical instruments.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "0" },
+          { "index": 1, "label": "1" },
+          { "index": 2, "label": "2" },
+          { "index": 3, "label": "3" },
+          { "index": 4, "label": "4" },
+          { "index": 5, "label": "5" },
+          { "index": 6, "label": "6 or more" }
+        ]
+      }
+    ],
+    "factors": {
+      "Active Engagement": {
+        "items": [
+          "AE01",
+          "AE02",
+          "AE05",
+          "AE07"
+        ],
+        "score_equation": "(AE01 + AE02 + AE05 + AE07) / 4"
+      },
+      "Singing Ability": {
+        "items": [
+          "SA01",
+          "SA02",
+          "SA03",
+          "SA04",
+          "SA05",
+          "SA06"
+        ],
+        "score_equation": "(SA01 + SA02 + SA03 + (8-SA04) + (8-SA05) + SA06) / 6"
+      },
+      "Performance Ability": {
+        "items": [
+          "PA04",
+          "PA08"
+        ],
+        "score_equation": "(PA04 + (8 - PA08)) / 2"
+      },
+      "Musical Training": {
+        "items": [
+          "MT01",
+          "MT02",
+          "MT06",
+          "MT07",
+          "MT03"
+        ],
+        "score_equation": "((8-MT03) + MT01 + MT02 + MT06 + (8-MT07)) / 5"
+      },
+      "Emotional Music Processing": {
+        "items": [
+          "EM04"
+        ],
+        "score_equation": "EM04"
+      }
+    },
+    "total_score_equation": "(AE01 + AE02 + AE05 + AE07 + SA01 + SA02 + SA03 + (8 - SA04) + (8 - SA05) + SA06 + PA04 + (8-PA08) + MT01 + MT02 + MT06 + (8-MT07) + (8-MT03) + EM04) / 18"
+  },
+  {
+    "title": "CSI (No Count)",
+    "url": "https://dl.acm.org/doi/10.1145/2617588",
+    "instructions": "Please rate your agreement with the following statements.",
+    "likert_scale_points": 11,
+    "lowest_value": 0,
+    "statements": [
+      {
+        "code": "RWE1",
+        "text": "What I was able to produce was worth the effort I had to exert to produce it.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Highly Disagree" },
+          { "index": 10, "label": "Highly Agree" }
+        ]
+      },
+      {
+        "code": "RWE2",
+        "text": "I was satisfied with what I got out of the system or tool.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Highly Disagree" },
+          { "index": 10, "label": "Highly Agree" }
+        ]
+      },
+      {
+        "code": "EXPL1",
+        "text": "The system was helpful in allowing me to track different ideas, outcomes, or possibilities.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Highly Disagree" },
+          { "index": 10, "label": "Highly Agree" }
+        ]
+      },
+      {
+        "code": "EXPL2",
+        "text": "It was easy for me to explore many different ideas, options, designs, or outcomes.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Highly Disagree" },
+          { "index": 10, "label": "Highly Agree" }
+        ]
+      },
+      {
+        "code": "COLAB1",
+        "text": "It was really easy to share ideas and designs with other people inside this tool.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Highly Disagree" },
+          { "index": 10, "label": "Highly Agree" }
+        ]
+      },
+      {
+        "code": "COLAB2",
+        "text": "The system or tool offered support for multiple users.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Highly Disagree" },
+          { "index": 10, "label": "Highly Agree" }
+        ]
+      },
+      {
+        "code": "IMM1",
+        "text": "I became so absorbed in the activity that I forgot about the system or tool that I was using.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Highly Disagree" },
+          { "index": 10, "label": "Highly Agree" }
+        ]
+      },
+      {
+        "code": "IMM2",
+        "text": "My attention was fully tuned to the activity, and I forgot about the system or tool that I was using.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Highly Disagree" },
+          { "index": 10, "label": "Highly Agree" }
+        ]
+      },
+      {
+        "code": "EXP1",
+        "text": "I felt very artistic while using this system or tool.",
+        "reversed": true,
+        "scale_labels": [
+          { "index": 0, "label": "Highly Disagree" },
+          { "index": 10, "label": "Highly Agree" }
+        ]
+      },
+      {
+        "code": "EXP2",
+        "text": "I was able to be very creative while doing the activity.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Highly Disagree" },
+          { "index": 10, "label": "Highly Agree" }
+        ]
+      },
+      {
+        "code": "ENJ1",
+        "text": "I would be happy to use this system or tool on a regular basis.",
+        "reversed": true,
+        "scale_labels": [
+          { "index": 0, "label": "Highly Disagree" },
+          { "index": 10, "label": "Highly Agree" }
+        ]
+      },
+      {
+        "code": "ENJ2",
+        "text": "I enjoyed this system or tool.",
+        "reversed": false,
+        "scale_labels": [
+          { "index": 0, "label": "Highly Disagree" },
+          { "index": 10, "label": "Highly Agree" }
+        ]
+      }
+    ],
+    "factors": {
+      "Results Worth Effort": {
+        "items": [
+          "RWE1",
+          "RWE2"
+        ],
+        "score_equation": "(RWE1 + RWE2) / 2"
+      },
+      "Exploration": {
+        "items": [
+          "EXPL1",
+          "EXPL2"
+        ],
+        "score_equation": "(EXPL1 + EXPL2) / 2"
+      },
+      "Collaboration": {
+        "items": [
+          "COLAB1",
+          "COLAB2"
+        ],
+        "score_equation": "(COLAB1 + COLAB2) / 2"
+      },
+      "Immersion": {
+        "items": [
+          "IMM1",
+          "IMM2"
+        ],
+        "score_equation": "(IMM1 + IMM2) / 2"
+      },
+      "Expressiveness": {
+        "items": [
+          "EXP1",
+          "EXP2"
+        ],
+        "score_equation": "(EXP1 + EXP2) / 2"
+      },
+      "Enjoyment": {
+        "items": [
+          "ENJ1",
+          "ENJ2"
+        ],
+        "score_equation": "(ENJ1 + ENJ2) / 2"
+      }
+    },
+    "total_score_equation": "(RWE1 + RWE2 + EXPL1 + EXPL2 + COLAB1 + COLAB2 + IMM1 + IMM2 + EXP1 + EXP2 + ENJ1 + ENJ2) / 12"
+  },
+  {
+    "title": "TSRI",
+    "url": "https://doi.org/10.1145/3411764.3445673",
+    "instructions": "Please rate how strongly you agree or disagree with each of these statements.",
+    "likert_scale_points": 5,
+    "lowest_value": 1,
+    "statements": [
+      {
+        "code": "Insight1",
+        "text": "Using the system has led to a wake-up call to make changes in my life.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1,"label": "Somewhat disagree"},
+          {"index": 2,"label": "Neither agree nor disagree"},
+          {"index": 3,"label": "Somewhat agree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Insight2",
+        "text": "As a result of using the system, I have changed how I approach things.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1,"label": "Somewhat disagree"},
+          {"index": 2,"label": "Neither agree nor disagree"},
+          {"index": 3,"label": "Somewhat agree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Insight3",
+        "text": "Using the system gives me ideas on how to overcome challenges.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1,"label": "Somewhat disagree"},
+          {"index": 2,"label": "Neither agree nor disagree"},
+          {"index": 3,"label": "Somewhat agree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Exploration1",
+        "text": "I enjoy exploring my data with the system.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1,"label": "Somewhat disagree"},
+          {"index": 2,"label": "Neither agree nor disagree"},
+          {"index": 3,"label": "Somewhat agree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Exploration2",
+        "text": "The system makes it easy to get an overview of my personal data.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1,"label": "Somewhat disagree"},
+          {"index": 2,"label": "Neither agree nor disagree"},
+          {"index": 3,"label": "Somewhat agree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Exploration3",
+        "text": "The system makes it easy to review my long-term personal data.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1,"label": "Somewhat disagree"},
+          {"index": 2,"label": "Neither agree nor disagree"},
+          {"index": 3,"label": "Somewhat agree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Comparision1",
+        "text": "I reflect on my data in the system with others.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1,"label": "Somewhat disagree"},
+          {"index": 2,"label": "Neither agree nor disagree"},
+          {"index": 3,"label": "Somewhat agree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Comparison2",
+        "text": "The system helps me to discuss my data with others.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1,"label": "Somewhat disagree"},
+          {"index": 2,"label": "Neither agree nor disagree"},
+          {"index": 3,"label": "Somewhat agree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Comparision3",
+        "text": "The system makes me think about how my personal data relates with that of others.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1,"label": "Somewhat disagree"},
+          {"index": 2,"label": "Neither agree nor disagree"},
+          {"index": 3,"label": "Somewhat agree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      }
+    ],
+    "factors": {
+      "Insight": {
+        "items": [
+          "Insight1",
+          "Insight2",
+          "Insight3"
+        ],
+        "score_equation": "(Insight1 + Insight2 + Insight3) / 3"
+      },
+      "Exploration": {
+        "items": [
+          "Exploration1",
+          "Exploration2",
+          "Exploration3"
+        ],
+        "score_equation": "(Exploration1 + Exploration2 + Exploration3) / 3"
+      },
+      "Comparison": {
+        "items": [
+          "Comparision1",
+          "Comparision2",
+          "Comparision3"
+        ],
+        "score_equation": "(Comparision1 + Comparision2 + Comparision3) / 3"
+      }
+    },
+    "total_score_equation": "(Insight1 + Insight2 + Insight3 + Exploration1 + Exploration2 + Exploration3 + Comparision1 + Comparision2 + Comparision3) / 9"
+  },
+  {
+    "title": "SUS",
+    "url": "https://digital.ahrq.gov/sites/default/files/docs/survey/systemusabilityscale%2528sus%2529_comp%255B1%255D.pdf",
+    "instructions": " ",
+    "likert_scale_points": 5,
+    "lowest_value": 0,
+    "statements": [
+      {
+        "code": "SUS1",
+        "text": "I think that I would like to use this system frequently",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "SUS2",
+        "text": "I found the system unnecessarily complex",
+        "reversed": true,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "SUS3",
+        "text": "I thought the system was easy to use",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "SUS4",
+        "text": "I think that I would need the support of a technical person to be able to use this system",
+        "reversed": true,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "SUS5",
+        "text": "I found the various functions in this system were well integrated",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "SUS6",
+        "text": "I thought there was too much inconsistency in this system",
+        "reversed": true,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "SUS7",
+        "text": "I would imagine that most people would learn to use this system very quickly",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "SUS8",
+        "text": "I found the system very cumbersome to use",
+        "reversed": true,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "SUS9",
+        "text": "I felt very confident using the system",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "SUS10",
+        "text": "I needed to learn a lot of things before I could get going with this system",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 4, "label": "Strongly agree"}
+        ]
+      }
+    ],
+    "factors": {
+      "There are no factors, just a total score.": {
+        "items": [
+          "SUS1"
+        ],
+        "score_equation": "0"
+      }
+    },
+    "total_score_equation": "((SUS1 + SUS3 + SUS5 + SUS7 + SUS9) + (4-SUS2) + (4-SUS4) + (4-SUS6) + (4-SUS8) + (4-SUS10)) * 2.5"
+  }
+]

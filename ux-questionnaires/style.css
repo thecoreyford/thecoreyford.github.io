@@ -1,0 +1,200 @@
+/* Global Font and Page Setup */
+body {
+    font-family: "Helvetica Neue LT Pro", Arial, sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff; /* White background */
+    color: #000000; /* Black text */
+}
+
+/* Questionnaire Container */
+.questionnaire {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #CBCBCB; /* 20% black */
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.questionnaire:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Instructions Styling */
+.instructions {
+    font-size: 1em;
+    font-weight: bold;
+    background-color: #f4f4f9;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Statement Styling */
+.statement {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Likert Table Layout */
+.likert-scale-table {
+    width: 100%;
+    margin-bottom: 15px;
+    border-collapse: separate;
+    border-spacing: 10px;
+    table-layout: fixed;
+}
+
+.likert-scale-table td {
+    text-align: center;
+    padding: 5px;
+}
+
+.likert-scale-table tr {
+    vertical-align: middle;
+}
+
+.likert-scale-table .labels-row,
+.likert-scale-table .points-row {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 10px;
+}
+
+.likert-scale-table .scale-label {
+    text-align: center;
+    font-size: 0.9em;
+    color: #000000; 
+}
+
+/* Inputs */
+input[type="radio"] {
+    margin: 0 auto;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Hidden Questionnaire Content */
+.questionnaire-content {
+    display: none;
+    margin-top: 20px;
+}
+
+.questionnaire.active {
+    background-color: #f4f4f9;
+}
+
+/* Questionnaire Container */
+#questionnaires-container {
+    margin-top: 30px;
+}
+
+/* Settings Container */
+#settings-container {
+    width: 100%;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+/* Settings Toggle Button */
+#toggle-settings-bar {
+    display: block;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    width: 70px;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+#toggle-settings-bar:hover {
+    background-color: #222222;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Settings Content Dropdown */
+#settings-content {
+    display: none;
+    opacity: 0;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #B2B2B2; /* 30% black */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-10px);
+}
+
+.settings-toggle:checked + #settings-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 10px;
+}
+
+/* Input Fields */
+#inputs input {
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #CBCBCB;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#inputs input:focus {
+    border-color: #000000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+/* Hide Checkbox Toggle Input */
+.settings-toggle {
+    display: none;
+}
+
+/* Label spacing */
+#checkboxes label {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+#checkboxes input[type="checkbox"] {
+    margin-bottom: 10px;
+}
+
+/* Universal Button Style */
+button, #toggle-settings-bar {
+    border-radius: 8px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #222222;
+}
+
+/* Focus Styling */
+button:focus, #toggle-settings-bar:focus {
+    outline: 3px solid #000000;
+}
+
+/* Questionnaire Selector Placement */
+#questionnaire-selector {
+    margin-top: 20px;
+}
