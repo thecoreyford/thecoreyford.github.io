@@ -1360,5 +1360,307 @@
       }
     },
     "total_score_equation": "((SUS1 + SUS3 + SUS5 + SUS7 + SUS9) + (4-SUS2) + (4-SUS4) + (4-SUS6) + (4-SUS8) + (4-SUS10)) * 2.5"
+  },
+  {
+    "title": "VisAWI",
+    "url": "https://doi.org/10.1016/j.ijhcs.2010.05.006",
+    "instructions": "Please judge the present website according to the following statements on a scale ranging from 1 (strongly disagree) to 7 (strongly agree), thank you very much!",
+    "likert_scale_points": 7,
+    "lowest_value": 1,
+    "statements": [
+      {
+        "code": "Simplicity1",
+        "text": "The layout appears too dense.",
+        "reversed": true,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Simplicity2",
+        "text": "The layout is easy to grasp.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Simplicity3",
+        "text": "The layout appears well structured.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Simplicity4",
+        "text": "The site appears patchy.",
+        "reversed": true,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Simplicity5",
+        "text": "Everything goes together on this site.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Diversity1",
+        "text": "The design is uninteresting.",
+        "reversed": true,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Diversity2",
+        "text": "The layout is inventive.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Diversity3",
+        "text": "The design appears uninspired.",
+        "reversed": true,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Diversity4",
+        "text": "The design appears dynamic.",
+        "reversed": true,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Diversity5",
+        "text": "The layout is pleasantly varied.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Colorfulness1",
+        "text": "The color composition is attractive.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Colorfulness2",
+        "text": "The choice of colors is botched.",
+        "reversed": true,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Colorfulness3",
+        "text": "The colors do not match.",
+        "reversed": true,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Colorfulness4",
+        "text": "The colors are appealing.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Craftsmanship1",
+        "text": "The layout appears professionally designed.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Craftsmanship2",
+        "text": "The layout is not up-to-date.",
+        "reversed": true,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Craftsmanship3",
+        "text": "The site is designed with care.",
+        "reversed": false,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      },
+      {
+        "code": "Craftsmanship4",
+        "text": "The design of the site lacks a concept.",
+        "reversed": true,
+        "scale_labels": [
+          {"index": 0, "label": "Strongly disagree"},
+          {"index": 1, "label": "Disagree"},
+          {"index": 2, "label": "Somewhat disagree"},
+          {"index": 3, "label": "Neither agree nor disagree"},
+          {"index": 4, "label": "Somewhat agree"},
+          {"index": 5, "label": "Agree"},
+          {"index": 6, "label": "Strongly agree"}
+        ]
+      }
+    ],
+    "factors": {
+      "Simplicity": {
+        "items": [
+          "Simplicity1",
+          "Simplicity2",
+          "Simplicity3",
+          "Simplicity4",
+          "Simplicity5"
+        ],
+        "score_equation": "((8-Simplicity1) + Simplicity2 + Simplicity3 + (8-Simplicity4) + Simplicity5) / 5"
+      },
+      "Diversity": {
+        "items": [
+          "Diversity1",
+          "Diversity2",
+          "Diversity3",
+          "Diversity4",
+          "Diversity5"
+        ],
+        "score_equation": "((8-Diversity1) + Diversity2 + (8-Diversity3) + Diversity4 + Diversity5) / 5"
+      },
+      "Colorfulness": {
+        "items": [
+          "Colorfulness1",
+          "Colorfulness2",
+          "Colorfulness3",
+          "Colorfulness4"
+        ],
+        "score_equation": "(Colorfulness1 + (8-Colorfulness2) + (8-Colorfulness3) + Colorfulness4) / 4"
+      },
+      "Craftsmanship": {
+        "items": [
+          "Craftsmanship1",
+          "Craftsmanship2",
+          "Craftsmanship3",
+          "Craftsmanship4"
+        ],
+        "score_equation": "(Craftsmanship1 + (8-Craftsmanship2) + Craftsmanship3 + (8-Craftsmanship4)) / 4"
+      }
+    },
+    "total_score_equation": "(((8-Simplicity1) + Simplicity2 + Simplicity3 + (8-Simplicity4) + Simplicity5) + ((8-Diversity1) + Diversity2 + (8-Diversity3) + Diversity4 + Diversity5) + (Colorfulness1 + (8-Colorfulness2) + (8-Colorfulness3) + Colorfulness4) + (Craftsmanship1 + (8-Craftsmanship2) + Craftsmanship3 + (8-Craftsmanship4))) / 18"
   }
 ]
