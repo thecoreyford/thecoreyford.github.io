@@ -39,7 +39,7 @@
       padding: 10px;
       background: #f9f9f9;
       position: relative;
-      min-height: 800px;
+      min-height: 30000px;
       overflow: hidden;
     }
 
@@ -147,8 +147,10 @@
       notes.forEach(note => {
         const div = document.createElement("div");
         div.className = "note";
+        div.dataset.noteId = note.id;  // Store id for lookup
         div.innerHTML = `
-          <button onclick="jumpTo(${note.start})">Go to ${note.start.toFixed(1)}s</button><br>
+          <button onclick="jumpTo(${note.start})">Go to ${note.start.toFixed(1)}s</button>
+          <button style="float:right;color:red;" onclick="deleteNote(${note.id})">Delete</button><br>
           <label>Video: <strong>${note.fileName || 'N/A'}</strong></label><br>
           <label>Start: <input type="number" value="${note.start}" step="0.1" onchange="updateNote(${note.id}, 'start', this.value)"></label>
           <button onclick="setStartToCurrent(${note.id})">Set Start to Current Time</button><br>
@@ -162,12 +164,19 @@
       });
     }
 
+    function deleteNote(id) {
+      notes = notes.filter(note => note.id !== id);
+      renderNotes();
+      generateStickyNotes();
+    }
+
+
     function updateNote(id, key, value) {
       const note = notes.find(n => n.id === id);
       if (!note) return;
       note[key] = key === 'text' ? value : parseFloat(value);
       if (key === 'x' || key === 'y') {
-        renderNotes(); // Update display (not editable but just in case)
+        renderNotes(); // Just in case, though x,y are readonly
       }
     }
 
@@ -218,11 +227,19 @@
       notes.forEach((note, index) => {
         const div = document.createElement("div");
         div.className = "sticky-note";
+        div.dataset.noteId = note.id;  // for right-click reference
         // Use stored position or default to some grid layout:
         div.style.left = (note.x != null ? note.x : (index * 160) % (stickyArea.clientWidth - 160)) + "px";
         div.style.top = (note.y != null ? note.y : Math.floor(index / 3) * 120) + "px";
-        div.innerHTML = `<strong>${note.fileName}</strong><br>${note.text}`;
+        div.innerHTML = `<strong>${note.fileName}</strong><br>Start: ${note.start.toFixed(1)}<br>${note.text}`;
         makeDraggable(div, note);
+
+        // Right-click handler: scroll to right panel note
+        div.addEventListener("contextmenu", (e) => {
+          e.preventDefault();
+          scrollToNoteInPanel(note.id);
+        });
+
         stickyArea.appendChild(div);
       });
     }
@@ -270,43 +287,33 @@
 
     // Update the read-only X,Y inputs in the notes panel for the note with this id
     function updateNotePositionsDisplay(id, x, y) {
-      // Find the note div for this note id:
-      // We can find by looping notesContainer children and checking buttons with jumpTo()
       for (const noteDiv of notesContainer.children) {
-        // The button that triggers jumpTo contains the time in its onclick attr: "jumpTo(time)"
-        const btn = noteDiv.querySelector("button");
-        if (!btn) continue;
-
-        // Extract time from button's onclick attribute:
-        const onclickAttr = btn.getAttribute("onclick") || "";
-        const match = onclickAttr.match(/jumpTo\(([\d.]+)\)/);
-        if (!match) continue;
-
-        const time = parseFloat(match[1]);
-        const noteObj = notes.find(n => n.start === time && n.id === id);
-        // Since start time might be non-unique, check note.id as well:
-        if (!noteObj) {
-          // Let's fallback by matching note id in div dataset:
-          if (noteDiv.dataset.noteId && parseInt(noteDiv.dataset.noteId) === id) {
-            // good
-          } else {
-            continue;
+        if (parseInt(noteDiv.dataset.noteId) === id) {
+          const inputs = noteDiv.querySelectorAll('input[readonly]');
+          if (inputs.length >= 2) {
+            inputs[0].value = Math.round(x);
+            inputs[1].value = Math.round(y);
           }
+          break;
         }
-
-        // Store note id in div dataset for easier matching later
-        noteDiv.dataset.noteId = id;
-
-        // Update X and Y readonly inputs:
-        const inputs = noteDiv.querySelectorAll('input[readonly]');
-        if (inputs.length >= 2) {
-          inputs[0].value = Math.round(x);
-          inputs[1].value = Math.round(y);
-        }
-        break;
       }
     }
 
+    // Scrolls the right-hand notes panel to the note with the given id
+    function scrollToNoteInPanel(id) {
+      for (const noteDiv of notesContainer.children) {
+        if (parseInt(noteDiv.dataset.noteId) === id) {
+          noteDiv.scrollIntoView({ behavior: "smooth", block: "center" });
+          // Highlight the note briefly
+          const originalBg = noteDiv.style.backgroundColor;
+          noteDiv.style.backgroundColor = "#ffff99";
+          setTimeout(() => {
+            noteDiv.style.backgroundColor = originalBg;
+          }, 10000);
+          break;
+        }
+      }
+    }
   </script>
 </body>
 </html>
