@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video Annotator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+    }
+
+    .container {
+      display: flex;
+      flex: 1;
+      height: 100vh;
+    }
+
+    .left-section {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      max-height: 100vh;
+    }
+
+    .video-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #stickyArea {
+      border-top: 1px solid #ccc;
+      margin-top: 10px;
+      padding: 10px;
+      background: #f9f9f9;
+      position: relative;
+      min-height: 800px;
+      overflow: hidden;
+    }
+
+    .sticky-note {
+      position: absolute;
+      background: #fff59d;
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 150px;
+      cursor: grab;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      user-select: none;
+    }
+
+    .notes-section {
+      width: 40%;
+      border-left: 1px solid #ccc;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+
+    .note {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    textarea {
+      width: 100%;
+      height: 60px;
+    }
+
+    input[readonly] {
+      background: #eee;
+      border: 1px solid #ccc;
+      width: 80px;
+      margin-left: 5px;
+    }
+
+    button {
+      margin-top: 5px;
+    }
+
+    .controls {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-section">
+      <div class="video-wrapper">
+        <input type="file" accept="video/*" id="videoLoader" />
+        <video id="video" controls width="100%"></video>
+        <button onclick="generateStickyNotes()">Generate Sticky Notes</button>
+      </div>
+      <div id="stickyArea"></div>
+    </div>
+
+    <div class="notes-section">
+      <div class="controls">
+        <button onclick="addNote()">Add Note at Current Time</button>
+        <button onclick="exportNotes()">Export Notes (JSON)</button>
+        <input type="file" accept="application/json" onchange="importNotes(event)" />
+      </div>
+      <div id="notes"></div>
+    </div>
+  </div>
+
+  <script>
+    const video = document.getElementById("video");
+    const videoLoader = document.getElementById("videoLoader");
+    const notesContainer = document.getElementById("notes");
+    const stickyArea = document.getElementById("stickyArea");
+    let notes = [];
+    let videoFileName = "";
+
+    videoLoader.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      const url = URL.createObjectURL(file);
+      video.src = url;
+      videoFileName = file.name;
+    });
+
+    function addNote() {
+      const currentTime = video.currentTime;
+      const note = {
+        id: Date.now(),
+        start: currentTime,
+        end: currentTime + 5,
+        text: "",
+        fileName: videoFileName || "",
+        x: 10,
+        y: 10
+      };
+      notes.push(note);
+      renderNotes();
+    }
+
+    function renderNotes() {
+      notesContainer.innerHTML = "";
+      notes.forEach(note => {
+        const div = document.createElement("div");
+        div.className = "note";
+        div.innerHTML = `
+          <button onclick="jumpTo(${note.start})">Go to ${note.start.toFixed(1)}s</button><br>
+          <label>Video: <strong>${note.fileName || 'N/A'}</strong></label><br>
+          <label>Start: <input type="number" value="${note.start}" step="0.1" onchange="updateNote(${note.id}, 'start', this.value)"></label>
+          <button onclick="setStartToCurrent(${note.id})">Set Start to Current Time</button><br>
+          <label>End: <input type="number" value="${note.end}" step="0.1" onchange="updateNote(${note.id}, 'end', this.value)"></label>
+          <button onclick="setEndToCurrent(${note.id})">Set End to Current Time</button><br>
+          <textarea onchange="updateNote(${note.id}, 'text', this.value)">${note.text}</textarea><br>
+          <label>X: <input type="number" value="${note.x}" readonly></label>
+          <label>Y: <input type="number" value="${note.y}" readonly></label>
+        `;
+        notesContainer.appendChild(div);
+      });
+    }
+
+    function updateNote(id, key, value) {
+      const note = notes.find(n => n.id === id);
+      if (!note) return;
+      note[key] = key === 'text' ? value : parseFloat(value);
+      if (key === 'x' || key === 'y') {
+        renderNotes(); // Update display (not editable but just in case)
+      }
+    }
+
+    function exportNotes() {
+      const exportData = {
+        notes
+      };
+      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "notes.json";
+      a.click();
+    }
+
+    function importNotes(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const data = JSON.parse(e.target.result);
+        notes = data.notes || [];
+        renderNotes();
+      };
+      reader.readAsText(file);
+    }
+
+    function jumpTo(time) {
+      video.currentTime = time;
+      video.play();
+    }
+
+    function setStartToCurrent(id) {
+      const note = notes.find(n => n.id === id);
+      if (!note) return;
+      note.start = video.currentTime;
+      renderNotes();
+    }
+
+    function setEndToCurrent(id) {
+      const note = notes.find(n => n.id === id);
+      if (!note) return;
+      note.end = video.currentTime;
+      renderNotes();
+    }
+
+    function generateStickyNotes() {
+      stickyArea.innerHTML = "";
+      notes.forEach((note, index) => {
+        const div = document.createElement("div");
+        div.className = "sticky-note";
+        // Use stored position or default to some grid layout:
+        div.style.left = (note.x != null ? note.x : (index * 160) % (stickyArea.clientWidth - 160)) + "px";
+        div.style.top = (note.y != null ? note.y : Math.floor(index / 3) * 120) + "px";
+        div.innerHTML = `<strong>${note.fileName}</strong><br>${note.text}`;
+        makeDraggable(div, note);
+        stickyArea.appendChild(div);
+      });
+    }
+
+    function makeDraggable(el, note) {
+      let offsetX, offsetY, isDragging = false;
+
+      el.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        offsetX = e.clientX - el.offsetLeft;
+        offsetY = e.clientY - el.offsetTop;
+        el.style.cursor = "grabbing";
+        e.preventDefault();  // Prevent text selection
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+
+        const x = e.clientX - offsetX;
+        const y = e.clientY - offsetY;
+
+        const maxX = stickyArea.clientWidth - el.offsetWidth;
+        const maxY = stickyArea.clientHeight - el.offsetHeight;
+
+        const constrainedX = Math.max(0, Math.min(x, maxX));
+        const constrainedY = Math.max(0, Math.min(y, maxY));
+
+        el.style.left = constrainedX + "px";
+        el.style.top = constrainedY + "px";
+
+        // Update note's position live
+        note.x = constrainedX;
+        note.y = constrainedY;
+
+        // Update right panel display (live)
+        updateNotePositionsDisplay(note.id, constrainedX, constrainedY);
+      });
+
+      document.addEventListener("mouseup", () => {
+        if (!isDragging) return;
+        isDragging = false;
+        el.style.cursor = "grab";
+      });
+    }
+
+    // Update the read-only X,Y inputs in the notes panel for the note with this id
+    function updateNotePositionsDisplay(id, x, y) {
+      // Find the note div for this note id:
+      // We can find by looping notesContainer children and checking buttons with jumpTo()
+      for (const noteDiv of notesContainer.children) {
+        // The button that triggers jumpTo contains the time in its onclick attr: "jumpTo(time)"
+        const btn = noteDiv.querySelector("button");
+        if (!btn) continue;
+
+        // Extract time from button's onclick attribute:
+        const onclickAttr = btn.getAttribute("onclick") || "";
+        const match = onclickAttr.match(/jumpTo\(([\d.]+)\)/);
+        if (!match) continue;
+
+        const time = parseFloat(match[1]);
+        const noteObj = notes.find(n => n.start === time && n.id === id);
+        // Since start time might be non-unique, check note.id as well:
+        if (!noteObj) {
+          // Let's fallback by matching note id in div dataset:
+          if (noteDiv.dataset.noteId && parseInt(noteDiv.dataset.noteId) === id) {
+            // good
+          } else {
+            continue;
+          }
+        }
+
+        // Store note id in div dataset for easier matching later
+        noteDiv.dataset.noteId = id;
+
+        // Update X and Y readonly inputs:
+        const inputs = noteDiv.querySelectorAll('input[readonly]');
+        if (inputs.length >= 2) {
+          inputs[0].value = Math.round(x);
+          inputs[1].value = Math.round(y);
+        }
+        break;
+      }
+    }
+
+  </script>
+</body>
+</html>
