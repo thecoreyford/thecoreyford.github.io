@@ -47,7 +47,12 @@ function generateQuestionnaires(data, checkedStates = {}) {
         questionnaireDiv.appendChild(instructions);
         questionnaireDiv.appendChild(document.createElement('br'));
 
-        const shuffledStatements = [...questionnaire.statements].sort(() => Math.random() - 0.5);
+        // For the CSI comparisions we make sure these go at the end...
+        const specialText = "When doing this task, it's most important that I'm able to...";
+        const regularStatements = questionnaire.statements.filter(s => s.text !== specialText);
+        const specialStatements = questionnaire.statements.filter(s => s.text === specialText).sort(() => Math.random() - 0.5);
+        // for each statment.... 
+        const shuffledStatements = [...regularStatements].sort(() => Math.random() - 0.5).concat(specialStatements);        
         shuffledStatements.forEach(statement => {
             const statementDiv = document.createElement('div');
             statementDiv.classList.add('statement');
@@ -63,7 +68,7 @@ function generateQuestionnaires(data, checkedStates = {}) {
             const pointsRow = document.createElement('tr');
 
             // Generate scale labels dynamically for each statement
-            const labelsGrid = Array(questionnaire.likert_scale_points).fill(null);
+            const labelsGrid = Array(statement.likert_scale_points).fill(null);
             statement.scale_labels.forEach(label => {
                 labelsGrid[label.index] = label.label;
             });
@@ -77,7 +82,7 @@ function generateQuestionnaires(data, checkedStates = {}) {
             });
 
             // Add radio buttons to the pointsRow
-            for (let i = 0; i < questionnaire.likert_scale_points; i++) {
+            for (let i = 0; i < statement.likert_scale_points; i++) {
                 const pointCell = document.createElement('td');
                 const radioButton = document.createElement('input');
                 radioButton.type = 'radio';
