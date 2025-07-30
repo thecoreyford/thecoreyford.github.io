@@ -2587,7 +2587,7 @@
   {
     "title": "CSI (Weights Only)",
     "url": "https://dl.acm.org/doi/10.1145/2617588",
-    "instructions": "Please rate your agreement with the following statements.",
+    "instructions": "When doing this task, it's most important that I'm able to...",
     "lowest_value": 0,
     "statements": [
       {
