@@ -79,6 +79,35 @@ function collectResponses() {
               return;
           }
 
+          // Handle demographics
+          if (questionnaire.title.toLowerCase() === 'demographics') {
+            const questionnaireResponses = {};
+
+            ['gender-identity', 'age', 'country', 'course-or-job'].forEach(field => {
+                const textInput = document.getElementById(field);
+                const optOut = document.getElementById(`${field}-opt-out`);
+                
+                if (optOut?.checked) {
+                    questionnaireResponses[field] = 'Prefer not to answer';
+                } else if (textInput?.value.trim()) {
+                    questionnaireResponses[field] = textInput.value.trim();
+                } else {
+                    questionnaireResponses[field] = 'Not provided';
+                }
+            });
+
+            activeQuestionnaires.push({
+                title: questionnaire.title,
+                responses: questionnaireResponses,
+                factorScores: {},
+                totalScore: 0
+            });
+
+            return; // Skip score calculation
+        }
+
+          // continue...
+          
           const questionnaireDiv = document.getElementById(`questionnaire-${index}-content`);
           const questionnaireResponses = {};
           let allAnswered = true;
@@ -135,22 +164,35 @@ document.getElementById('submit-button').addEventListener('click', function() {
           activeQuestionnaires
       } = collectResponses();
 
+      
       // Compose the scores content
-      const date = new Date().toLocaleDateString();
-      const body = activeQuestionnaires.map(q => {
-          const factorScoresText = Object.entries(q.factorScores).map(
-              ([factor, score]) => `  - ${factor}: ${score.toFixed(2)}`
-          ).join('\n');
+const date = new Date().toLocaleDateString();
+const body = activeQuestionnaires.map(q => {
+    // Special case for demographics
+    if (q.title.toLowerCase() === 'demographics') {
+        const demographicsText = Object.entries(q.responses).map(
+            ([key, value]) => `  - ${key.replace(/-/g, ' ')}: ${value}`
+        ).join('\n');
 
-          return `
+        return `
+Questionnaire: ${q.title}
+Responses:
+${demographicsText}`.trim();
+    }
+
+    // Default for standard questionnaires
+    const factorScoresText = Object.entries(q.factorScores).map(
+        ([factor, score]) => `  - ${factor}: ${score.toFixed(2)}`
+    ).join('\n');
+
+    return `
 Questionnaire: ${q.title}
 Total Score: ${q.totalScore.toFixed(2)}
 Factor Scores:
-${factorScoresText}`
-.trim();})
-.join('\n\n');
+${factorScoresText}`.trim();
+}).join('\n\n');
 
-      const scoreText = `
+const scoreText = `
 Questionnaire Results: ${date}
 ==================================
 
@@ -161,9 +203,8 @@ Condition: ${condition}
 
 ${body}`.trim();
 
-      // Display the result in the textarea
-      document.getElementById('score-preview').value = scoreText;
-
+// Display the result in the textarea
+document.getElementById('score-preview').value = scoreText;
   } catch (error) {
       console.warn("Submission blocked:", error.message);
   }

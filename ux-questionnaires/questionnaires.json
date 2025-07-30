@@ -1,5 +1,10 @@
 [
   {
+  "title": "Demographics",
+  "url": "http://dx.doi.org/10.24839/2164-8204.jn",  
+  "instructions": "Please answer the following demographic questions."
+  },
+  {
     "title": "RiCEv2",
     "url": "https://ricequestionnaire.github.io/",
     "instructions": "Considering your recent experience of [SYSTEM], please indicate the extent to which you agree with the following statements.",
@@ -1928,7 +1933,7 @@
           "ENJ1",
           "ENJ2"
         ],
-        "score_equation": "COMP2 + COMP6 + (+!COMP10) + (+!COMP11) + (+!COMP12)"
+        "score_equation": "(RWE1 + RWE2 + EXPL1 + EXPL2 + COLAB1 + COLAB2 + IMM1 + IMM2 + EXP1 + EXP2 + ENJ1 + ENJ2) / 12 "
       },
       "Results Worth Effort Weighted": {
         "items": [
@@ -2212,40 +2217,82 @@
         ],
         "score_equation": "(RWE1 + RWE2) / 2"
       },
-      "Exploration": {
+      "Exploration Average": {
         "items": [
           "EXPL1",
           "EXPL2"
         ],
         "score_equation": "(EXPL1 + EXPL2) / 2"
       },
-      "Collaboration": {
+      "Collaboration Average": {
         "items": [
           "COLAB1",
           "COLAB2"
         ],
         "score_equation": "(COLAB1 + COLAB2) / 2"
       },
-      "Immersion": {
+      "Immersion Average": {
         "items": [
           "IMM1",
           "IMM2"
         ],
         "score_equation": "(IMM1 + IMM2) / 2"
       },
-      "Expressiveness": {
+      "Expressiveness Average": {
         "items": [
           "EXP1",
           "EXP2"
         ],
         "score_equation": "(EXP1 + EXP2) / 2"
       },
-      "Enjoyment": {
+      "Enjoyment Average": {
         "items": [
           "ENJ1",
           "ENJ2"
         ],
         "score_equation": "(ENJ1 + ENJ2) / 2"
+      },
+      "Results Worth Effort Sum Average": {
+        "items": [
+          "RWE1",
+          "RWE2"
+        ],
+        "score_equation": "(RWE1 + RWE2)"
+      },
+      "Exploration Sum": {
+        "items": [
+          "EXPL1",
+          "EXPL2"
+        ],
+        "score_equation": "(EXPL1 + EXPL2)"
+      },
+      "Collaboration Sum": {
+        "items": [
+          "COLAB1",
+          "COLAB2"
+        ],
+        "score_equation": "(COLAB1 + COLAB2)"
+      },
+      "Immersion Sum": {
+        "items": [
+          "IMM1",
+          "IMM2"
+        ],
+        "score_equation": "(IMM1 + IMM2)"
+      },
+      "Expressiveness Sum": {
+        "items": [
+          "EXP1",
+          "EXP2"
+        ],
+        "score_equation": "(EXP1 + EXP2)"
+      },
+      "Enjoyment Sum": {
+        "items": [
+          "ENJ1",
+          "ENJ2"
+        ],
+        "score_equation": "(ENJ1 + ENJ2)"
       }
     },
     "total_score_equation": "(RWE1 + RWE2 + EXPL1 + EXPL2 + COLAB1 + COLAB2 + IMM1 + IMM2 + EXP1 + EXP2 + ENJ1 + ENJ2) / 12"
@@ -2536,6 +2583,317 @@
       }
     },
     "total_score_equation": "(Insight1 + Insight2 + Insight3 + Exploration1 + Exploration2 + Exploration3 + Comparision1 + Comparision2 + Comparision3) / 9"
+  },
+  {
+    "title": "CSI (Weights Only)",
+    "url": "https://dl.acm.org/doi/10.1145/2617588",
+    "instructions": "Please rate your agreement with the following statements.",
+    "lowest_value": 0,
+    "statements": [
+      {
+        "code": "COMP1",
+        "text": "When doing this task, it's most important that I'm able to...",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Be creative and expressive"
+          },
+          {
+            "index": 1,
+            "label": "Become immersed in the activity"
+          }
+        ],
+        "likert_scale_points": 2
+      },
+      {
+        "code": "COMP2",
+        "text": "When doing this task, it's most important that I'm able to...",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Be creative and expressive"
+          },
+          {
+            "index": 1,
+            "label": "Enjoy using the system or tool"
+          }
+        ],
+        "likert_scale_points": 2
+      },
+      {
+        "code": "COMP3",
+        "text": "When doing this task, it's most important that I'm able to...",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Be creative and expressive"
+          },
+          {
+            "index": 1,
+            "label": "Explore many different ideas, outcomes, or possibilities"
+          }
+        ],
+        "likert_scale_points": 2
+      },
+      {
+        "code": "COMP4",
+        "text": "When doing this task, it's most important that I'm able to...",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Be creative and expressive"
+          },
+          {
+            "index": 1,
+            "label": "Produce results that are worth the effort I put in"
+          }
+        ],
+        "likert_scale_points": 2
+      },
+      {
+        "code": "COMP5",
+        "text": "When doing this task, it's most important that I'm able to...",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Be creative and expressive"
+          },
+          {
+            "index": 1,
+            "label": "Work with other people"
+          }
+        ],
+        "likert_scale_points": 2
+      },
+      {
+        "code": "COMP6",
+        "text": "When doing this task, it's most important that I'm able to...",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Become immersed in the activity"
+          },
+          {
+            "index": 1,
+            "label": "Enjoy using the system or tool"
+          }
+        ],
+        "likert_scale_points": 2
+      },
+      {
+        "code": "COMP7",
+        "text": "When doing this task, it's most important that I'm able to...",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Become immersed in the activity"
+          },
+          {
+            "index": 1,
+            "label": "Explore many different ideas, outcomes, or possibilities"
+          }
+        ],
+        "likert_scale_points": 2
+      },
+      {
+        "code": "COMP8",
+        "text": "When doing this task, it's most important that I'm able to...",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Become immersed in the activity"
+          },
+          {
+            "index": 1,
+            "label": "Produce results that are worth the effort I put in"
+          }
+        ],
+        "likert_scale_points": 2
+      },
+      {
+        "code": "COMP9",
+        "text": "When doing this task, it's most important that I'm able to...",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Become immersed in the activity"
+          },
+          {
+            "index": 1,
+            "label": "Work with other people"
+          }
+        ],
+        "likert_scale_points": 2
+      },
+      {
+        "code": "COMP10",
+        "text": "When doing this task, it's most important that I'm able to...",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Enjoy using the system or tool"
+          },
+          {
+            "index": 1,
+            "label": "Explore many different ideas, outcomes, or possibilities"
+          }
+        ],
+        "likert_scale_points": 2
+      },
+      {
+        "code": "COMP11",
+        "text": "When doing this task, it's most important that I'm able to...",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Enjoy using the system or tool"
+          },
+          {
+            "index": 1,
+            "label": "Produce results that are worth the effort I put in"
+          }
+        ],
+        "likert_scale_points": 2
+      },
+      {
+        "code": "COMP12",
+        "text": "When doing this task, it's most important that I'm able to...",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Enjoy using the system or tool"
+          },
+          {
+            "index": 1,
+            "label": "Work with other people"
+          }
+        ],
+        "likert_scale_points": 2
+      },
+      {
+        "code": "COMP13",
+        "text": "When doing this task, it's most important that I'm able to...",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Explore many different ideas, outcomes, or possibilities"
+          },
+          {
+            "index": 1,
+            "label": "Produce results that are worth the effort I put in"
+          }
+        ],
+        "likert_scale_points": 2
+      },
+      {
+        "code": "COMP14",
+        "text": "When doing this task, it's most important that I'm able to...",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Explore many different ideas, outcomes, or possibilities"
+          },
+          {
+            "index": 1,
+            "label": "Work with other people"
+          }
+        ],
+        "likert_scale_points": 2
+      },
+      {
+        "code": "COMP15",
+        "text": "When doing this task, it's most important that I'm able to...",
+        "reversed": false,
+        "scale_labels": [
+          {
+            "index": 0,
+            "label": "Produce results that are worth the effort I put in"
+          },
+          {
+            "index": 1,
+            "label": "Work with other people"
+          }
+        ],
+        "likert_scale_points": 2
+      }      
+    ],
+    "factors": {
+      "Results Worth Effort Count": {
+        "items": [
+          "COMP4",
+          "COMP8",
+          "COMP11",
+          "COMP13",
+          "COMP15"
+        ],
+        "score_equation": "COMP4 + COMP8 + COMP11 + COMP13 + (+!COMP15)"
+      },
+      "Exploration Count": {
+        "items": [
+          "COMP3",
+          "COMP7",
+          "COMP10",
+          "COMP13",
+          "COMP14"
+        ],
+        "score_equation": "(+!COMP14) + (+!COMP13) + COMP10 + COMP7 + COMP3"
+      },
+      "Collaboration Count": {
+        "items": [
+          "COMP5",
+          "COMP9",
+          "COMP12",
+          "COMP14",
+          "COMP15"
+        ],
+        "score_equation": "COMP5 + COMP9 + COMP12 + COMP14 + COMP15"
+      },
+      "Immersion Count": {
+        "items": [
+          "COMP1",
+          "COMP6",
+          "COMP7",
+          "COMP8",
+          "COMP9"
+        ],
+        "score_equation": "COMP1 + (+!COMP6) + (+!COMP7) + (+!COMP8) + (+!COMP9)"
+      },
+      "Expressiveness Count": {
+        "items": [
+          "COMP1",
+          "COMP2",
+          "COMP3",
+          "COMP4",
+          "COMP5"
+        ],
+        "score_equation": "(+!COMP1) + (+!COMP2) + (+!COMP3) + (+!COMP4) + (+!COMP5)"
+      },
+      "Enjoyment Count": {
+        "items": [
+          "COMP2",
+          "COMP6",
+          "COMP10",
+          "COMP11",
+          "COMP12"
+        ],
+        "score_equation": "COMP2 + COMP6 + (+!COMP10) + (+!COMP11) + (+!COMP12)"
+      }
+    },
+    "total_score_equation": "15"
   },
   {
     "title": "SUS",
