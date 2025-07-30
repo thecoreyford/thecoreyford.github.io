@@ -1816,19 +1816,19 @@
       }      
     ],
     "factors": {
-      "Results Worth Effort": {
+      "Results Worth Effort Average": {
         "items": [
           "RWE1",
           "RWE2"
         ],
         "score_equation": "(RWE1 + RWE2) / 2"
       },
-      "Exploration": {
+      "Exploration Average": {
         "items": [
           "EXPL1",
           "EXPL2"
         ],
-        "score_equation": "(EXPL1 + EXPL2) / 2"
+        "score_equation Average": "(EXPL1 + EXPL2) / 2"
       },
       "Collaboration": {
         "items": [
@@ -1837,21 +1837,21 @@
         ],
         "score_equation": "(COLAB1 + COLAB2) / 2"
       },
-      "Immersion": {
+      "Immersion Average": {
         "items": [
           "IMM1",
           "IMM2"
         ],
         "score_equation": "(IMM1 + IMM2) / 2"
       },
-      "Expressiveness": {
+      "Expressiveness Average": {
         "items": [
           "EXP1",
           "EXP2"
         ],
         "score_equation": "(EXP1 + EXP2) / 2"
       },
-      "Enjoyment": {
+      "Enjoyment Average": {
         "items": [
           "ENJ1",
           "ENJ2"
@@ -1935,7 +1935,7 @@
         ],
         "score_equation": "(RWE1 + RWE2 + EXPL1 + EXPL2 + COLAB1 + COLAB2 + IMM1 + IMM2 + EXP1 + EXP2 + ENJ1 + ENJ2) / 12 "
       },
-      "Results Worth Effort Weighted": {
+      "Results Worth Effort Sum Weighted": {
         "items": [
           "RWE1",
           "RWE2",
@@ -1945,9 +1945,9 @@
           "COMP13",
           "COMP15"
         ],
-        "score_equation": "((RWE1 + RWE2)/2) * (COMP4 + COMP8 + COMP11 + COMP13 + (+!COMP15))"
+        "score_equation": "((RWE1 + RWE2)) * (COMP4 + COMP8 + COMP11 + COMP13 + (+!COMP15))"
       },
-      "Exploration Weighted": {
+      "Exploration Sum Weighted": {
         "items": [
           "EXPL1",
           "EXPL2",
@@ -1957,9 +1957,9 @@
           "COMP13",
           "COMP14"
         ],
-        "score_equation": "((EXPL1 + EXPL2)/2) * ((+!COMP14) + (+!COMP13) + COMP10 + COMP7 + COMP3)"
+        "score_equation": "((EXPL1 + EXPL2)) * ((+!COMP14) + (+!COMP13) + COMP10 + COMP7 + COMP3)"
       },
-      "Collaboration Weighted": {
+      "Collaboration Sum Weighted": {
         "items": [
           "COLAB1",
           "COLAB2",
@@ -1969,9 +1969,9 @@
           "COMP14",
           "COMP15"
         ],
-        "score_equation": "((COLAB1 + COLAB2) / 2) * (COMP5 + COMP9 + COMP12 + COMP14 + COMP15)"
+        "score_equation": "((COLAB1 + COLAB2)) * (COMP5 + COMP9 + COMP12 + COMP14 + COMP15)"
       },
-      "Immersion Weighted": {
+      "Immersion Sum Weighted": {
         "items": [
           "IMM1",
           "IMM2",
@@ -1981,9 +1981,9 @@
           "COMP8",
           "COMP9"
         ],
-        "score_equation": "((IMM1 + IMM2)/2) * (COMP1 + (+!COMP6) + (+!COMP7) + (+!COMP8) + (+!COMP9))"
+        "score_equation": "((IMM1 + IMM2)) * (COMP1 + (+!COMP6) + (+!COMP7) + (+!COMP8) + (+!COMP9))"
       },
-      "Expressiveness Weighted": {
+      "Expressiveness Sum Weighted": {
         "items": [
           "EXP1",
           "EXP2",
@@ -1993,9 +1993,9 @@
           "COMP4",
           "COMP5"
         ],
-        "score_equation": "((EXP1 + EXP2) / 2) * ((+!COMP1) + (+!COMP2) + (+!COMP3) + (+!COMP4) + (+!COMP5))"
+        "score_equation": "((EXP1 + EXP2)) * ((+!COMP1) + (+!COMP2) + (+!COMP3) + (+!COMP4) + (+!COMP5))"
       },
-      "Enjoyment Weighted": {
+      "Enjoyment Sum Weighted": {
         "items": [
           "ENJ1",
           "ENJ2",
@@ -2005,7 +2005,7 @@
           "COMP11",
           "COMP12"
         ],
-        "score_equation": "((ENJ1 + ENJ2)/2) * (COMP2 + COMP6 + (+!COMP10) + (+!COMP11) + (+!COMP12))"
+        "score_equation": "((ENJ1 + ENJ2)) * (COMP2 + COMP6 + (+!COMP10) + (+!COMP11) + (+!COMP12))"
       }
     },
     "total_score_equation": "(((ENJ1 + ENJ2) * (COMP2 + COMP6 + (+!COMP10) + (+!COMP11) + (+!COMP12))) + ((EXPL1 + EXPL2) * ((+!COMP14) + (+!COMP13) + COMP10 + COMP7 + COMP3)) + ((IMM1 + IMM2) *  (COMP1 + (+!COMP6) + (+!COMP7) + (+!COMP8) + (+!COMP9)))+ ((COLAB1 + COLAB2) * (COMP5 + COMP9 + COMP12 + COMP14 + COMP15)) + ((EXP1 + EXP2) *  ((+!COMP1) + (+!COMP2) + (+!COMP3) + (+!COMP4) + (+!COMP5))) + ((RWE1 + RWE2) * (COMP4 + COMP8 + COMP11 + COMP13 + (+!COMP15))))/3.0"
@@ -2252,7 +2252,7 @@
         ],
         "score_equation": "(ENJ1 + ENJ2) / 2"
       },
-      "Results Worth Effort Sum Average": {
+      "Results Worth Effort Sum": {
         "items": [
           "RWE1",
           "RWE2"
