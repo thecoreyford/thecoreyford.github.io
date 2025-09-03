@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience Survey</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f5f5f5;
+    }
+
+    .sentence {
+      font-size: 2em;
+      margin: 20px 0;
+    }
+
+    select, input[type="text"] {
+      font-size: 1.2em;
+      padding: 5px 10px;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sentence">
+    How does  
+    <select id="experienceAspect">
+      <option value="happiness">Happiness</option>
+      <option value="stress">Stress</option>
+      <option value="motivation">Motivation</option>
+      <!-- Add more options here -->
+    </select> 
+    occur in 
+    <input type="text" id="textbox1" placeholder="Type here...">
+    ?
+  </div>
+
+  <div class="sentence">
+    What effect does 
+    <input type="text" id="textbox2" placeholder="Type here...">
+    have on 
+    <select id="experienceAspect2">
+      <option value="happiness">Happiness</option>
+      <option value="stress">Stress</option>
+      <option value="motivation">Motivation</option>
+      <!-- Add more options here -->
+    </select> 
+    ?
+  </div>
+
+</body>
+</html>
