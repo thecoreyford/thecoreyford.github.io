@@ -16,10 +16,8 @@
     "igeq.json",
     "pgq.json",
     "spgq.json",
-    // "pgwb-s.json",
     "fmq-sf.json",
     "nasa-tlx-raw.json",
-    // "nasa-tlx-weighted" TODO: Fix weights
     "PCTS.json"
   ]
 }
