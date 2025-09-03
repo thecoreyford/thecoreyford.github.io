@@ -1,0 +1,287 @@
+{
+  "title": "TSRI",
+  "url": "https://doi.org/10.1145/3411764.3445673",
+  "instructions": "Please rate how strongly you agree or disagree with each of these statements.",
+  "lowest_value": 1,
+  "statements": [
+    {
+      "code": "Insight1",
+      "text": "Using the system has led to a wake-up call to make changes in my life.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 2,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 3,
+          "label": "Somewhat agree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "Insight2",
+      "text": "As a result of using the system, I have changed how I approach things.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 2,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 3,
+          "label": "Somewhat agree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "Insight3",
+      "text": "Using the system gives me ideas on how to overcome challenges.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 2,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 3,
+          "label": "Somewhat agree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "Exploration1",
+      "text": "I enjoy exploring my data with the system.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 2,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 3,
+          "label": "Somewhat agree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "Exploration2",
+      "text": "The system makes it easy to get an overview of my personal data.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 2,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 3,
+          "label": "Somewhat agree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "Exploration3",
+      "text": "The system makes it easy to review my long-term personal data.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 2,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 3,
+          "label": "Somewhat agree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "Comparision1",
+      "text": "I reflect on my data in the system with others.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 2,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 3,
+          "label": "Somewhat agree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "Comparison2",
+      "text": "The system helps me to discuss my data with others.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 2,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 3,
+          "label": "Somewhat agree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "Comparision3",
+      "text": "The system makes me think about how my personal data relates with that of others.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 2,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 3,
+          "label": "Somewhat agree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly agree"
+        }
+      ],
+      "likert_scale_points": 5
+    }
+  ],
+  "factors": {
+    "Insight": {
+      "items": [
+        "Insight1",
+        "Insight2",
+        "Insight3"
+      ],
+      "score_equation": "(Insight1 + Insight2 + Insight3) / 3"
+    },
+    "Exploration": {
+      "items": [
+        "Exploration1",
+        "Exploration2",
+        "Exploration3"
+      ],
+      "score_equation": "(Exploration1 + Exploration2 + Exploration3) / 3"
+    },
+    "Comparison": {
+      "items": [
+        "Comparision1",
+        "Comparision2",
+        "Comparision3"
+      ],
+      "score_equation": "(Comparision1 + Comparision2 + Comparision3) / 3"
+    }
+  },
+  "total_score_equation": "(Insight1 + Insight2 + Insight3 + Exploration1 + Exploration2 + Exploration3 + Comparision1 + Comparision2 + Comparision3) / 9"
+}

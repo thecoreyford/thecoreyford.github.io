@@ -1,0 +1,179 @@
+{
+  "title": "RiCEv2",
+  "url": "https://ricequestionnaire.github.io/",
+  "instructions": "Considering your recent experience of [SYSTEM], please indicate the extent to which you agree with the following statements.",
+  "lowest_value": 0,
+  "statements": [
+    {
+      "code": "Cp1",
+      "text": "Whilst being creative, I liked to think about my actions and find alternative ways of doing them.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "Ex2",
+      "text": "I often generated, tested, and revised ideas.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "Cp3",
+      "text": "I found myself iteratively refining and assessing my creative process.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "Se1",
+      "text": "I learned many new things about myself.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "Ex3",
+      "text": "I made no comparisons within the system to consider alternative ways of doing things.",
+      "reversed": true,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "Se3",
+      "text": "I often reappraised my experiences with the system so I could learn from them.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "Cp2",
+      "text": "I considered different ways of doing things.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "Ex1",
+      "text": "I made comparisons within the system to consider alternative ways of doing things.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "Se2",
+      "text": "I pondered over the meaning of what I was doing in relation to my personal experience.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    }
+  ],
+  "factors": {
+    "Reflection on Current Process (Cp)": {
+      "items": [
+        "Cp1",
+        "Cp2",
+        "Cp3"
+      ],
+      "score_equation": "(Cp1 + Cp2 + Cp3) / 3"
+    },
+    "Reflection through Experimentation (Ex)": {
+      "items": [
+        "Ex1",
+        "Ex2",
+        "Ex3"
+      ],
+      "score_equation": "(Ex1 + Ex2 + (10 - Ex3)) / 3"
+    },
+    "Reflection on Self (Se)": {
+      "items": [
+        "Se1",
+        "Se2",
+        "Se3"
+      ],
+      "score_equation": "(Se1 + Se2 + Se3) / 3"
+    }
+  },
+  "total_score_equation": "(Cp1 + Cp2 + Cp3 + Ex1 + Ex2 + (10 - Ex3) + Se1 + Se2 + Se3) / 9"
+}

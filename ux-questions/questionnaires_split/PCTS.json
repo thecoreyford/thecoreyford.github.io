@@ -1,0 +1,322 @@
+{
+  "title": "PCTS",
+  "url": "https://dl.acm.org/doi/10.1145/3411764.3445299",
+  "instructions": "Please inidcate how much you agree with these statements about [SYSTEM]:",
+  "lowest_value": 1,
+  "statements": [
+    {
+      "code": "Malice1",
+      "text": "I think that the designer of this system had immoral intentions.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Disagree"
+        },
+        {
+          "index": 2,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 3,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 4,
+          "label": "Somewhat agree"
+        },
+        {
+            "index": 5,
+            "label": "Agree"
+        },
+        {
+            "index": 6,
+            "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Malice2",
+      "text": "The design of this system is unethical.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Disagree"
+        },
+        {
+          "index": 2,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 3,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 4,
+          "label": "Somewhat agree"
+        },
+        {
+            "index": 5,
+            "label": "Agree"
+        },
+        {
+            "index": 6,
+            "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Undesirability1",
+      "text": "Using this system in public areas will make other people laugh at me.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Disagree"
+        },
+        {
+          "index": 2,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 3,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 4,
+          "label": "Somewhat agree"
+        },
+        {
+            "index": 5,
+            "label": "Agree"
+        },
+        {
+            "index": 6,
+            "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Undesirability2",
+      "text": "I would feel uneasy wearing this system in public.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Disagree"
+        },
+        {
+          "index": 2,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 3,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 4,
+          "label": "Somewhat agree"
+        },
+        {
+            "index": 5,
+            "label": "Agree"
+        },
+        {
+            "index": 6,
+            "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Undesirability3",
+      "text": "The system looks bizarre to me.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Disagree"
+        },
+        {
+          "index": 2,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 3,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 4,
+          "label": "Somewhat agree"
+        },
+        {
+            "index": 5,
+            "label": "Agree"
+        },
+        {
+            "index": 6,
+            "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Unpredictability1",
+      "text": "This system looks as expected.",
+      "reversed": true,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Disagree"
+        },
+        {
+          "index": 2,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 3,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 4,
+          "label": "Somewhat agree"
+        },
+        {
+            "index": 5,
+            "label": "Agree"
+        },
+        {
+            "index": 6,
+            "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Unpredictability2",
+      "text": "I don’t know what the purpose of the system is.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Disagree"
+        },
+        {
+          "index": 2,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 3,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 4,
+          "label": "Somewhat agree"
+        },
+        {
+            "index": 5,
+            "label": "Agree"
+        },
+        {
+            "index": 6,
+            "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Unpredictability3",
+      "text": "This system has a clear purpose.",
+      "reversed": true,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 1,
+          "label": "Disagree"
+        },
+        {
+          "index": 2,
+          "label": "Somewhat disagree"
+        },
+        {
+          "index": 3,
+          "label": "Neither agree nor disagree"
+        },
+        {
+          "index": 4,
+          "label": "Somewhat agree"
+        },
+        {
+            "index": 5,
+            "label": "Agree"
+        },
+        {
+            "index": 6,
+            "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 7
+    }
+  ],
+  "factors": {
+    "Implied Malice": {
+      "items": [
+        "Malice1",
+        "Malice2"
+      ],
+      "score_equation": "(Malice1 + Malice2) / 2"
+    },
+    "Undesirability": {
+      "items": [
+        "Undesirability1",
+        "Undesirability2",
+        "Undesirability3"
+      ],
+      "score_equation": "(Undesirability1 + Undesirability2 + Undesirability3) / 3"
+    },
+    "Unpredictability": {
+      "items": [
+        "Unpredictability1",
+        "Unpredictability2",
+        "Unpredictability3"
+      ],
+      "score_equation": "((8-Unpredictability1) + (Unpredictability2) + (8-Unpredictability3)) / 3"
+    }
+  },
+  "total_score_equation": "(Malice1 + Malice2 + Undesirability1 + Undesirability2 + Undesirability3 + (8-Unpredictability1) + (Unpredictability2) + (8-Unpredictability3)) / 8"
+}

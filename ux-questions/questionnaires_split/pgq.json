@@ -1,0 +1,32 @@
+{
+  "title": "PGQ",
+  "url": "https://pure.tue.nl/ws/portalfiles/portal/21666952/Fuga_d3.3.pdf",
+  "instructions": "Please indicate how you felt after you finished playing the game for each of the items.",
+  "lowest_value": 0,
+  "statements": [
+    { "code": "PGQ1", "text": "I felt revived", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ2", "text": "I felt bad", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ3", "text": "I found it hard to get back to reality", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ4", "text": "I felt guilty", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ5", "text": "It felt like a victory", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ6", "text": "I found it a waste of time", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ7", "text": "I felt energised", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ8", "text": "I felt satisfied", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ9", "text": "I felt disoriented", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ10", "text": "I felt exhausted", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ11", "text": "I felt that I could have done more useful things", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ12", "text": "I felt powerful", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ13", "text": "I felt weary", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ14", "text": "I felt regret", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ15", "text": "I felt ashamed", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ16", "text": "I felt proud", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "PGQ17", "text": "I had a sense that I had returned from a journey", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]}
+  ],
+  "factors": {
+    "Positive_Experience": { "items": ["PGQ1","PGQ5","PGQ7","PGQ8","PGQ12","PGQ16"], "score_equation": "(PGQ1 + PGQ5 + PGQ7 + PGQ8 + PGQ12 + PGQ16)/6" },
+    "Negative_Experience": { "items": ["PGQ2","PGQ4","PGQ6","PGQ11","PGQ14","PGQ15"], "score_equation": "(PGQ2 + PGQ4 + PGQ6 + PGQ11 + PGQ14 + PGQ15)/6" },
+    "Tiredness": { "items": ["PGQ10","PGQ13"], "score_equation": "(PGQ10 + PGQ13)/2" },
+    "Returning_to_Reality": { "items": ["PGQ3","PGQ9","PGQ17"], "score_equation": "(PGQ3 + PGQ9 + PGQ17)/3" }
+  },
+  "total_score_equation": "(PGQ1 + PGQ2 + PGQ3 + PGQ4 + PGQ5 + PGQ6 + PGQ7 + PGQ8 + PGQ9 + PGQ10 + PGQ11 + PGQ12 + PGQ13 + PGQ14 + PGQ15 + PGQ16 + PGQ17)/17"
+}

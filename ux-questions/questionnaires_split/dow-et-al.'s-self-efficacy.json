@@ -1,0 +1,99 @@
+{
+  "title": "Dow et al.'s Self-Efficacy",
+  "url": "https://dl.acm.org/doi/abs/10.1145/1879831.1879836",
+  "instructions": "On a scale from “Not confident at all” (1) to “Very confident” (7), how confident are you:",
+  "lowest_value": 1,
+  "statements": [
+    {
+      "code": "Se1",
+      "text": "With your ability to design advertisements?",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Not confident at all"
+        },
+        {
+          "index": 6,
+          "label": "Very confident"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Se2",
+      "text": "At understanding design problems?",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Not confident at all"
+        },
+        {
+          "index": 6,
+          "label": "Very confident"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Se3",
+      "text": "With detecting problems in your design?",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Not confident at all"
+        },
+        {
+          "index": 6,
+          "label": "Very confident"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Se4",
+      "text": "With incorporating expert feedback in your design?",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Not confident at all"
+        },
+        {
+          "index": 6,
+          "label": "Very confident"
+        }
+      ],
+      "likert_scale_points": 7
+    }
+  ],
+  "factors": {
+    "Advertisements": {
+      "items": [
+        "Se1"
+      ],
+      "score_equation": "Se1"
+    },
+    "Understanding design problems": {
+      "items": [
+        "Se2"
+      ],
+      "score_equation": "Se2"
+    },
+    "Detecting design problems": {
+      "items": [
+        "Se3"
+      ],
+      "score_equation": "Se3"
+    },
+    "Incoporating expert feedback": {
+      "items": [
+        "Se4"
+      ],
+      "score_equation": "Se4"
+    }
+  },
+  "total_score_equation": "(Se1 + Se2 + Se3 + Se4) / 4"
+}

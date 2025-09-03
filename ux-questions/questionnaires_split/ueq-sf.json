@@ -1,0 +1,235 @@
+{
+  "title": "UEQ-SF",
+  "url": "https://doi.org/10.1016/j.ijhcs.2018.01.004",
+  "instructions": "The following statements ask you to reflect on your experience of engaging with [SYSTEM]. For each statement, please use the following scale to indicate what is most true for you.",
+  "lowest_value": 1,
+  "statements": [
+    {
+      "code": "FA-S.1",
+      "text": "I lost myself in this experience.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "FA-S.2",
+      "text": "The time I spent using [SYSTEM] just slipped away.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "FA-S.3",
+      "text": "I was absorbed in this experience.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "PU-S.1",
+      "text": "I felt frustrated while using [SYSTEM].",
+      "reversed": true,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "PU-S.2",
+      "text": "I found [SYSTEM] confusing to use.",
+      "reversed": true,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "PU-S.3",
+      "text": "Using this [SYSTEM] was taxing.",
+      "reversed": true,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "AE-S.1",
+      "text": "[SYSTEM] was attractive.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "AE-S.2",
+      "text": "[SYSTEM] was aesthetically appealing.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "AE-S.3",
+      "text": "[SYSTEM] appealed to my senses.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "RW-S.1",
+      "text": "Using [SYSTEM] was worthwhile.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "RW-S.2",
+      "text": "My experience was rewarding.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 5
+    },
+    {
+      "code": "RW-S.3",
+      "text": "I felt interested in this experience.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Strongly disagree"
+        },
+        {
+          "index": 4,
+          "label": "Strongly Agree"
+        }
+      ],
+      "likert_scale_points": 5
+    }
+  ],
+  "factors": {
+    "Focused Attention (FA)": {
+      "items": [
+        "FA-S.1",
+        "FA-S.2",
+        "FA-S.3"
+      ],
+      "score_equation": "(FA-S.1 + FA-S.2 + FA-S.3) / 3"
+    },
+    "Perceived Usability (PU)": {
+      "items": [
+        "PU-S.1",
+        "PU-S.2",
+        "PU-S.3"
+      ],
+      "score_equation": "((6 - PU-S.1) + (6 - PU-S.2) + (6 - PU-S.3)) / 3"
+    },
+    "Aesthetics (AE)": {
+      "items": [
+        "AE-S.1",
+        "AE-S.2",
+        "AE-S.3"
+      ],
+      "score_equation": "(AE-S.1 + AE-S.2 + AE-S.3) / 3"
+    },
+    "Reward (RW)": {
+      "items": [
+        "RW-S.1",
+        "RW-S.2",
+        "RW-S.3"
+      ],
+      "score_equation": "(RW-S.1 + RW-S.2 + RW-S.3) / 3"
+    }
+  },
+  "total_score_equation": "((FA-S.1 + FA-S.2 + FA-S.3) + (6 - PU-S.1 + 6 - PU-S.2 + 6 - PU-S.3) + (AE-S.1 + AE-S.2 + AE-S.3) + (RW-S.1 + RW-S.2 + RW-S.3)) / 12"
+}

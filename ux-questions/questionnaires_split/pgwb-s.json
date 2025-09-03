@@ -1,0 +1,22 @@
+{
+  "title": "PGWB-S",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1647268/",
+  "instructions": "",
+  "lowest_value": 0,
+  "statements": [
+    { "code": "PGWB05", "text": "Have you been bothered by nervousness or your \"nerves\" during the past month?", "reversed": true, "likert_scale_points": 6, "scale_labels":[{"index":0,"label":"Not at all"},{"index":1,"label":"A little"},{"index":2,"label":"Some – enough to bother me"},{"index":3,"label":"Quite a bit"},{"index":4,"label":"Very much so"},{"index":5,"label":"Extremely so – to the point where I could not work or take care of things"}]},
+    { "code": "PGWB06", "text": "How much energy, pep, or vitality did you have or feel during the past month?", "reversed": false, "likert_scale_points": 6, "scale_labels":[{"index":0,"label":"No energy or pep at all – I fell drained, sapped"},{"index":1,"label":"Very low in energy or pep most of the time"},{"index":2,"label":"Generally low in energy or pep"},{"index":3,"label":"My energy level varied quite a bit"},{"index":4,"label":"Fairly energetic most of the time"},{"index":5,"label":"Very full of energy – lots of pep"}]},
+    { "code": "PGWB07", "text": "I felt downhearted and blue during the past month.", "reversed": false, "likert_scale_points": 6, "scale_labels":[{"index":0,"label":"All of the time"},{"index":1,"label":"Most of the time"},{"index":2,"label":"A good bit of the time"},{"index":3,"label":"Some of the time"},{"index":4,"label":"A little of the time"},{"index":5,"label":"None of this time"}]},
+    { "code": "PGWB018", "text": "I was emotionally stable and sure of myself during the past month.", "reversed": false, "likert_scale_points": 6, "scale_labels":[{"index":0,"label":"None of the time"},{"index":1,"label":"A little of the time"},{"index":2,"label":"Some of the time"},{"index":3,"label":"A good bit of the time"},{"index":4,"label":"Most of the time"},{"index":5,"label":"All of the time"}]},
+    { "code": "PGWB020", "text": "I felt cheerful, lighthearted during the past month.", "reversed": false, "likert_scale_points": 6, "scale_labels":[{"index":0,"label":"None of the time"},{"index":1,"label":"A little of the time"},{"index":2,"label":"Some of the time"},{"index":3,"label":"A good bit of the time"},{"index":4,"label":"Most of the time"},{"index":5,"label":"All of the time"}]},
+    { "code": "PGWB021", "text": "I felt tired, worn out, used up, or exhausted during the past month.", "reversed": true, "likert_scale_points": 6, "scale_labels":[{"index":0,"label":"None of the time"},{"index":1,"label":"A little of the time"},{"index":2,"label":"Some of the time"},{"index":3,"label":"A good bit of the time"},{"index":4,"label":"Most of the time"},{"index":5,"label":"All of the time"}]}
+  ],
+  "factors": {
+    "Anxiety": { "items": ["PGWB05"], "score_equation": "5-PGWB05"},
+    "Vitality": { "items": ["PGWB06", "PGWB020"], "score_equation": "(PGWB06 + (5-PGWB020)) / 2"},
+    "Depressed Mood": { "items": ["PGWB07"], "score_equation": "PGWB07"},
+    "Self-Control": { "items": ["PGWB018"], "score_equation": "PGWB018"},
+    "Positive well-being": { "items": ["PGWB020"], "score_equation": "PGWB020"}
+  },
+  "total_score_equation": "((5-PGWB05) + (PGWB06) + (5-PGWB020) + (PGWB07) + (PGWB018) + (PGWB020)) * 4.4"
+}

@@ -1,0 +1,287 @@
+{
+  "title": "CSI (Not Weighted)",
+  "url": "https://dl.acm.org/doi/10.1145/2617588",
+  "instructions": "Please rate your agreement with the following statements.",
+  "lowest_value": 0,
+  "statements": [
+    {
+      "code": "RWE1",
+      "text": "What I was able to produce was worth the effort I had to exert to produce it.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "RWE2",
+      "text": "I was satisfied with what I got out of the system or tool.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "EXPL1",
+      "text": "The system was helpful in allowing me to track different ideas, outcomes, or possibilities.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "EXPL2",
+      "text": "It was easy for me to explore many different ideas, options, designs, or outcomes.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "COLAB1",
+      "text": "It was really easy to share ideas and designs with other people inside this tool.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "COLAB2",
+      "text": "The system or tool offered support for multiple users.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "IMM1",
+      "text": "I became so absorbed in the activity that I forgot about the system or tool that I was using.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "IMM2",
+      "text": "My attention was fully tuned to the activity, and I forgot about the system or tool that I was using.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "EXP1",
+      "text": "I felt very artistic while using this system or tool.",
+      "reversed": true,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "EXP2",
+      "text": "I was able to be very creative while doing the activity.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "ENJ1",
+      "text": "I would be happy to use this system or tool on a regular basis.",
+      "reversed": true,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    },
+    {
+      "code": "ENJ2",
+      "text": "I enjoyed this system or tool.",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "Highly Disagree"
+        },
+        {
+          "index": 10,
+          "label": "Highly Agree"
+        }
+      ],
+      "likert_scale_points": 11
+    }
+  ],
+  "factors": {
+    "Results Worth Effort": {
+      "items": [
+        "RWE1",
+        "RWE2"
+      ],
+      "score_equation": "(RWE1 + RWE2) / 2"
+    },
+    "Exploration Average": {
+      "items": [
+        "EXPL1",
+        "EXPL2"
+      ],
+      "score_equation": "(EXPL1 + EXPL2) / 2"
+    },
+    "Collaboration Average": {
+      "items": [
+        "COLAB1",
+        "COLAB2"
+      ],
+      "score_equation": "(COLAB1 + COLAB2) / 2"
+    },
+    "Immersion Average": {
+      "items": [
+        "IMM1",
+        "IMM2"
+      ],
+      "score_equation": "(IMM1 + IMM2) / 2"
+    },
+    "Expressiveness Average": {
+      "items": [
+        "EXP1",
+        "EXP2"
+      ],
+      "score_equation": "(EXP1 + EXP2) / 2"
+    },
+    "Enjoyment Average": {
+      "items": [
+        "ENJ1",
+        "ENJ2"
+      ],
+      "score_equation": "(ENJ1 + ENJ2) / 2"
+    },
+    "Results Worth Effort Sum": {
+      "items": [
+        "RWE1",
+        "RWE2"
+      ],
+      "score_equation": "(RWE1 + RWE2)"
+    },
+    "Exploration Sum": {
+      "items": [
+        "EXPL1",
+        "EXPL2"
+      ],
+      "score_equation": "(EXPL1 + EXPL2)"
+    },
+    "Collaboration Sum": {
+      "items": [
+        "COLAB1",
+        "COLAB2"
+      ],
+      "score_equation": "(COLAB1 + COLAB2)"
+    },
+    "Immersion Sum": {
+      "items": [
+        "IMM1",
+        "IMM2"
+      ],
+      "score_equation": "(IMM1 + IMM2)"
+    },
+    "Expressiveness Sum": {
+      "items": [
+        "EXP1",
+        "EXP2"
+      ],
+      "score_equation": "(EXP1 + EXP2)"
+    },
+    "Enjoyment Sum": {
+      "items": [
+        "ENJ1",
+        "ENJ2"
+      ],
+      "score_equation": "(ENJ1 + ENJ2)"
+    }
+  },
+  "total_score_equation": "(RWE1 + RWE2 + EXPL1 + EXPL2 + COLAB1 + COLAB2 + IMM1 + IMM2 + EXP1 + EXP2 + ENJ1 + ENJ2) / 12"
+}

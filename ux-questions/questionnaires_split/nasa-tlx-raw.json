@@ -1,0 +1,23 @@
+{
+  "title": "NASA-TLX (Raw)",
+  "url": "https://humansystems.arc.nasa.gov/groups/tlx/downloads/TLXScale.pdf",
+  "instructions": "After completing a task, please rate each dimension below.",
+  "lowest_value": 0,
+  "statements": [
+    { "code": "TLX1", "text": "How mentally demanding was the task?", "reversed": false, "likert_scale_points": 21, "scale_labels":[{"index":0,"label":"Very Low"},{"index":20,"label":"Very High"}]},
+    { "code": "TLX2", "text": "How physically demanding was the task?", "reversed": false, "likert_scale_points": 21, "scale_labels":[{"index":0,"label":"Very Low"},{"index":20,"label":"Very High"}]},
+    { "code": "TLX3", "text": "How hurried or rushed was the pace of the task?", "reversed": false, "likert_scale_points": 21, "scale_labels":[{"index":0,"label":"Very Low"},{"index":20,"label":"Very High"}]},
+    { "code": "TLX4", "text": "How successful were you in accomplishing what you were asked to do?", "reversed": true, "likert_scale_points": 21, "scale_labels":[{"index":0,"label":"Perfect"},{"index":20,"label":"Failure"}]},
+    { "code": "TLX5", "text": "How hard did you have to work to accomplish your level of performance?", "reversed": false, "likert_scale_points": 21, "scale_labels":[{"index":0,"label":"Very Low"},{"index":20,"label":"Very High"}]},
+    { "code": "TLX6", "text": "How insecure, discouraged, irritated, stressed, and annoyed were you?", "reversed": false, "likert_scale_points": 21, "scale_labels":[{"index":0,"label":"Very Low"},{"index":20,"label":"Very High"}]}
+  ],
+  "factors": {
+    "Mental Demand": { "items": ["TLX1"], "score_equation": "TLX1" },
+    "Physical Demand": { "items": ["TLX2"], "score_equation": "TLX2" },
+    "Temporal Demand": { "items": ["TLX3"], "score_equation": "TLX3" },
+    "Performance": { "items": ["TLX4"], "score_equation": "100 - TLX4" },
+    "Effort": { "items": ["TLX5"], "score_equation": "TLX5" },
+    "Frustration": { "items": ["TLX6"], "score_equation": "TLX6" }
+  },
+  "total_score_equation": "(TLX1 + TLX2 + TLX3 + (100 - TLX4) + TLX5 + TLX6)"
+}

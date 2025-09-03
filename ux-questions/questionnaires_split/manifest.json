@@ -1,0 +1,25 @@
+{
+  "files": [
+    "demographics.json",
+    "ricev2.json",
+    "ueq-sf.json",
+    "dow-et-al.'s-self-efficacy.json",
+    "short-ueq.json",
+    "goldsmiths-msi.json",
+    "csi-(weighted).json",
+    "csi-(not-weighted).json",
+    "tsri.json",
+    "csi-(weights-only).json",
+    "sus.json",
+    "visawi.json",
+    "geq.json",
+    "igeq.json",
+    "pgq.json",
+    "spgq.json",
+    // "pgwb-s.json",
+    "fmq-sf.json",
+    "nasa-tlx-raw.json",
+    // "nasa-tlx-weighted" TODO: Fix weights
+    "PCTS.json"
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "title": "Short UEQ",
+  "url": "https://www.ijimai.org/journal/bibcite/reference/2634",
+  "instructions": "Decide as spontaneously as possible which of the following opposing terms better describes [SYSTEM]. There is no \"right\" or \"wrong\" answer. Only your personal opinion counts!",
+  "lowest_value": -3,
+  "statements": [
+    {
+      "code": "Prag1",
+      "text": " ",
+      "reversed": true,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "clear"
+        },
+        {
+          "index": 6,
+          "label": "confusing"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Prag2",
+      "text": " ",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "inefficient"
+        },
+        {
+          "index": 6,
+          "label": "efficient"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Prag3",
+      "text": " ",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "complicated"
+        },
+        {
+          "index": 6,
+          "label": "easy"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Prag4",
+      "text": " ",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "obstructive"
+        },
+        {
+          "index": 6,
+          "label": "supportive"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Hed1",
+      "text": " ",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "boring"
+        },
+        {
+          "index": 6,
+          "label": "exiting"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Hed2",
+      "text": " ",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "not interesting"
+        },
+        {
+          "index": 6,
+          "label": "interesting"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Hed3",
+      "text": " ",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "conventional"
+        },
+        {
+          "index": 6,
+          "label": "inventive"
+        }
+      ],
+      "likert_scale_points": 7
+    },
+    {
+      "code": "Hed4",
+      "text": " ",
+      "reversed": false,
+      "scale_labels": [
+        {
+          "index": 0,
+          "label": "usual"
+        },
+        {
+          "index": 6,
+          "label": "leading edge"
+        }
+      ],
+      "likert_scale_points": 7
+    }
+  ],
+  "factors": {
+    "Pragmatic": {
+      "items": [
+        "Prag1",
+        "Prag2",
+        "Prag3",
+        "Prag4"
+      ],
+      "score_equation": "((Prag1*-1) + Prag2 + Prag3 + Prag4) / 4"
+    },
+    "Hedonic": {
+      "items": [
+        "Hed1",
+        "Hed2",
+        "Hed3",
+        "Hed4"
+      ],
+      "score_equation": "(Hed1 + Hed2 + Hed3 + Hed4) / 4"
+    }
+  },
+  "total_score_equation": "((Prag1*-1) + Prag2 + Prag3 + Prag4 + Hed1 + Hed2 + Hed3 + Hed4) / 8"
+}

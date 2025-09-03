@@ -1,0 +1,40 @@
+{
+  "title": "SPGQ",
+  "url": "https://pure.tue.nl/ws/portalfiles/portal/21666952/Fuga_d3.3.pdf",
+  "instructions": "Please indicate how you felt while playing the game for each of the items.",
+  "lowest_value": 0,
+  "statements": [
+    { "code": "SPGQ1", "text": "I empathized with the other(s)", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ2", "text": "My actions depended on the other(s) actions", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ3", "text": "The other's actions were dependent on my actions", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ4", "text": "I felt connected to the other(s)", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ5", "text": "The other(s) paid close attention to me", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ6", "text": "I paid close attention to the other(s)", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ7", "text": "I felt jealous about the other(s)", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ8", "text": "I found it enjoyable to be with the other(s)", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ9", "text": "When I was happy, the other(s) was(were) happy", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ10", "text": "When the other(s) was(were) happy, I was happy", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ11", "text": "I influenced the mood of the other(s)", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ12", "text": "I was influenced by the other(s) moods", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ13", "text": "I admired the other(s)", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ14", "text": "What the other(s) did affected what I did", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ15", "text": "What I did affected what the other(s) did", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ16", "text": "I felt revengeful", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] },
+    { "code": "SPGQ17", "text": "I felt schadenfreude (malicious delight)", "reversed": false, "likert_scale_points": 5, "scale_labels": [ { "index":0,"label":"not at all" }, { "index":1,"label":"slightly" }, { "index":2,"label":"moderately" }, { "index":3,"label":"fairly" }, { "index":4,"label":"extremely" } ] }
+  ],
+  "factors": {
+    "Psychological_Involvement_Empathy": { 
+      "items": ["SPGQ1","SPGQ4","SPGQ8","SPGQ9","SPGQ10","SPGQ13"], 
+      "score_equation": "(SPGQ1 + SPGQ4 + SPGQ8 + SPGQ9 + SPGQ10 + SPGQ13)/6" 
+    },
+    "Psychological_Involvement_Negative_Feelings": { 
+      "items": ["SPGQ7","SPGQ11","SPGQ12","SPGQ16","SPGQ17"], 
+      "score_equation": "(SPGQ7 + SPGQ11 + SPGQ12 + SPGQ16 + SPGQ17)/5" 
+    },
+    "Behavioural_Involvement": { 
+      "items": ["SPGQ2","SPGQ3","SPGQ5","SPGQ6","SPGQ14","SPGQ15"], 
+      "score_equation": "(SPGQ2 + SPGQ3 + SPGQ5 + SPGQ6 + SPGQ14 + SPGQ15)/6" 
+    }
+  },
+  "total_score_equation": "(SPGQ1 + SPGQ2 + SPGQ3 + SPGQ4 + SPGQ5 + SPGQ6 + SPGQ7 + SPGQ8 + SPGQ9 + SPGQ10 + SPGQ11 + SPGQ12 + SPGQ13 + SPGQ14 + SPGQ15 + SPGQ16 + SPGQ17)/17"
+}

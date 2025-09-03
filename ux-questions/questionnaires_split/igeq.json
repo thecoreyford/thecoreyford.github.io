@@ -1,0 +1,32 @@
+{
+  "title": "iGEQ",
+  "url": "https://pure.tue.nl/ws/portalfiles/portal/21666952/Fuga_d3.3.pdf",
+  "instructions": "Please indicate how you felt while playing the game for each of the items.",
+  "lowest_value": 0,
+  "statements": [
+    { "code": "iGEQ1", "text": "I was interested in the game's story", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "iGEQ2", "text": "I felt successful", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "iGEQ3", "text": "I felt bored", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "iGEQ4", "text": "I found it impressive", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "iGEQ5", "text": "I forgot everything around me", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "iGEQ6", "text": "I felt frustrated", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "iGEQ7", "text": "I found it tiresome", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "iGEQ8", "text": "I felt irritable", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "iGEQ9", "text": "I felt skilful", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "iGEQ10", "text": "I felt completely absorbed", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "iGEQ11", "text": "I felt content", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "iGEQ12", "text": "I felt challenged", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "iGEQ13", "text": "I felt stimulated", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]},
+    { "code": "iGEQ14", "text": "I felt good", "reversed": false, "likert_scale_points": 5, "scale_labels":[{"index":0,"label":"not at all"},{"index":1,"label":"slightly"},{"index":2,"label":"moderately"},{"index":3,"label":"fairly"},{"index":4,"label":"extremely"}]}
+  ],
+  "factors": {
+    "Competence": { "items": ["iGEQ2","iGEQ9"], "score_equation": "(iGEQ2 + iGEQ9)/2" },
+    "Sensory_Imaginative_Immersion": { "items": ["iGEQ1","iGEQ4"], "score_equation": "(iGEQ1 + iGEQ4)/2" },
+    "Flow": { "items": ["iGEQ5","iGEQ10"], "score_equation": "(iGEQ5 + iGEQ10)/2" },
+    "Tension": { "items": ["iGEQ6","iGEQ8"], "score_equation": "(iGEQ6 + iGEQ8)/2" },
+    "Challenge": { "items": ["iGEQ12","iGEQ13"], "score_equation": "(iGEQ12 + iGEQ13)/2" },
+    "Negative_Affect": { "items": ["iGEQ3","iGEQ7"], "score_equation": "(iGEQ3 + iGEQ7)/2" },
+    "Positive_Affect": { "items": ["iGEQ11","iGEQ14"], "score_equation": "(iGEQ11 + iGEQ14)/2" }
+  },
+  "total_score_equation": "(iGEQ1 + iGEQ2 + iGEQ3 + iGEQ4 + iGEQ5 + iGEQ6 + iGEQ7 + iGEQ8 + iGEQ9 + iGEQ10 + iGEQ11 + iGEQ12 + iGEQ13 + iGEQ14)/14"
+}
