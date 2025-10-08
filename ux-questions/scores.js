@@ -209,3 +209,78 @@ document.getElementById('score-preview').value = scoreText;
       console.warn("Submission blocked:", error.message);
   }
 });
+
+// to excel
+document.addEventListener("DOMContentLoaded", () => {
+  const downloadXlsxBtn = document.getElementById("download-xlsx");
+
+  if (downloadXlsxBtn) {
+    downloadXlsxBtn.addEventListener("click", async function () {
+      try {
+        const { condition, participantId, activeQuestionnaires } = collectResponses();
+
+        const wb = XLSX.utils.book_new();
+
+        // --- HEADER ROW ---
+        const header = ["Participant ID"];
+
+        // Demographics columns first
+        const demographicsFields = ["Gender Identity", "Age", "Country", "Course or Job"];
+        header.push(...demographicsFields);
+
+        // Build questionnaire + factor columns in order
+        activeQuestionnaires
+          .filter(q => q.title.toLowerCase() !== "demographics")
+          .forEach(q => {
+            // Questionnaire total score column
+            header.push(`${condition}_${q.title}`);
+            // Its factors
+            Object.keys(q.factorScores || {}).forEach(factor => {
+              header.push(`${condition}_${factor}`);
+            });
+          });
+
+        const rows = [header];
+
+        // --- DATA ROW ---
+        const row = [participantId];
+
+        // Add demographics first
+        const demographicsQ = activeQuestionnaires.find(q => q.title.toLowerCase() === "demographics");
+        if (demographicsQ) {
+          row.push(demographicsQ.responses["gender-identity"] || "");
+          row.push(demographicsQ.responses["age"] || "");
+          row.push(demographicsQ.responses["country"] || "");
+          row.push(demographicsQ.responses["course-or-job"] || "");
+        } else {
+          row.push("", "", "", "");
+        }
+
+        // Add questionnaire scores + factors in order
+        activeQuestionnaires
+          .filter(q => q.title.toLowerCase() !== "demographics")
+          .forEach(q => {
+            row.push(q.totalScore.toFixed(2)); // total score
+            Object.keys(q.factorScores || {}).forEach(factor => {
+              row.push(q.factorScores[factor].toFixed(2));
+            });
+          });
+
+        rows.push(row);
+
+        // --- CREATE WORKSHEET ---
+        const ws = XLSX.utils.aoa_to_sheet(rows);
+        XLSX.utils.book_append_sheet(wb, ws, "Scores");
+
+        // --- SAVE FILE ---
+        const date = new Date().toISOString().split("T")[0];
+        const filename = `Scores_${participantId}_${date}.xlsx`;
+
+        XLSX.writeFile(wb, filename);
+      } catch (error) {
+        console.error("Error generating XLSX:", error);
+        alert("Failed to generate XLSX file. Please check console for details.");
+      }
+    });
+  }
+});
