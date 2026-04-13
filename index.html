@@ -115,19 +115,106 @@
 </div>
 
           <div class="clearfix">
-            <p>Corey Ford is a <b>Lecturer in Computer & Data Science at the Creative Computing Institute, University of the Arts London</b>.</p>
-            
-            <p>Ford's research interests lie in examining how different aspects of the user experience (such as reflection or engagment) happen in different creative domains (such as music) and technologies (such as AI). They have published in venues such as ACM CHI, ACM C&C, and ACM Computing Surveys. They completed their HCI Ph.D. from Queen Mary University of London on characterising reflection in music interaction. </p>
-            
-            <p>They are also the Early Career Advocate for the Computer Arts Society. They are a Distinguished Reviewer for ACM TOCHI. They also chair the Reflection in Creative Experience Workshop.</p>
+            <p><b>Lecturer in Computer & Data Science at the Creative Computing Institute, University of the Arts London</b>.</p>            
 
-            <p><strong>Areas:</strong> Creativity Support Tools, Reflection, Computer Arts, Human-Computer Interaction, User Experience Design, Interaction Design, Music Composition, Generative Music, AI, Machine Learning</p>
+
+            <div class="tabs">
+  <div class="bar">
+    <button class="t on" onclick="t(0)">Research Summary</button>
+    <button class="t" onclick="t(1)">Awards</button>
+    <button class="t" onclick="t(2)">Service</button>
+    <button class="t" onclick="t(3)">Invited Talks</button>
+  </div>
+
+  <div class="p on"><p><p>Ford's research interests lie in examining how different aspects of the user experience (such as reflection or engagment) happen in different creative domains (such as music) and technologies (such as AI). They have published in venues such as ACM CHI, ACM C&C, and ACM Computing Surveys. They completed their HCI Ph.D. from Queen Mary University of London on characterising reflection in music interaction. </p>
+  <p><strong>Areas:</strong> Creativity Support Tools, Reflection, Computer Arts, Human-Computer Interaction, User Experience Design, Interaction Design, Music Composition, Generative Music, AI, Machine Learning</p></div>
+  <div class="p">
+    <p>Nominated: Arts Students' Union Award for Outstanding Teaching (2026)</p>
+    <p>Honourable Mention Award (top 5% submissions) for ``Reflection Across AI-based Music Composition'' at ACM Creativity & Cognition 2024</p>
+    <p>Pendlebury-Tucker Prize (Award for Best Music Technology Project) (£200)</p>
+    <p>Dean’s Award for Academic Excellence 2016/2017 and 2017/2018</p>
+    <p>Funding from the UWE's enterprise summer scholarship scheme (£1000)
+  </div>
+  <div class="p">
+    
+<p>Early Career Ambassador for the Computer Arts Society (CAS)</p>
+<p>Member of the ACM TOCHI Distinguished Reviewer Board</p>
+<p>Creative Computing Institute Research Committee Member (UAL)</p>
+<p>Posters and Demos Chair for ACM Creativity and Cognition 2025/26</p>
+<p>Student Volunteer Chair for ACM Creativity and Cognition 2023/24 </p>
+<p>Reviewer, including: ACM CHI (Full papers; Extended abstracts); ACM DIS (ACM Research-Through-Design Committee;
+Full Papers); ACM C&C (Full papers; Pictorials; Artworks; Demos); Computer Music Journal; Personal and
+Ubiquitous Computing Journal; NIME (Full papers, alt.nime).</p>
+
+  </div>
+  <div class="p">
+    <p>Phenomenology Guest Lecture at QMUL (2026)</p>
+    <p>EVA/CAS Mentoring at the Electronic Visual Arts Conference (2025)</p>
+    <p>Creativity & Design Guest Lecture at QMUL (2025)</p>
+    <p>From Code to Chord: AI Music at the Music Managers Forum Summit on AI (2023)</p>
+    <p>ART-ifical Intelligence and Music at the Pint of Science Festival (2022)</p>
+    <p>On Creativity & Codetta for the School of Computing and Communications at the Open University (2021)</p>
+    <p>Codetta Talk & Workshop for MA Creative Music Practice students at the University of Gloucestershire (2020)</p>
+  </div>
+</div>
+
+<style>
+.bar{display:flex;gap:10px;border-bottom:1px solid #ddd;margin-bottom:12px;flex-wrap:wrap}
+
+.t{
+  background:none;
+  border:0;
+  cursor:pointer;
+  padding:6px 10px;
+  color: #00a419;
+  opacity:.5;
+  transition:.2s;
+}
+
+.t.on{
+  opacity:1;
+  border-bottom:2px solid   #00a419;
+}
+
+/* ✨ animated panels */
+.p{
+  display:none;
+  opacity:0;
+  transform:translateY(8px);
+  transition:.25s ease;
+}
+
+.p.on{
+  display:block;
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+
+<script>
+function t(i){
+  document.querySelectorAll(".t").forEach((b,j)=>
+    b.classList.toggle("on",j===i)
+  );
+
+  document.querySelectorAll(".p").forEach((p,j)=>{
+    if(j===i){
+      p.classList.add("on");
+      setTimeout(()=>p.style.opacity=1,10);
+    } else {
+      p.classList.remove("on");
+      p.style.opacity=0;
+    }
+  });
+}
+</script>
+
 
           </div>
 
           <br><br>
           <header class="post-header">
-          <h1 class="post-title">projects</h1>
+          <h1 class="post-title">Projects</h1>
           </header>
           
           <!-- ===== -->
@@ -285,7 +372,7 @@ window.addEventListener("mousemove", (e) => {
     <footer class="fixed-bottom">
       <div class="container mt-0">
         © Copyright 2024 Corey  Ford. Powered by <a href="http://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="noopener noreferrer">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.
-Last updated: July 05, 2024.
+Last updated: April 13, 2026.
       </div>
     </footer>
   </body>
